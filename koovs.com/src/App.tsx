@@ -1,12 +1,11 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import MainRoute from './Pages/MainRoutes';
+import React from "react";
+import "./App.css";
+import MainRoute from "./Pages/MainRoutes";
 
 function App() {
   return (
     <div>
-      <MainRoute/>
+      <MainRoute />
     </div>
   );
 }

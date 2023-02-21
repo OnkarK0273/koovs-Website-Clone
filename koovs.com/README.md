@@ -1,4 +1,5 @@
 ## setups
+
 - installed redux,react-redux,thunk,react-router,axios,chakra,chkra icon,react-icon
 - set up routing -installed, mainRoutes page, BrowserRoutes provider
 - set up chkra - installed, provide chekraprovider, create theme if reqired

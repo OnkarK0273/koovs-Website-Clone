@@ -11,5 +11,3 @@ export interface Product {
   Order_status: string;
   isOrdered: boolean;
 }
-
-
