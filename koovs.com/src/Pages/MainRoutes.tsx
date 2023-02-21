@@ -1,5 +1,6 @@
 import React from 'react'
 import {Route,Routes} from 'react-router-dom'
+import AdminPage from '../Admin/AdminPage'
 import Home from './Home'
 import Login from './Login'
 import MenProductDetails from './MenProductDetails'
@@ -18,6 +19,7 @@ export default function MainRoute() {
             <Route path={'/women'} element={<WomensProduct/>} />
             <Route path={'/men/:id'} element={<MenProductDetails/>} />
             <Route path={'/women/:id'} element={<WomenProductDetails/>} />
+            <Route path={'/admin'} element={<AdminPage/>} />
             <Route path='*' element={<h1>Page not found</h1>}/>
         </Routes>
         
