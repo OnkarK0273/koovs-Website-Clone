@@ -10,7 +10,7 @@ import thunk from "redux-thunk";
 
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-const root = combineReducers({});
+//const root = combineReducers({});
 
 import { reducer as CartReducer } from "./Cart/cart.reducer";
 
