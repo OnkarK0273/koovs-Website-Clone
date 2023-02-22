@@ -1,17 +1,25 @@
-import {legacy_createStore,combineReducers,compose,applyMiddleware} from 'redux'
+import {
+  legacy_createStore,
+  combineReducers,
+  compose,
+  applyMiddleware,
+} from "redux";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import thunk from 'redux-thunk'
+import thunk from "redux-thunk";
 
 
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-const root = combineReducers({
+const root = combineReducers({});
 
-})
+import { reducer as CartReducer } from "./Cart/cart.reducer";
+
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+const root = combineReducers({ CartReducer });
 
 
-export const store = legacy_createStore(root,compose(applyMiddleware(thunk)))
-
+export const store = legacy_createStore(root, compose(applyMiddleware(thunk)));
 
 export type AppDispatch = typeof store.dispatch;
 

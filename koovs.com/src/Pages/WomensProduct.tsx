@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function WomensProduct() {
-  return (
-    <div>WomensProduct</div>
-  )
+  return <div>WomensProduct</div>;
 }

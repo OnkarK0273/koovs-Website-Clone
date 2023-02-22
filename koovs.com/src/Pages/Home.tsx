@@ -1,3 +1,4 @@
+
 import {
   Divider,
   Heading,
@@ -10,9 +11,14 @@ import React from "react";
 //import MensCard from '../HomeComponent/MensCard';
 import Navbar from "../HomeComponent/Navbar";
 import Navbar1 from "../HomeComponent/Navbar1";
+import { Box } from "@chakra-ui/react";
+import React from "react";
+
 
 export default function Home() {
+
   return (
+
     // <Box><MensCard /></Box>
     <>
       <Navbar />
@@ -41,4 +47,12 @@ export default function Home() {
       </SimpleGrid>
     </>
   );
+    <>
+      <Box>Home</Box>
+    </>
+  );
+
+  return <Box>Home</Box>;
+
+
 }
