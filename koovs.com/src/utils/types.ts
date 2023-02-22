@@ -24,3 +24,17 @@ export type CartItemType = {
   color: string;
   quantity: number;
 };
+
+
+export interface Userdetails {
+  id: number;
+  Name: number;
+  Phone: number;
+  Email: string;
+  Image: string;
+  Password: String;
+  IsPrime: boolean;
+  IsAuth: boolean;
+  Address: string;
+}
+
