@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Userdetails } from "../../utils/types";
+import { AppDispatch } from "../store";
 import {
   USER_API_CALL_FAIL,
   USER_API_CALL_REQ,
@@ -25,7 +26,7 @@ const getUserfail = () => {
   };
 };
 
-const getUserDetails = async (dispatch: any) => {
+const getUserDetails = async (dispatch: AppDispatch) => {
   dispatch(getUserreq());
   try {
     let res = await axios.get(`http://localhost:8080/UserDetails`);
