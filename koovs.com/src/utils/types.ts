@@ -13,6 +13,7 @@ export interface Product {
   size?: string;
 }
 
+
 export type CartItemType = {
   id: number;
   title: string;
@@ -23,3 +24,4 @@ export type CartItemType = {
   color: string;
   quantity: number;
 };
+
