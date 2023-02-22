@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Button,
   Input,
@@ -13,13 +13,25 @@ import {
   MenuList,
   MenuItem,
   Text,
+  Flex,
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { useAppDispatch, useAppSelector } from "../Redux/store";
+import { getProducts } from "../Redux/Product/product.action";
+import MenProductDetails from "./MenProductDetails";
 
 export default function MensProduct() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const size = "sm";
+  const dispatch = useAppDispatch();
+  const products = useAppSelector((store) => store.ProductReducer.productsData);
+
+  useEffect(() => {
+    if (products.length === 0) {
+      dispatch(getProducts());
+    }
+  }, []);
 
   return (
     <>
@@ -86,6 +98,15 @@ export default function MensProduct() {
           <MenuItem>Date, new to old</MenuItem>
         </MenuList>
       </Menu>
+
+      <div>
+        <Flex flexWrap={"wrap"} justifyContent="center">
+          {products.length > 0 &&
+            products.map((item) => (
+              <MenProductDetails key={item.id} {...item} />
+            ))}
+        </Flex>
+      </div>
     </>
   );
 }
