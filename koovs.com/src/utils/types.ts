@@ -1,4 +1,5 @@
 export interface Product {
+  id: number;
   active: boolean;
   img1: string;
   img2: string;
@@ -13,7 +14,6 @@ export interface Product {
   size?: string;
 }
 
-
 export type CartItemType = {
   id: number;
   title: string;
@@ -24,4 +24,3 @@ export type CartItemType = {
   color: string;
   quantity: number;
 };
-
