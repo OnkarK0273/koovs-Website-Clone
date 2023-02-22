@@ -38,3 +38,14 @@ export interface Userdetails {
   Address: string;
 }
 
+
+export interface Admin {
+  id: number;
+  Name: string;
+  EmailId: string;
+  Image: string;
+  Phone: string;
+  Password: string;
+  isAuth: boolean;
+}
+
