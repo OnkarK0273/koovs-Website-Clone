@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function AccountInfo() {
-  return (
-    <div>AccountInfo</div>
-  )
+  return <div>AccountInfo</div>;
 }

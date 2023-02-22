@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import {
   Text,
   Tabs,
@@ -22,18 +22,16 @@ import { AiFillInfoCircle } from "react-icons/ai";
 import AdminDrawer from "./AdminDrawer";
 import Dashbord from "../tabpanal/Dashbord";
 
-
-
 export default function AdminPage() {
-  const prodRef:any= useRef();
-  const dashboardRef:any = useRef();
-  const customerRef:any = useRef();
-  const orderRef:any = useRef();
-  const accountRef:any = useRef();
+  const prodRef: any = useRef();
+  const dashboardRef: any = useRef();
+  const customerRef: any = useRef();
+  const orderRef: any = useRef();
+  const accountRef: any = useRef();
 
   return (
     <>
-            <Tabs display={"flex"}>
+      <Tabs display={"flex"}>
         <TabList
           display={{ base: "none", md: "inherit" }}
           textAlign={"center"}
@@ -48,22 +46,19 @@ export default function AdminPage() {
           h={"100vh"}
         >
           <Box width={"60%"} m={"auto"} mt={0} mb={0}>
-            <Image
-              alt="logo"
-              src="/images/koolz-logo.png"
-            ></Image>
+            <Image alt="logo" src="/images/koolz-logo.png"></Image>
           </Box>
 
           <Box textAlign={"center"} mt={"20px"}>
-            <Avatar size={"2xl"} src={'https://avatars.githubusercontent.com/u/110043714?v=4'}></Avatar>
+            <Avatar
+              size={"2xl"}
+              src={"https://avatars.githubusercontent.com/u/110043714?v=4"}
+            ></Avatar>
           </Box>
           <Box textAlign={"center"} mt={"20px"} mb={"20px"}>
-            <Text>{'Onkar.K'}</Text>
-            <Text color={"black"}>{'onkar.k@koolz.com'}</Text>
-    
+            <Text>{"Onkar.K"}</Text>
+            <Text color={"black"}>{"onkar.k@koolz.com"}</Text>
           </Box>
-
-          
 
           <Tab
             ref={dashboardRef}
@@ -111,7 +106,6 @@ export default function AdminPage() {
             ref={customerRef}
             mb={"5px"}
             borderRadius={"5px"}
-           
             // transition={"0.8s"}
             _selected={{
               color: "black",
@@ -144,33 +138,24 @@ export default function AdminPage() {
             variant={"solid"}
             borderRadius={"5px"}
             colorScheme={"red"}
-           
           >
             Logout
           </Button>
         </TabList>
 
-            {/* tab panals */}
+        {/* tab panals */}
         <TabPanels pl={{ md: "32%", lg: "21%" }}>
-          <TabPanel p={0} >
-            <Dashbord/>
-          </TabPanel>
           <TabPanel p={0}>
-          Listings page
+            <Dashbord />
           </TabPanel>
-          <TabPanel p={0}>
-          Orders page
-          </TabPanel>
-          <TabPanel p={0}>
-          Customers
-          </TabPanel>
-          <TabPanel p={0}>
-            account info page
-          </TabPanel>
+          <TabPanel p={0}>Listings page</TabPanel>
+          <TabPanel p={0}>Orders page</TabPanel>
+          <TabPanel p={0}>Customers</TabPanel>
+          <TabPanel p={0}>account info page</TabPanel>
         </TabPanels>
       </Tabs>
 
-            {/* hambarger side manu bar */}
+      {/* hambarger side manu bar */}
       <Box
         display={{ base: "flex", md: "none" }}
         justifyContent={"space-between"}
@@ -192,7 +177,10 @@ export default function AdminPage() {
         <Box>
           <Menu>
             <MenuButton>
-              <Avatar src={'https://avatars.githubusercontent.com/u/110043714?v=4'} name={'Onkar.k'}></Avatar>
+              <Avatar
+                src={"https://avatars.githubusercontent.com/u/110043714?v=4"}
+                name={"Onkar.k"}
+              ></Avatar>
             </MenuButton>
             <MenuList backgroundColor={"#6096B4"} border={"1px solid #6096B4"}>
               <MenuItem backgroundColor={"#6096B4"}>
@@ -222,7 +210,7 @@ export default function AdminPage() {
                 >
                   {" "}
                   <FiLogOut />{" "}
-                  <Text ml={"20px"} fontSize={"md"} >
+                  <Text ml={"20px"} fontSize={"md"}>
                     Logout
                   </Text>
                 </Box>
@@ -231,7 +219,6 @@ export default function AdminPage() {
           </Menu>
         </Box>
       </Box>
-
     </>
-  )
+  );
 }
