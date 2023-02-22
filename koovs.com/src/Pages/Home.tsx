@@ -1,23 +1,10 @@
-import {
-  Divider,
-  Heading,
-  Image,
-  SimpleGrid,
-  Box,
-  Text,
-} from "@chakra-ui/react";
+import { Heading, Image, SimpleGrid, Box, Text } from "@chakra-ui/react";
 //import MensCard from '../HomeComponent/MensCard';
-import Navbar from "../HomeComponent/Navbar";
-import Navbar1 from "../HomeComponent/Navbar1";
 
 export default function Home() {
   return (
     // <Box><MensCard /></Box>
     <>
-      <Navbar />
-      <Divider />
-      <Navbar1 />
-
       {/* Featured Brands */}
       <Heading as="h3" size="lg" textAlign={"center"} mt={"20px"} mb={"30px"}>
         Featured Brands

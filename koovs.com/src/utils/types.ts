@@ -13,7 +13,6 @@ export interface Product {
   size?: string;
 }
 
-
 export type CartItemType = {
   id: number;
   title: string;
@@ -25,3 +24,14 @@ export type CartItemType = {
   quantity: number;
 };
 
+export interface Userdetails {
+  id: number;
+  Name: number;
+  Phone: number;
+  Email: string;
+  Image: string;
+  Password: String;
+  IsPrime: boolean;
+  IsAuth: boolean;
+  Address: string;
+}

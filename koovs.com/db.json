@@ -2859,7 +2859,7 @@
       "isOrdered": "FALSE"
     }
   ],
-  "User-Details": [
+  "UserDetails": [
     {
       "id": 1674393675928,
       "Name": "test",
@@ -2872,7 +2872,7 @@
       "Address": ""
     }
   ],
-  "Admin-Details": {
+  "AdminDetails": {
     "id": 1,
     "Name": "Onkar.K",
     "EmailId": "onkar.k@koolz.com",
@@ -3007,34 +3007,6 @@
       "title": "STONE BUCKLE STRAP DETAIL FAUX LEATHER CORK SANDALS",
       "price": 1299,
       "description": "BRAVE SOUL MEN'S FOOTWEAR SLIDERSTYLE LEATHER LOOK CORK BASE DOUBLE BUCKLE STRAPS MOULDED FOOT BED...",
-      "category": "shoes",
-      "is_best_seller": false,
-      "Order_status": "Pending",
-      "isOrdered": false
-    },
-    {
-      "id": 6,
-      "active": true,
-      "img1": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/1002034_p_pdp.jpg?v=1668141737&width=360",
-      "img2": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/1002034_pld_pdp.jpg?v=1668141737&width=360",
-      "brand": "KEEN",
-      "title": "YOGUI ARTS CLOG",
-      "price": 5990,
-      "description": "Get a seamless experience with koovs.",
-      "category": "shoes",
-      "is_best_seller": false,
-      "Order_status": "Pending",
-      "isOrdered": false
-    },
-    {
-      "id": 8,
-      "active": true,
-      "img1": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/1001966_p_pdp.jpg?v=1668141731&width=360",
-      "img2": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/1001966_pld_pdp.jpg?v=1668141731&width=360",
-      "brand": "KEEN",
-      "title": "YOGUI ARTS CLOG",
-      "price": 5990,
-      "description": "Get a seamless experience with koovs.",
       "category": "shoes",
       "is_best_seller": false,
       "Order_status": "Pending",
