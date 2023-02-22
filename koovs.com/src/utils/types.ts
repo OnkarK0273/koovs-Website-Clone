@@ -1,4 +1,5 @@
 export interface Product {
+  id: number;
   active: boolean;
   img1: string;
   img2: string;
@@ -24,6 +25,7 @@ export type CartItemType = {
   quantity: number;
 };
 
+
 export interface Userdetails {
   id: number;
   Name: number;
@@ -35,3 +37,4 @@ export interface Userdetails {
   IsAuth: boolean;
   Address: string;
 }
+
