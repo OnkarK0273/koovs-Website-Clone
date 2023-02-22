@@ -2859,7 +2859,7 @@
       "isOrdered": false
     }
   ],
-  "User-Details": [
+  "UserDetails": [
     {
       "id": 1674393675928,
       "Name": "test",
@@ -2872,7 +2872,7 @@
       "Address": ""
     }
   ],
-  "Admin-Details": {
+  "AdminDetails": {
     "id": 1,
     "Name": "Onkar.K",
     "EmailId": "onkar.k@koolz.com",

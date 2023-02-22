@@ -8,7 +8,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-// import Chart from "react-apexcharts";
+import Chart from "react-apexcharts";
 import { getAdminMen, getAdminWomen } from "../../Redux/admin/admin.action";
 import { useAppDispatch, useAppSelector } from "../../Redux/store";
 
@@ -17,7 +17,7 @@ export default function Piechart() {
   const womens = useAppSelector((store) => store.adminReducer.womens);
   const dispatch = useAppDispatch();
   const [toggle, setToggle] = useState(true);
-  //   const [arr, setArr] = useState<number[]>([]);
+  // const [arr, setArr] = useState<number[]>([]);
   // setArr([...arr,30,40,50,60])
   console.log(mens);
   console.log(womens);
@@ -64,7 +64,7 @@ export default function Piechart() {
               Womens
             </Heading>
           </HStack>
-          {/* {toggle ? (
+          {toggle ? (
             <Chart
               type="donut"
               width={variant}
@@ -154,7 +154,7 @@ export default function Piechart() {
                 ],
               }}
             />
-          )} */}
+          )}
           {/* <Chart
             type='donut'
             width={variant}
