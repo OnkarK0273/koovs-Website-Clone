@@ -1,4 +1,3 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Cart from "./Cart/Cart";
 import Payments from "./Cart/Payments";
@@ -10,6 +9,8 @@ import Signup from "./Signup";
 import WomenProductDetails from "./WomenProductDetails";
 import WomensProduct from "./WomensProduct";
 import Admin from "./Admin";
+import PaymentPage from "./Payments/PaymentPage";
+
 export default function MainRoute() {
   return (
     <>
@@ -24,6 +25,7 @@ export default function MainRoute() {
         <Route path={'/admin'} element={<Admin/>} />
         <Route path={"/cart"} element={<Cart />} />
         <Route path={"/payments"} element={<Payments />} />
+        <Route path={"/paymentspage"} element={<PaymentPage />} />
         <Route path="*" element={<h1>Page not found</h1>} />
       </Routes>
     </>

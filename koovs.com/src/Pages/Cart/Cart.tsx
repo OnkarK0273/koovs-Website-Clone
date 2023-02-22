@@ -56,15 +56,6 @@ const Cart: React.FC = () => {
     setQuantities(newQuantities);
   };
 
-  const getTotal = () => {
-    const cartItems: CartItemType[] = cart;
-    let total = 0;
-    for (let i = 0; i < cart.length; i++) {
-      total += cartItems[i].price * (quantities[i] || 1);
-    }
-    return total;
-  };
-
   return (
     <Box mt={"8%"} mb={"3%"}>
       <Text
@@ -182,47 +173,58 @@ const Cart: React.FC = () => {
           </Table>
         </TableContainer>
       </Center>
-      <Flex mt={8} w={"76.5%"} flexDirection={"column"}>
-        <Flex gap={"30px"} justify={"flex-end"}>
-          <NoteforSeller />
-          <Box borderRight="1px solid gray" height="60px" />
-          <EstShippingRates />
-          <Box borderRight="1px solid gray" height="60px" />
-          <AddDiscountCode />
-        </Flex>
-        <Flex mt={4} justify={"flex-end"}>
-          <Divider w={"255px"} />
-        </Flex>
-        <Flex mt={4} flexDirection={"column"} align={"flex-end"}>
-          <Flex w={"250px"} justify={"space-between"}>
-            <Text>SubTotal</Text>
-            <Text>Rs. {getTotal()}</Text>
+      <Center mr={"5.9%"}>
+        <Flex mt={8} w={"76.5%"} flexDirection={"column"}>
+          <Flex gap={"30px"} justify={"flex-end"}>
+            <NoteforSeller />
+            <Box borderRight="1px solid gray" height="60px" />
+            <EstShippingRates />
+            <Box borderRight="1px solid gray" height="60px" />
+            <AddDiscountCode />
           </Flex>
-          <Text mt={2} fontSize={"12.4px"}>
-            Tax included. Shipping calculated at checkout.
-          </Text>
-
-          <Button
-            as={Link}
-            to="/payments"
-            mt={4}
-            colorScheme={"none"}
-            bg={"black"}
-            p={"2%"}
-            w={"250px"}
-          >
-            <Flex justify={"space-around"} gap={"10px"}>
-              <Flex direction={"column"} textAlign={"left"}>
-                <Text>Place Order</Text>
-                <Text fontSize={"10px"}>5% Extra off on UPI</Text>
-              </Flex>
-              <Image w={"50%"} src={image} alt={"image"} />
+          <Flex mt={4} justify={"flex-end"}>
+            <Divider w={"255px"} />
+          </Flex>
+          <Flex mt={4} flexDirection={"column"} align={"flex-end"}>
+            <Flex w={"250px"} justify={"space-between"}>
+              <Text>SubTotal</Text>
+              <Text>Rs. {getTotal(cart, quantities)}</Text>
             </Flex>
-          </Button>
+            <Text mt={2} fontSize={"12.4px"}>
+              Tax included. Shipping calculated at checkout.
+            </Text>
+
+            <Button
+              as={Link}
+              to="/payments"
+              mt={4}
+              colorScheme={"none"}
+              bg={"black"}
+              p={"2%"}
+              w={"250px"}
+            >
+              <Flex justify={"space-around"} gap={"10px"}>
+                <Flex direction={"column"} textAlign={"left"}>
+                  <Text>Place Order</Text>
+                  <Text fontSize={"10px"}>5% Extra off on UPI</Text>
+                </Flex>
+                <Image w={"50%"} src={image} alt={"image"} />
+              </Flex>
+            </Button>
+          </Flex>
         </Flex>
-      </Flex>
+      </Center>
     </Box>
   );
+};
+
+export const getTotal = (cart: any[], quantities: number[]) => {
+  const cartItems: CartItemType[] = cart;
+  let total = 0;
+  for (let i = 0; i < cart.length; i++) {
+    total += cartItems[i].price * (quantities[i] || 1);
+  }
+  return total;
 };
 
 export default Cart;

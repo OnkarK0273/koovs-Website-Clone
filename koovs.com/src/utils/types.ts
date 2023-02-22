@@ -1,4 +1,5 @@
 export interface Product {
+  id: number;
   active: boolean;
   img1: string;
   img2: string;
@@ -24,17 +25,19 @@ export type CartItemType = {
   quantity: number;
 };
 
-export interface Users {
+
+export interface Userdetails {
   id: number;
-  Name: string;
-  Phone: string;
+  Name: number;
+  Phone: number;
   Email: string;
   Image: string;
-  Password: string;
+  Password: String;
   IsPrime: boolean;
   IsAuth: boolean;
   Address: string;
 }
+
 
 export interface Admin {
   id: number;
@@ -45,3 +48,4 @@ export interface Admin {
   Password: string;
   isAuth: boolean;
 }
+
