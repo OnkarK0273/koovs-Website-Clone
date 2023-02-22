@@ -6,6 +6,7 @@ import {
 } from "redux";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import thunk from "redux-thunk";
+
 import { reducer as CartReducer } from "./Cart/cart.reducer";
 
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
