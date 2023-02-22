@@ -109,7 +109,7 @@ const Cart: React.FC = () => {
                           <br />
                           <Text
                             as={"button"}
-                            onClick={() => delCartApi(cart.id, dispatch)}
+                            onClick={() => dispatch(delCartApi(cart.id))}
                           >
                             Remove
                           </Text>
