@@ -23,3 +23,25 @@ export type CartItemType = {
   color: string;
   quantity: number;
 };
+
+export interface Users {
+  id: number;
+  Name: string;
+  Phone: string;
+  Email: string;
+  Image: string;
+  Password: string;
+  IsPrime: boolean;
+  IsAuth: boolean;
+  Address: string;
+}
+
+export interface Admin {
+  id: number;
+  Name: string;
+  EmailId: string;
+  Image: string;
+  Phone: string;
+  Password: string;
+  isAuth: boolean;
+}

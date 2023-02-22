@@ -7,10 +7,10 @@ import {
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import thunk from "redux-thunk";
 import { reducer as CartReducer } from "./Cart/cart.reducer";
-
+import {adminReducer } from './admin/admin.reducer'
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-const root = combineReducers({ CartReducer });
+const root = combineReducers({ CartReducer,adminReducer });
 
 export const store = legacy_createStore(root, compose(applyMiddleware(thunk)));
 
