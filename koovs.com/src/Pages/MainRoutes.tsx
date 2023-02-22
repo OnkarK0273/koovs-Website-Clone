@@ -22,7 +22,7 @@ export default function MainRoute() {
         <Route path={"/women"} element={<WomensProduct />} />
         <Route path={"/men/:id"} element={<MenProductDetails />} />
         <Route path={"/women/:id"} element={<WomenProductDetails />} />
-        <Route path={'/admin'} element={<Admin/>} />
+        <Route path={"/admin"} element={<Admin />} />
         <Route path={"/cart"} element={<Cart />} />
         <Route path={"/payments"} element={<Payments />} />
         <Route path={"/paymentspage"} element={<PaymentPage />} />

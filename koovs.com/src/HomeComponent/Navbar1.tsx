@@ -6,12 +6,10 @@ import { BsPerson } from "react-icons/bs";
 import { BiShoppingBag } from "react-icons/bi";
 import { AiOutlineStar } from "react-icons/ai";
 
-
 export default function Navbar1() {
   return (
     <>
-
-      <Box px={15}>
+      {/* <Box px={15}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <Stack direction={"row"} spacing={12} px={10}>
             <Text>Men</Text>
@@ -23,7 +21,7 @@ export default function Navbar1() {
           </Heading>
 
           <Flex alignItems={"center"}>
-            <Stack direction={"row"} spacing={1}>
+            <Stack direction={"row"} spacing={1}> */}
 
       <Box px={20}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
@@ -44,7 +42,6 @@ export default function Navbar1() {
 
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={-2}>
-
               <Tooltip hasArrow label="Search " bg="black" color="white">
                 <Button backgroundColor={"white"}>
                   <SlMagnifier size={"20px"} />
@@ -62,16 +59,16 @@ export default function Navbar1() {
                 </Button>
               </Tooltip>
               <Tooltip hasArrow label="Cart " bg="black" color="white">
-
                 <Button as={Link} to={"/cart"} backgroundColor={"white"}>
                   <BiShoppingBag size={"20px"} />
                 </Button>
 
-                <Link to="/cart">  <Button backgroundColor={"white"}>
-                  <BiShoppingBag size={"20px"} />
-                </Button></Link>
-               
-
+                <Link to="/cart">
+                  {" "}
+                  <Button backgroundColor={"white"}>
+                    <BiShoppingBag size={"20px"} />
+                  </Button>
+                </Link>
               </Tooltip>
             </Stack>
           </Flex>

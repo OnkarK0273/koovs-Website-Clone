@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import {
   Button,
   Input,
@@ -31,6 +31,7 @@ export default function MensProduct() {
     if (products.length === 0) {
       dispatch(getProducts());
     }
+    // eslint-disable-next-line
   }, []);
 
   return (

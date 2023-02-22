@@ -25,7 +25,6 @@ export type CartItemType = {
   quantity: number;
 };
 
-
 export interface Userdetails {
   id: number;
   Name: number;
@@ -38,7 +37,6 @@ export interface Userdetails {
   Address: string;
 }
 
-
 export interface Admin {
   id: number;
   Name: string;
@@ -48,4 +46,3 @@ export interface Admin {
   Password: string;
   isAuth: boolean;
 }
-
