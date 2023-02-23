@@ -5,13 +5,15 @@ import * as types from "./product.types";
 export interface IProductState {
   loading: boolean;
   error: boolean;
-  productsData: Product[];
+  mensData: Product[];
+  womenData: Product[];
 }
 
 const initState = {
   loading: false,
   error: false,
-  productsData: [],
+  mensData: [],
+  womenData: [],
 };
 
 const reducer = (
@@ -25,7 +27,9 @@ const reducer = (
     case types.PRODUCT_ERROR:
       return { ...oldState, loading: false, error: true };
     case types.GET_PRODUCTS_SUCCESS:
-      return { ...oldState, loading: false, productsData: action.payload };
+      return { ...oldState, loading: false, mensData: action.payload };
+    case types.GET_WOMEN_PRODUCTS_SUCCESS:
+      return { ...oldState, loading: false, womenData: action.payload };
     default:
       return oldState;
   }
