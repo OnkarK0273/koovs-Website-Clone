@@ -21,6 +21,7 @@ import { FiLogOut } from "react-icons/fi";
 import { AiFillInfoCircle } from "react-icons/ai";
 import AdminDrawer from "./AdminDrawer";
 import Dashbord from "../tabpanal/Dashbord";
+import Listing from "../tabpanal/Listing";
 
 
 
@@ -31,6 +32,11 @@ export default function AdminPage() {
   const orderRef:any = useRef();
   const accountRef:any = useRef();
 
+  useEffect(()=>{
+    document.title = 'Koolz | Admin'
+  },[])
+
+
   return (
     <>
             <Tabs display={"flex"}>
@@ -40,7 +46,7 @@ export default function AdminPage() {
           flexDirection={"column"}
           w={{ md: "30%", lg: "20%" }}
           padding={"15px"}
-          backgroundColor={"#6096B4"}
+          backgroundColor={"#439A97"}
           color={"white"}
           position={"fixed"}
           top={0}
@@ -72,7 +78,7 @@ export default function AdminPage() {
             // transition={"0.8s"}
             _selected={{
               color: "black",
-              bg: "#93BFCF",
+              bg: "#97DECE",
               transform: "scale(1.05)",
               transition: "0.8s",
             }}
@@ -86,7 +92,7 @@ export default function AdminPage() {
             // transition={"0.8s"}
             _selected={{
               color: "black",
-              bg: "#93BFCF",
+              bg: "#97DECE",
               transform: "scale(1.05)",
               transition: "0.8s",
             }}
@@ -100,7 +106,7 @@ export default function AdminPage() {
             // transition={"0.8s"}
             _selected={{
               color: "black",
-              bg: "#93BFCF",
+              bg: "#97DECE",
               transform: "scale(1.05)",
               transition: "0.8s",
             }}
@@ -115,14 +121,14 @@ export default function AdminPage() {
             // transition={"0.8s"}
             _selected={{
               color: "black",
-              bg: "#93BFCF",
+              bg: "#97DECE",
               transform: "scale(1.05)",
               transition: "0.8s",
             }}
           >
             Customers
           </Tab>
-          <Box padding={"5px 0px"}>
+          <Box padding={"0px 0px"}>
             <Divider />
           </Box>
           <Tab
@@ -132,7 +138,7 @@ export default function AdminPage() {
             // transition={"0.8s"}
             _selected={{
               color: "black",
-              bg: "#93BFCF",
+              bg: "#97DECE",
               transform: "scale(1.05)",
               transition: "0.8s",
             }}
@@ -151,12 +157,12 @@ export default function AdminPage() {
         </TabList>
 
             {/* tab panals */}
-        <TabPanels pl={{ md: "32%", lg: "21%" }}>
-          <TabPanel p={0} >
+        <TabPanels pl={{ md: "32%", lg: "21%" }}  bg='#CBEDD5'>
+          <TabPanel p={0}  >
             <Dashbord/>
           </TabPanel>
           <TabPanel p={0}>
-          Listings page
+            <Listing/>
           </TabPanel>
           <TabPanel p={0}>
           Orders page
@@ -176,7 +182,7 @@ export default function AdminPage() {
         justifyContent={"space-between"}
         alignItems={"center"}
         padding={"10px"}
-        backgroundColor={"#6096B4"}
+        backgroundColor={"#439A97"}
         color={"white"}
         position={"fixed"}
         width={"100%"}
@@ -191,11 +197,11 @@ export default function AdminPage() {
         />
         <Box>
           <Menu>
-            <MenuButton>
-              <Avatar src={'https://avatars.githubusercontent.com/u/110043714?v=4'} name={'Onkar.k'}></Avatar>
+            <MenuButton pr='15px'>
+              <Avatar  src={'https://avatars.githubusercontent.com/u/110043714?v=4'} name={'Onkar.k'}></Avatar>
             </MenuButton>
-            <MenuList backgroundColor={"#6096B4"} border={"1px solid #6096B4"}>
-              <MenuItem backgroundColor={"#6096B4"}>
+            <MenuList backgroundColor={"#439A97"} border={"1px solid #439A97"}>
+              <MenuItem backgroundColor={"#439A97"}>
                 <Box
                   onClick={() => {
                     accountRef.current.click();
