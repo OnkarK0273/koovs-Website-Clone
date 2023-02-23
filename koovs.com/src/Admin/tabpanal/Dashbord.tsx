@@ -5,8 +5,9 @@ import Piechart from "../Compo/Piechart";
 export default function Dashbord() {
   useEffect(() => {}, []);
   return (
-    <Box mt="80px">
-      <Piechart />
+
+    <Box  pt={{ base: "80px", md: "20px" }} minH={"100vh"} >
+        <Piechart/>
     </Box>
   );
 }

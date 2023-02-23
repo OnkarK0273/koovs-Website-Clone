@@ -40,7 +40,7 @@ const AdminDrawer = ({
       >
         <DrawerOverlay />
         <DrawerContent
-          backgroundColor={"#6096B4"}
+          backgroundColor={"#439A97"}
           color={"white"}
           textAlign={"center"}
         >
@@ -49,7 +49,7 @@ const AdminDrawer = ({
             <Box
               mt={"160px"}
               p={"10px"}
-              _hover={{ backgroundColor: "blue.500" }}
+              _hover={{ backgroundColor: "#97DECE" }}
               onClick={() => {
                 dashboardRef.current.click();
                 onClose();
@@ -64,7 +64,7 @@ const AdminDrawer = ({
                 prodRef.current.click();
                 onClose();
               }}
-              _hover={{ backgroundColor: "blue.500" }}
+              _hover={{ backgroundColor: "#97DECE" }}
             >
               Listings
             </Box>
@@ -75,7 +75,7 @@ const AdminDrawer = ({
                 orderRef.current.click();
                 onClose();
               }}
-              _hover={{ backgroundColor: "blue.500" }}
+              _hover={{ backgroundColor: "#97DECE" }}
             >
               Orders
             </Box>
@@ -86,7 +86,7 @@ const AdminDrawer = ({
                 customerRef.current.click();
                 onClose();
               }}
-              _hover={{ backgroundColor: "blue.500" }}
+              _hover={{ backgroundColor: "#97DECE" }}
             >
               Customers
             </Box>
@@ -97,7 +97,7 @@ const AdminDrawer = ({
                 discountRef.current.click();
                 onClose();
               }}
-              _hover={{ backgroundColor: "blue.500" }}
+              _hover={{ backgroundColor: "#97DECE" }}
             >
               Discounts
             </Box> */}
