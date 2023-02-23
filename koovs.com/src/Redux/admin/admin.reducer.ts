@@ -1,4 +1,4 @@
-import { Admin, Product, Users } from '../../utils/types'
+import { Admin, Product, Userdetails } from '../../utils/types'
 import * as types from './admin.type'
 
 interface IinitState{
@@ -6,7 +6,7 @@ interface IinitState{
     error:boolean,
     mens:Product[] 
     womens:Product[]
-    users:Users[]
+    users:Userdetails[]
     admin:Admin[]
 }
 

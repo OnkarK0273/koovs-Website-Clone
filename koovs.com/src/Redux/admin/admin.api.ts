@@ -1,18 +1,18 @@
 import axios,{AxiosResponse} from "axios";
-import { Admin, Product, Users } from "../../utils/types";
+import { Admin, Product, Userdetails } from "../../utils/types";
 
-export const getMensAPI = async ()=>{
-    let res:AxiosResponse<Product[]> = await axios.get(`http://localhost:8080/mens`)
+export const getMensAPI = async (getProductsParam?: { params: { category: string[] } })=>{
+    let res:AxiosResponse<Product[]> = await axios.get(`http://localhost:8080/mens`,getProductsParam)
     return res.data
 }
 
-export const getWomensAPI = async ()=>{
-    let res:AxiosResponse<Product[]> = await axios.get(`http://localhost:8080/womens`)
+export const getWomensAPI = async (getProductsParam?: { params: { category: string[] } })=>{
+    let res:AxiosResponse<Product[]> = await axios.get(`http://localhost:8080/womens`,getProductsParam)
     return res.data
 }
 
 export const getUsersAPI = async ()=>{
-    let res:AxiosResponse<Users[]> = await axios.get(`http://localhost:8080/User-Details`)
+    let res:AxiosResponse<Userdetails[]> = await axios.get(`http://localhost:8080/User-Details`)
     return res.data
 }
 

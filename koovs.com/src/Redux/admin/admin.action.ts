@@ -8,10 +8,10 @@ import {
 import * as types from "./admin.type";
 
 // get mens data
-export const getAdminMen = () => async (dispatch: AppDispatch) => {
+export const getAdminMen = (getProductsParam?: { params: { category: string[] } }) => async (dispatch: AppDispatch) => {
   dispatch({ type: types.ADMIN_LOADING });
   try {
-    let data = await getMensAPI();
+    let data = await getMensAPI(getProductsParam);
     dispatch({ type: types.GET_ADMIN_MENS_PRODUCT, payload: data });
   } catch (err) {
     console.log(err);
@@ -20,10 +20,10 @@ export const getAdminMen = () => async (dispatch: AppDispatch) => {
 };
 
 // get womens data
-export const getAdminWomen = () => async (dispatch: AppDispatch) => {
+export const getAdminWomen = (getProductsParam?: { params: { category: string[] } }) => async (dispatch: AppDispatch) => {
   dispatch({ type: types.ADMIN_LOADING });
   try {
-    let data = await getWomensAPI();
+    let data = await getWomensAPI(getProductsParam);
     dispatch({ type: types.GET_ADMIN_WOMEMENS_PRODUCT, payload: data });
   } catch (err) {
     console.log(err);
