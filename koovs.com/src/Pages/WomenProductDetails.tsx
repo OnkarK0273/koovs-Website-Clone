@@ -1,3 +1,9 @@
-export default function WomenProductDetails() {
-  return <div>WomenProductDetails</div>;
+import React from 'react'
+
+const WomenProductDetails = () => {
+  return (
+    <div>WomenProductDetails</div>
+  )
 }
+
+export default WomenProductDetails

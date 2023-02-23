@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   Button,
   Input,
@@ -13,22 +13,39 @@ import {
   MenuList,
   MenuItem,
   Text,
-  Flex,
+  Grid,
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useAppDispatch, useAppSelector } from "../Redux/store";
 import { getProducts } from "../Redux/Product/product.action";
-import MenProductDetails from "./MenProductDetails";
+import MenProductCard from "./MenProductCard";
+import { Checkbox, CheckboxGroup } from "@chakra-ui/react";
+import { useSearchParams } from "react-router-dom";
 
 export default function MensProduct() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const size = "sm";
   const dispatch = useAppDispatch();
-  const products = useAppSelector((store) => store.ProductReducer.productsData);
+  const menProducts = useAppSelector((store) => store.ProductReducer.mensData);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialFIlterValues = searchParams.getAll("filter");
+  const [filterValues, setFilterValues] = useState<string[]>(
+    initialFIlterValues || []
+  );
+
+  const handleFilterChange = (value: string[]) => {
+    setFilterValues(value);
+  };
 
   useEffect(() => {
-    if (products.length === 0) {
+    let params: { filter?: string[] } = {};
+    if (filterValues.length) params.filter = filterValues;
+    setSearchParams(params);
+  }, [filterValues, setSearchParams]);
+
+  useEffect(() => {
+    if (menProducts.length === 0) {
       dispatch(getProducts());
     }
     // eslint-disable-next-line
@@ -65,15 +82,185 @@ export default function MensProduct() {
                 color="black"
                 width="100%"
                 textAlign={"left"}
+                marginTop="15px"
               >
                 Product type
               </MenuButton>
               <MenuList>
-                <MenuItem>Download</MenuItem>
-                <MenuItem>Download</MenuItem>
-                <MenuItem>Mark as Draft</MenuItem>
-                <MenuItem>Delete</MenuItem>
-                <MenuItem>Attend a Workshop</MenuItem>
+                <CheckboxGroup
+                  value={filterValues}
+                  onChange={handleFilterChange}
+                >
+                  <MenuItem>
+                    <Checkbox value="bags">Bags (1)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="coords">Co-ords (10)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="hats">Hats (3)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="hatscaps">Hats & Caps (5)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="hoodies">
+                      Hoodies & sweatshirts (3)
+                    </Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="jackets">Jackets & coats (10)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="joggers">Joggers (2)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="outwear">Outwear (11)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="pants">Pants (20)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="sandals">Sandals (4)</Checkbox>
+                  </MenuItem>
+                </CheckboxGroup>
+              </MenuList>
+            </Menu>
+            <Menu>
+              <MenuButton
+                as={Button}
+                rightIcon={<ChevronDownIcon />}
+                backgroundColor="white"
+                color="black"
+                width="100%"
+                textAlign={"left"}
+                marginTop="15px"
+              >
+                Size
+              </MenuButton>
+              <MenuList>
+                <CheckboxGroup
+                  value={filterValues}
+                  onChange={handleFilterChange}
+                >
+                  <MenuItem>
+                    <Checkbox value="XXS">XXS (1)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="XS">XS (10)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="S">S (3)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="M">M (5)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="L">L (3)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="XL">XL (10)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="XXL">XXL (11)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="6">6 (20)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="7">7 (4)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="8">8 (30)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="9">9 (42)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="9.5">9.5 (2)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="10">10 (29)</Checkbox>
+                  </MenuItem>
+                </CheckboxGroup>
+              </MenuList>
+            </Menu>
+            <Menu>
+              <MenuButton
+                as={Button}
+                rightIcon={<ChevronDownIcon />}
+                backgroundColor="white"
+                color="black"
+                width="100%"
+                textAlign={"left"}
+                marginTop="15px"
+              >
+                Brand
+              </MenuButton>
+              <MenuList>
+                <CheckboxGroup
+                  value={filterValues}
+                  onChange={handleFilterChange}
+                >
+                  <MenuItem>
+                    <Checkbox value="5ive">5ive (5)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="arkk">Arkk Copenhagen (10)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="ball">BALL (3)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="bravesoul">Bravesoul (5)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="comatoes">Comatoes</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="essentials">
+                      Essentials by Coovs (10)
+                    </Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="garcon">Garcon (2)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="keen">KEEN (11)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="kangol">Kangol (20)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="koovs">Koovs (4)</Checkbox>
+                  </MenuItem>
+                </CheckboxGroup>
+              </MenuList>
+            </Menu>
+            <Menu>
+              <MenuButton
+                as={Button}
+                rightIcon={<ChevronDownIcon />}
+                backgroundColor="white"
+                color="black"
+                width="100%"
+                textAlign={"left"}
+                marginTop="15px"
+              >
+                Availability
+              </MenuButton>
+              <MenuList>
+                <CheckboxGroup
+                  value={filterValues}
+                  onChange={handleFilterChange}
+                >
+                  <MenuItem>
+                    <Checkbox value="instock">In stock (204)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="outofstock">Out of stock (297)</Checkbox>
+                  </MenuItem>
+                </CheckboxGroup>
               </MenuList>
             </Menu>
           </DrawerBody>
@@ -100,13 +287,13 @@ export default function MensProduct() {
         </MenuList>
       </Menu>
 
-      <div>
-        <Flex flexWrap={"wrap"} justifyContent="center">
-          {products.length > 0 &&
-            products.map((item) => (
-              <MenProductDetails key={item.id} {...item} />
+      <div style={{ width: "80%" }}>
+        <Grid margin="auto" templateColumns="repeat(4, 1fr)">
+          {menProducts?.length > 0 &&
+            menProducts?.map((item) => (
+              <MenProductCard key={item.id} {...item} />
             ))}
-        </Flex>
+        </Grid>
       </div>
     </>
   );
