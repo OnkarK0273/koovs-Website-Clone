@@ -8,21 +8,19 @@ import {
   MenuList,
   MenuItem,
   Stack,
-  Link, 
+  Link,
 } from "@chakra-ui/react";
-import {  BsInstagram } from "react-icons/bs";
-import {  BiChevronDown } from "react-icons/bi";
+import { BsInstagram } from "react-icons/bs";
+import { BiChevronDown } from "react-icons/bi";
 import { MdFacebook } from "react-icons/md";
-
-
 
 export default function Navbar() {
   return (
     <>
-      <Box px={20} >
-        <Flex  alignItems={"center"} justifyContent={"space-between"}>
+      <Box px={20}>
+        <Flex alignItems={"center"} justifyContent={"space-between"}>
           <Stack direction="row" spacing={-5}>
-            <Text  >
+            <Text>
               <Link href="https://www.facebook.com/koovs" isExternal>
                 {" "}
                 <Button
@@ -38,7 +36,7 @@ export default function Navbar() {
                 </Button>
               </Link>
             </Text>
-            <Text >
+            <Text>
               {" "}
               <Link
                 href="https://www.instagram.com/koovsfashion/"
@@ -46,29 +44,38 @@ export default function Navbar() {
                 color="black.300"
               >
                 {" "}
-                <Button leftIcon={<BsInstagram />} variant="ghost"  fontSize={14}
+                <Button
+                  leftIcon={<BsInstagram />}
+                  variant="ghost"
+                  fontSize={14}
                   color="black"
-                  fontWeight={400}>
+                  fontWeight={400}
+                >
                   682k Followers
                 </Button>
               </Link>
             </Text>
           </Stack>
-          <Text fontSize={14} marginLeft={-20}>Open doors to a world of fashion | Young and fresh</Text>
+          <Text fontSize={14} marginLeft={-20}>
+            Open doors to a world of fashion | Young and fresh
+          </Text>
           <Menu>
-            <MenuButton as={Button} rightIcon={<BiChevronDown/>} backgroundColor={'white'} fontSize={14}
-                  color="black"
-                  fontWeight={400}>
+            <MenuButton
+              as={Button}
+              rightIcon={<BiChevronDown />}
+              backgroundColor={"white"}
+              fontSize={14}
+              color="black"
+              fontWeight={400}
+            >
               English
             </MenuButton>
-            <MenuList >
+            <MenuList>
               <MenuItem>English</MenuItem>
             </MenuList>
           </Menu>
-
         </Flex>
       </Box>
-      
     </>
   );
 }

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Product } from "../../utils/types";
+import { AppDispatch } from "../store";
 import {
   CART_API_CALL_FAIL,
   CART_API_CALL_REQ,
@@ -47,7 +48,7 @@ export const getCartApi = async (dispatch: any) => {
 //   }
 // };
 
-export const delCartApi = async (id: number, dispatch: any) => {
+export const delCartApi = (id: number) => async (dispatch: AppDispatch) => {
   try {
     await axios.delete(
       `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/cart/${id}`

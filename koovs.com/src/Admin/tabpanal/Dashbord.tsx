@@ -1,16 +1,13 @@
-import { Box } from '@chakra-ui/react'
-import React,{useEffect} from 'react'
-import Piechart from '../Compo/Piechart'
+import { Box } from "@chakra-ui/react";
+import React, { useEffect } from "react";
+import Piechart from "../Compo/Piechart";
 
 export default function Dashbord() {
-  
-  
-
-
-  useEffect(()=>{},[])
+  useEffect(() => {}, []);
   return (
+
     <Box  pt={{ base: "80px", md: "20px" }} minH={"100vh"} >
         <Piechart/>
     </Box>
-  )
+  );
 }

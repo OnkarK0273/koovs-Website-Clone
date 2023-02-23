@@ -10,13 +10,11 @@ import {
 } from "@chakra-ui/react";
 import { RiMenu2Line } from "react-icons/ri";
 
-
-interface IadmindrowerPro{
-  prodRef:any;
-  orderRef:any;
-  dashboardRef:any;
-  customerRef:any;
-  
+interface IadmindrowerPro {
+  prodRef: any;
+  orderRef: any;
+  dashboardRef: any;
+  customerRef: any;
 }
 
 const AdminDrawer = ({
@@ -24,10 +22,9 @@ const AdminDrawer = ({
   orderRef,
   dashboardRef,
   customerRef,
-
-}:IadmindrowerPro) => {
+}: IadmindrowerPro) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef:any = React.useRef();
+  const btnRef: any = React.useRef();
   return (
     <>
       <Box ref={btnRef} onClick={onOpen}>
@@ -48,7 +45,7 @@ const AdminDrawer = ({
           textAlign={"center"}
         >
           <DrawerCloseButton fontSize={"xl"} />
-          <DrawerBody fontSize={"2xl"} >
+          <DrawerBody fontSize={"2xl"}>
             <Box
               mt={"160px"}
               p={"10px"}
