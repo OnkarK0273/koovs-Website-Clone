@@ -2,6 +2,7 @@ import { Box, Divider } from "@chakra-ui/react";
 import MainRoute from "./Pages/MainRoutes";
 import Navbar from "./HomeComponent/Navbar";
 import Navbar1 from "./HomeComponent/Navbar1";
+import Footer from "./HomeComponent/Footer";
 import { useLocation } from "react-router-dom";
 
 import "./App.css";
@@ -18,10 +19,12 @@ function App() {
           <Navbar />
           <Divider />
           <Navbar1 />
+          
         </Box>
       )}
 
       <MainRoute />
+      <Footer/>
     </div>
   );
 }
