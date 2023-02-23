@@ -1,6 +1,6 @@
 
 import { Box } from '@chakra-ui/react'
-import React,{useState,useEffect} from 'react'
+import React,{useEffect} from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
 import { getAdminMen, getAdminWomen } from '../../Redux/admin/admin.action'
 import { useAppDispatch, useAppSelector } from '../../Redux/store'
@@ -61,5 +61,7 @@ export default function Listing() {
        
     </Box>
   )
+
+  }
 
 
