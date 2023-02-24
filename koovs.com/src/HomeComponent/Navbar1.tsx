@@ -24,7 +24,9 @@ export default function Navbar1() {
             </Link>
           </Stack>
           <Tooltip label="Kools" placement="bottom-end" bg="white" color="gray">
-            <Heading size="2xl">kools</Heading>
+            <Heading as={Link} to={"/"} size="2xl">
+              kools
+            </Heading>
           </Tooltip>
 
           <Flex alignItems={"center"}>
@@ -41,17 +43,14 @@ export default function Navbar1() {
               </Tooltip>
 
               <Tooltip hasArrow label="Wishlist " bg="black" color="white">
-                <Button backgroundColor={"white"}>
+                <Button as={Link} to={"/wishlist"} backgroundColor={"white"}>
                   <AiOutlineStar size={"20px"} />
                 </Button>
               </Tooltip>
               <Tooltip hasArrow label="Cart " bg="black" color="white">
-                <Link to="/cart">
-                  {" "}
-                  <Button backgroundColor={"white"}>
-                    <BiShoppingBag size={"20px"} />
-                  </Button>
-                </Link>
+                <Button as={Link} to={"/cart"} backgroundColor={"white"}>
+                  <BiShoppingBag size={"20px"} />
+                </Button>
               </Tooltip>
             </Stack>
           </Flex>

@@ -1,5 +1,4 @@
 import { Heading, Image, SimpleGrid, Box, Text } from "@chakra-ui/react";
-import Footer from "../HomeComponent/Footer";
 
 export default function Home() {
   return (
@@ -7,7 +6,7 @@ export default function Home() {
       <Heading as="h3" size="lg" textAlign={"center"} mt={"20px"} mb={"30px"}>
         Featured Brands
       </Heading>
-      <SimpleGrid columns={[1,1,2]} spacing={"20px"} px={"20px"}>
+      <SimpleGrid columns={[1, 1, 2]} spacing={"20px"} px={"20px"}>
         <Box>
           <Image
             src="https://cdn.shopify.com/s/files/1/0677/1464/6315/files/KOOVS_20OCT22-1007.jpg?v=1667990812&width=720"
@@ -23,7 +22,6 @@ export default function Home() {
           <Text> Koovs</Text>
         </Box>
       </SimpleGrid>
-      <Footer/>
     </>
   );
 }
