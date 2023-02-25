@@ -11,6 +11,7 @@ export const getProductsAPI = async () => {
     console.log("getProductsAPI error", error);
   }
 };
+
 export const getWomenProductsAPI = async () => {
   try {
     let res: AxiosResponse<Product[]> = await axios.get(

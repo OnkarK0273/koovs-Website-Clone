@@ -90,7 +90,7 @@ function MenProductCard({
             bg="red.200"
           />
         )}
-        <Link to={`/men/:${id}`}>
+        <Link to={`/men/${id}`}>
           <Image src={img1} alt={`Picture of ${title}`} roundedTop="lg" />
         </Link>
 
