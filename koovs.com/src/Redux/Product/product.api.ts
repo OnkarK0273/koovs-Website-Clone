@@ -12,6 +12,18 @@ export const getProductsAPI = async () => {
   }
 };
 
+
+// export const getSingleProductAPI = async ({ id: string }) => {
+//   try {
+//     let res: AxiosResponse<Product[]> = await axios.get(
+//       `http://localhost:8080/mens/${id}`
+//     );
+//     return res.data;
+//   } catch (error) {
+//     console.log("getSingleProductAPI error", error);
+//   }
+// };
+
 export const getWomenProductsAPI = async () => {
   try {
     let res: AxiosResponse<Product[]> = await axios.get(
