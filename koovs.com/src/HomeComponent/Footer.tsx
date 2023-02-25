@@ -103,37 +103,6 @@ export default function Footer() {
                   />
                 </InputGroup>
               </Stack>
-
-            </Flex>
-          </SimpleGrid>
-          <Divider sx={{ borderColor: "gray.300", height: "0px" }} />
-        </Container>
-        <Container
-          as={Stack}
-          maxW={'100%'}
-          py={4}
-          direction={{ base: 'column', md: 'row' }}
-          spacing={4}
-          justify={{ base: 'center', md: 'space-between' }} 
-          align={{ base: 'center', md: 'center' }}>
-            <Stack direction={'row'} spacing={1}>
-            <Button>
-              <FaFacebook /> 
-            </Button>
-            
-            <Button>
-              <FaInstagram />
-            </Button>
-          </Stack>
-          <Text>© NEWBRAVE VENTURE PRIVATE _limitED</Text>
-          <Text>jhgidfgfiudg</Text>
-          
-        </Container>
-        
-      </Box>
-    );
-  }
-
             </Stack>
           </Flex>
         </SimpleGrid>
@@ -167,4 +136,3 @@ export default function Footer() {
     </Box>
   );
 }
-

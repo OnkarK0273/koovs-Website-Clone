@@ -1,10 +1,10 @@
 import { Button } from "@chakra-ui/button";
 import { Image } from "@chakra-ui/image";
 import { Input } from "@chakra-ui/input";
-import { Box, Divider, Flex, Heading, Link, Text, VStack } from "@chakra-ui/layout";
+import { Flex, Heading, Text, VStack } from "@chakra-ui/layout";
 import React from "react";
-import fb from "../Utils/Images/fbIcon.png";
-import google from "../Utils/Images/googleIcon.png";
+import fb from "../utils/Images/fbicon.png";
+import google from "../utils/Images/googleIcon.png";
 import { LoginDetail } from "../utils/types";
 
 

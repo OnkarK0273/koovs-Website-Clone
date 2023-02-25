@@ -3,8 +3,8 @@ import { Image } from "@chakra-ui/image";
 import { Input } from "@chakra-ui/input";
 import { Box, Divider, Flex, Heading, Link, Text, VStack } from "@chakra-ui/layout";
 import React from "react";
-import fb from "../Utils/fbIcon.png";
-import google from "../Utils/googleIcon.png";
+import fb from "../utils/Images/fbicon.png";
+import google from "../utils/Images/googleIcon.png";
 import {SignupDetail} from "../utils/types"
 import { useDispatch } from "react-redux";
 
