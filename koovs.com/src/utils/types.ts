@@ -12,6 +12,7 @@ export interface Product {
   Order_status: string;
   isOrdered: boolean;
   size?: string;
+  quantity: number;
 }
 
 export type CartItemType = {
