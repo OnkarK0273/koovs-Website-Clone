@@ -1,7 +1,9 @@
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
 import { Product } from "../utils/types";
+
 import {Link} from "react-router-dom"
+
 
 const MensCard = ({ img1, img2,title, price }: Product) => {
   return (
