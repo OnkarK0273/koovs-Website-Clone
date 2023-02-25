@@ -16,6 +16,7 @@ const mens: Product[] = [
     is_best_seller: false,
     Order_status: "Pending",
     isOrdered: false,
+    quantity: 1,
   },
   {
     id: 2,
@@ -31,6 +32,7 @@ const mens: Product[] = [
     is_best_seller: false,
     Order_status: "Pending",
     isOrdered: false,
+    quantity: 1,
   },
   {
     id: 3,
@@ -46,6 +48,7 @@ const mens: Product[] = [
     is_best_seller: false,
     Order_status: "Pending",
     isOrdered: false,
+    quantity: 1,
   },
   {
     id: 4,
@@ -61,6 +64,7 @@ const mens: Product[] = [
     is_best_seller: false,
     Order_status: "Pending",
     isOrdered: false,
+    quantity: 1,
   },
 ];
 

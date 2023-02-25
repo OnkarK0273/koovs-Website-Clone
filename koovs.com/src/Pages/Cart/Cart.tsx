@@ -28,6 +28,7 @@ import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import { CartItemType } from "../../utils/types";
 import { AddDiscountCode, EstShippingRates, NoteforSeller } from "./Proceed";
 import image from "./1.png";
+import axios from "axios";
 
 const Cart: React.FC = () => {
   const { cart } = useAppSelector((store) => {
@@ -40,7 +41,7 @@ const Cart: React.FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getCartApi);
+    dispatch(getCartApi());
   }, [dispatch]);
 
   const [quantities, setQuantities] = useState<number[]>([]);
@@ -196,7 +197,7 @@ const Cart: React.FC = () => {
 
             <Button
               as={Link}
-              to="/payments"
+              to="/paymentpage"
               mt={4}
               colorScheme={"none"}
               bg={"black"}
@@ -224,7 +225,91 @@ export const getTotal = (cart: any[], quantities: number[]) => {
   for (let i = 0; i < cart.length; i++) {
     total += cartItems[i].price * (quantities[i] || 1);
   }
+  axios.post(`http://localhost:8080/total`, {
+    total,
+  });
   return total;
 };
 
 export default Cart;
+
+// {
+//   "id": 1,
+//   "active": true,
+//   "img1": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/1_49623089-e9ae-432e-9755-f01c34f533a7.jpg?v=1674226966&width=360",
+//   "img2": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/3_eb21d00b-3e35-4628-b077-b3972839be24.jpg?v=1674226968&width=360",
+//   "brand": "Bravesoul",
+//   "title": "WHITE CROSSOVER STRAP SANDALS",
+//   "price": 1299,
+//   "description": "MEN'S SANDALS BY BRAVE SOUL LEATHER�LOOK STRAPS CROSS OVER DETAIL MOULDED FOOT BED TEXTURED GRIP...",
+//   "category": "shoes",
+//   "is_best_seller": false,
+//   "Order_status": "Pending",
+//   "isOrdered": false,
+//   "size": "M",
+//   "color": "Red"
+// },
+// {
+//   "id": 4,
+//   "active": true,
+//   "img1": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/1_dc794d07-7659-4778-ae75-682ff791d2aa.jpg?v=1674226967&width=360",
+//   "img2": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/3_0a48068d-fe29-4a19-bc26-1c5b25a98eb1.jpg?v=1674226967&width=360",
+//   "brand": "Bravesoul",
+//   "title": "BLACK BUCKLE DETAIL DOUBLE STRAP SLIP ON SANDALS",
+//   "price": 999,
+//   "description": "BRAVE SOUL MEN'S FOOTWEAR SLIDER�STYLE DOUBLE STRAP DESIGN BUCKLE DETAIL MOULDED FOOT BED TEXTURED GRIP...",
+//   "category": "shoes",
+//   "is_best_seller": false,
+//   "Order_status": "Pending",
+//   "isOrdered": false,
+//   "size": "S",
+//   "color": "Green"
+// },
+// {
+//   "id": 5,
+//   "active": true,
+//   "img1": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/1_a6336243-74ba-4c77-91c4-fd30c4e1fded.jpg?v=1674226968&width=360",
+//   "img2": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/3_0c0b50a5-a047-4f2c-94ba-3557a1aed0af.jpg?v=1674226965&width=360",
+//   "brand": "Bravesoul",
+//   "title": "STONE BUCKLE STRAP DETAIL FAUX LEATHER CORK SANDALS",
+//   "price": 1299,
+//   "description": "BRAVE SOUL MEN'S FOOTWEAR SLIDERSTYLE LEATHER LOOK CORK BASE DOUBLE BUCKLE STRAPS MOULDED FOOT BED...",
+//   "category": "shoes",
+//   "is_best_seller": false,
+//   "Order_status": "Pending",
+//   "isOrdered": false,
+//   "size": "XL",
+//   "color": "Blue"
+// },
+// {
+//   "id": 6,
+//   "active": true,
+//   "img1": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/1002034_p_pdp.jpg?v=1668141737&width=360",
+//   "img2": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/1002034_pld_pdp.jpg?v=1668141737&width=360",
+//   "brand": "KEEN",
+//   "title": "YOGUI ARTS CLOG",
+//   "price": 5990,
+//   "description": "Get a seamless experience with koovs.",
+//   "category": "shoes",
+//   "is_best_seller": false,
+//   "Order_status": "Pending",
+//   "isOrdered": false,
+//   "size": "L",
+//   "color": "White"
+// },
+// {
+//   "id": 8,
+//   "active": true,
+//   "img1": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/1001966_p_pdp.jpg?v=1668141731&width=360",
+//   "img2": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/1001966_pld_pdp.jpg?v=1668141731&width=360",
+//   "brand": "KEEN",
+//   "title": "YOGUI ARTS CLOG",
+//   "price": 5990,
+//   "description": "Get a seamless experience with koovs.",
+//   "category": "shoes",
+//   "is_best_seller": false,
+//   "Order_status": "Pending",
+//   "isOrdered": false,
+//   "size": "M",
+//   "color": "Red"
+// }

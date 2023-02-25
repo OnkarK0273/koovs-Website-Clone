@@ -1,5 +1,5 @@
 import { Box, Divider } from "@chakra-ui/react";
-import MainRoute from "./Pages/MainRoutes";
+import MainRoute from "./AllRoutes/MainRoutes";
 import Navbar from "./HomeComponent/Navbar";
 import Navbar1 from "./HomeComponent/Navbar1";
 import Footer from "./HomeComponent/Footer";
