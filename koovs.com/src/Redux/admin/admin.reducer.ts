@@ -48,6 +48,30 @@ export const adminReducer = (
       return { ...state, loading: false, admin: payload };
     }
 
+    case types.TOGGLE_MEN:{
+      let arr = state.mens.map((el)=>{
+        if(el.id===payload){
+          el.active = !el.active
+        }
+        return el
+      })
+      return { ...state, loading: false, mens: arr };
+
+    }
+
+    case types.TOGGLE_WOMENMEN:{
+      let arr = state.womens.map((el)=>{
+        if(el.id===payload){
+          el.active = !el.active
+        }
+        return el
+      })
+      return { ...state, loading: false, womens: arr };
+
+    }
+
+
+
     default:
       return state;
   }
