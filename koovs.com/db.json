@@ -1,5 +1,5 @@
 {
-  "mens":[
+  "mens": [
     {
       "id": "M1HBC",
       "active": true,
@@ -2982,7 +2982,9 @@
       "category": "shoes",
       "is_best_seller": false,
       "Order_status": "Pending",
-      "isOrdered": false
+      "isOrdered": false,
+      "size": "M",
+      "color": "Red"
     },
     {
       "id": 4,
@@ -2996,7 +2998,9 @@
       "category": "shoes",
       "is_best_seller": false,
       "Order_status": "Pending",
-      "isOrdered": false
+      "isOrdered": false,
+      "size": "S",
+      "color": "Green"
     },
     {
       "id": 5,
@@ -3010,7 +3014,9 @@
       "category": "shoes",
       "is_best_seller": false,
       "Order_status": "Pending",
-      "isOrdered": false
+      "isOrdered": false,
+      "size": "XL",
+      "color": "Blue"
     },
     {
       "id": 6,
@@ -3024,7 +3030,9 @@
       "category": "shoes",
       "is_best_seller": false,
       "Order_status": "Pending",
-      "isOrdered": false
+      "isOrdered": false,
+      "size": "L",
+      "color": "White"
     },
     {
       "id": 8,
@@ -3038,7 +3046,12 @@
       "category": "shoes",
       "is_best_seller": false,
       "Order_status": "Pending",
-      "isOrdered": false
+      "isOrdered": false,
+      "size": "M",
+      "color": "Red"
     }
-  ]
+  ],
+  "total": {
+    "total": 21567
+  }
 }

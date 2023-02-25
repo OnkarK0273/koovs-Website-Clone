@@ -12,6 +12,7 @@ export const getProductsAPI = async () => {
   }
 };
 
+
 // export const getSingleProductAPI = async ({ id: string }) => {
 //   try {
 //     let res: AxiosResponse<Product[]> = await axios.get(
