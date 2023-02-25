@@ -1,13 +1,11 @@
 import React from "react";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, Flex } from "@chakra-ui/react";
 import { Product } from "../utils/types";
-
 import {Link} from "react-router-dom"
 
-
-const MensCard = ({ img1, img2,title, price }: Product) => {
+const TshirtCard = ({ img1, img2,title, price }: Product) => {
   return (
-    //For Artis Collaboraion
+    //For Varsiy Jackets Collaboration
 
     <Box as ={Link} to="/men">
       <Box
@@ -62,17 +60,23 @@ const MensCard = ({ img1, img2,title, price }: Product) => {
       </Box>
       <Box textAlign={"left"} pl="20px" py={5}>
         <Text color={"gray"} fontSize={12} fontWeight="bold">
-          KOOLZ
+        THE COUTURE CLUB
         </Text>
         <Text color={"black"} fontSize={14} fontWeight="bold">
           {title}
         </Text>
-        <Text fontWeight="normal" color={"gray"} fontSize={12}>
+        <Flex>
+        <Text fontWeight="normal" color={"gray"} fontSize={12} mr={5}>
           Rs. {price}
         </Text>
+        <Text  as="s" fontWeight="normal" color={"gray"} fontSize={12} >
+          Rs. 4,000
+        </Text>
+        </Flex>
+        
       </Box>
     </Box>
   );
 };
 
-export default MensCard;
+export default TshirtCard;
