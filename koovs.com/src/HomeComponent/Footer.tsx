@@ -125,7 +125,7 @@ import {
               <FaInstagram />
             </Button>
           </Stack>
-          <Text>© NEWBRAVE VENTURE PRIVATE LIMITED</Text>
+          <Text>© NEWBRAVE VENTURE PRIVATE _limitED</Text>
           <Text>jhgidfgfiudg</Text>
           
         </Container>
