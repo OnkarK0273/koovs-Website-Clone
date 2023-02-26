@@ -1,25 +1,30 @@
 import { Box, Center, Heading, HStack, useBreakpointValue, VStack } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import Chart from 'react-apexcharts'
-import { getAdminMen, getAdminWomen } from '../../Redux/admin/admin.action'
-import { useAppDispatch, useAppSelector } from '../../Redux/store'
+// import { getAdminMen, getAdminWomen } from '../../Redux/admin/admin.action'
+// import { useAppDispatch, useAppSelector } from '../../Redux/store'
 import { Product } from '../../utils/types'
 
-export default function Piechart() {
-    const mens = useAppSelector((store)=>store.adminReducer.mens)
-    const womens = useAppSelector((store)=>store.adminReducer.womens)
-    const dispatch = useAppDispatch()
+interface piechartProp{
+    mens:Product[]
+    womens:Product[]
+}
+
+export default function Piechart({mens,womens}:piechartProp) {
+    // const mens = useAppSelector((store)=>store.adminReducer.mens)
+    // const womens = useAppSelector((store)=>store.adminReducer.womens)
+    // const dispatch = useAppDispatch()
     const [toggle,setToggle] = useState(true)
     //mens
-    const [shoes,setShoes] = useState([])
-    const [pants,setPants] = useState([])
-    const [tshirt,setTshirt] = useState([])
-    const [hoodes,setHodees] = useState([])
+    const [shoes,setShoes] = useState<Product[]>([])
+    const [pants,setPants] = useState<Product[]>([])
+    const [tshirt,setTshirt] = useState<Product[]>([])
+    const [hoodes,setHodees] = useState<Product[]>([])
     const [mensarr,setArr] = useState<number[]>([])
     // womens
-    const [sneakers,setsneakers ] = useState([])
-    const[loungwear,setloungwear ] = useState([])
-    const [bodysuit,setbodysuit] = useState([])
+    const [sneakers,setsneakers ] = useState<Product[]>([])
+    const[loungwear,setloungwear ] = useState<Product[]>([])
+    const [bodysuit,setbodysuit] = useState<Product[]>([])
     const [womensarr,setwomensArr] = useState<number[]>([])
 
 
@@ -29,10 +34,10 @@ export default function Piechart() {
     
 
 
-    useEffect(()=>{
-        dispatch(getAdminMen())
-        dispatch(getAdminWomen())
-    },[])
+    // useEffect(()=>{
+    //     dispatch(getAdminMen())
+    //     dispatch(getAdminWomen())
+    // },[])
 
 
     useEffect(()=>{
@@ -57,7 +62,7 @@ export default function Piechart() {
         setwomensArr([sneakers.length,loungwear.length,bodysuit.length])
 
 
-    },[!toggle])
+    },[toggle])
     
     const variant = useBreakpointValue(
         {

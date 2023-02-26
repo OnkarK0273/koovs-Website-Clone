@@ -5,10 +5,11 @@ import { useAppSelector } from '../../Redux/store';
 interface ListingtableProp{
     data:Product,
     handleToggle:(id:string,val:boolean)=>void
+    handleOpenDetails:(id:string, image:string, price:number, title:string)=>void
    
    
 }
-export default function ListingTable({data,handleToggle}:ListingtableProp) {
+export default function ListingTable({data,handleToggle,handleOpenDetails}:ListingtableProp) {
     const loading = useAppSelector((store)=>store.adminReducer.loading)
     
     console.log('loading',loading)
@@ -44,9 +45,9 @@ export default function ListingTable({data,handleToggle}:ListingtableProp) {
                 </Box>
                 <Box
                 width={{ base: "5%", md: "13%", lg: "10%" }}
-                //   onClick={() => {
-                //     handleOpenDetails(id, product_photo, product_price, product_title);
-                //   }}
+                  onClick={() => {
+                    handleOpenDetails(data.id.toString(),data.img1,data.price,data.title);
+                  }}
                 >
                 <Image width={"80%"} src={data.img1 || data.img2 } alt={'category'}></Image>
                 </Box>
@@ -54,9 +55,9 @@ export default function ListingTable({data,handleToggle}:ListingtableProp) {
                 <Box
                     width={{ base: "10%", md: "27%", lg: "25%" }}
                     fontSize={{ base: "12px", md: "12px", lg: "md" }}
-                    //   onClick={() => {
-                    //     handleOpenDetails(id, product_photo, product_price, product_title);
-                    //   }}
+                    onClick={() => {
+                        handleOpenDetails(data.id.toString(),data.img1,data.price,data.title);
+                      }}
                     >
                     <Text>{data.title}</Text>
                 </Box>
@@ -65,9 +66,9 @@ export default function ListingTable({data,handleToggle}:ListingtableProp) {
                 <Box
                 width={{ base: "5%", md: "10%", lg: "8%" }}
                 fontSize={{ base: "12px", md: "12px", lg: "md" }}
-                //   onClick={() => {
-                //     handleOpenDetails(id, product_photo, product_price, product_title);
-                //   }}
+                onClick={() => {
+                    handleOpenDetails(data.id.toString(),data.img1,data.price,data.title);
+                  }}
                 >
                 <Text>₹ {data.price}</Text>
                 </Box>
@@ -99,9 +100,9 @@ export default function ListingTable({data,handleToggle}:ListingtableProp) {
                 {/* ````````````````````````````````````left Div ``````````````````````````````````*/}
                 <Box
                 width={{ base: "50%", sm: "40%" }}
-                //   onClick={() => {
-                //     handleOpenDetails(id, product_photo, product_price, product_title);
-                //   }}
+                onClick={() => {
+                    handleOpenDetails(data.id.toString(),data.img1,data.price,data.title);
+                  }}
                 >
                 <Box
                     h="25px"
@@ -154,9 +155,9 @@ export default function ListingTable({data,handleToggle}:ListingtableProp) {
 
                 <Button
                     mt={"10px"}
-                    // onClick={() => {
-                    //   handleToggleStatus(id, active);
-                    // }}
+                    onClick={() => {
+                        handleToggle(data.id.toString(), data.active);
+                      }}
                     size={"sm"}
                     colorScheme={data.active ? "green" : "red"}
                 >
