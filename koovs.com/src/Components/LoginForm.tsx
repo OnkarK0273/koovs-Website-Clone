@@ -30,17 +30,6 @@ import App from "../App";
 const LoginForm = () => {
   const toast = useToast();
   const dispatch = useAppDispatch();
-  const { isAuth } = useAppSelector((store) => store.loginReducer);
-  const [loginDetails, setLoginDetails] = React.useState<LoginDetail>({
-    email: "",
-    password: "",
-  });
-  const [allUsers, setAllUsers] = React.useState<SignupDetail[] | undefined>();
-
-
-const LoginForm = () => {
-  const toast = useToast();
-  const dispatch = useAppDispatch();
   const {isAuth} = useAppSelector((store)=> store.loginReducer);
   const [loginDetails, setLoginDetails] = React.useState<LoginDetail>({
     email:"",password:""
