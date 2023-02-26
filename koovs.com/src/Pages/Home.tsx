@@ -1,4 +1,5 @@
-import { Heading, Image, SimpleGrid, Box, Text } from "@chakra-ui/react";
+import { Heading, Image, SimpleGrid, Box, Text, Button, Center, } from "@chakra-ui/react";
+import {Link} from "react-router-dom"
 import banner from "../assets/bannerKoolz.jpeg"
 import Mens from "../HomeComponent/Mens";
 import Womens from "../HomeComponent/Womens";
@@ -7,6 +8,7 @@ import Shoes from "../HomeComponent/Shoes";
 import Tshirts from "../HomeComponent/Tshirts";
 import TopWomenCarousel from "../HomeComponent/TopWomenCarousel";
 import TopMenCarousel from "../HomeComponent/TopMenCarousel";
+import Shipping from "../HomeComponent/Shipping";
 
 export default function Home() {
   return (
@@ -14,20 +16,20 @@ export default function Home() {
     <Box>
       <Image src={banner} alt ="banner"/>
     </Box>
-     <Heading as="h3" size="lg" textAlign={"left"} mt={"20px"} mb={"30px"}>
+     <Heading as="h3" size="lg" textAlign={"left"} mt={"20px"} mb={"30px"} ml={"30px"}>
         Shop Women's
       </Heading>
       <TopWomenCarousel/>
 
-     <Heading as="h3" size="lg" textAlign={"left"} mt={"20px"} mb={"30px"}>
+     <Heading as="h3" size="lg" textAlign={"left"} mt={"20px"} mb={"30px"} ml={"30px"}>
        Shop Men's
       </Heading>
       <TopMenCarousel/>
 
       <Heading as="h3" size="lg" textAlign={"center"} mt={"20px"} mb={"30px"}>
-      Varsity Jackets
+      Varsity Shirts
       </Heading>
-      <Text textAlign={"center"} fontSize={14} mt={5} mb={5} textDecoration={"underline"}>The couture club</Text>
+      <Text textAlign={"center"} fontSize={15} mt={5} mb={5} textDecoration={"underline"}>The couture club</Text>
       <Tshirts/>
 
     
@@ -50,6 +52,12 @@ export default function Home() {
           <Text fontWeight={"bold"} mt={4}> KoolZ</Text>
         </Box>
       </SimpleGrid>
+      <Center>
+      
+        <Button as={Link} to={"/men"} transition="0.5s all ease-in-out"
+              _hover={{ transform: "scale(1.1)" }}>View all</Button>
+      
+    </Center>
       <Heading as="h3" size="lg" textAlign={"center"} mt={"20px"} mb={"30px"}>
         Mens
       </Heading>
@@ -68,6 +76,7 @@ export default function Home() {
      
      
       <Brands/>
+      <Shipping/>
     </>
   );
 }
