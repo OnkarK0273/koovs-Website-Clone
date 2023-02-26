@@ -53,10 +53,8 @@ export const delCartApi = (id: number) => async (dispatch: AppDispatch) => {
     await axios.delete(
       `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/cart/${id}`
     );
-    dispatch(getCartApi);
+    dispatch(getCartApi());
   } catch (error) {
     console.log(error);
   }
 };
-
-

@@ -11,7 +11,6 @@ import {
 } from "@chakra-ui/react";
 import { FiShoppingCart } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import Footer from "../HomeComponent/Footer";
 import { Product } from "../utils/types";
 
 const data = {

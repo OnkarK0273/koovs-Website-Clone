@@ -1,19 +1,7 @@
 import { Button } from "@chakra-ui/button";
 import { Image } from "@chakra-ui/image";
 import { Input } from "@chakra-ui/input";
-<<<<<<< HEAD
-import {
-  Box,
-  Divider,
-  Flex,
-  Heading,
-  Link,
-  Text,
-  VStack,
-} from "@chakra-ui/layout";
-=======
-import { Box, Divider, Flex, Heading, Link, Text, VStack } from "@chakra-ui/layout";
->>>>>>> a770d649361f078b9049fd7cb8d9a09281f9d9c9
+import { Flex, Heading, Text, VStack } from "@chakra-ui/layout";
 import React, { useEffect } from "react";
 import fb from "../utils/Images/fbIcon.png";
 import google from "../utils/Images/googleIcon.png";
@@ -21,50 +9,23 @@ import { LoginDetail, SignupDetail } from "../utils/types";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useAppDispatch, useAppSelector } from "../Redux/store";
-<<<<<<< HEAD
 import {
   loginError,
   loginRequest,
   loginSuccess,
 } from "../Redux/Auth/login.action";
-=======
-import { loginError, loginRequest, loginSuccess } from "../Redux/Auth/login.action";
->>>>>>> a770d649361f078b9049fd7cb8d9a09281f9d9c9
 import { Navigate } from "react-router-dom";
-import App from "../App";
 
 const LoginForm = () => {
   const toast = useToast();
   const dispatch = useAppDispatch();
   const { isAuth } = useAppSelector((store) => store.loginReducer);
 
-<<<<<<< HEAD
   const [loginDetails, setLoginDetails] = React.useState<LoginDetail>({
     email: "",
     password: "",
   });
   const [allUsers, setAllUsers] = React.useState<SignupDetail[] | undefined>();
-=======
-
-const LoginForm = () => {
-  const toast = useToast();
-  const dispatch = useAppDispatch();
-  const {isAuth} = useAppSelector((store)=> store.loginReducer);
-  
-
-  const [loginDetails, setLoginDetails] = React.useState<LoginDetail>({
-    email:"",password:""
-  });
-  const [allUsers, setAllUsers] = React.useState<SignupDetail[] | undefined>()
-  
-  useEffect(()=>{
-    axios.get(`http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/allUsers`)
-    .then((res)=> setAllUsers(res.data))
-    .catch((err)=>dispatch(loginError()))
-  },[])
-  
-  
->>>>>>> a770d649361f078b9049fd7cb8d9a09281f9d9c9
 
   useEffect(() => {
     axios
@@ -75,7 +36,6 @@ const LoginForm = () => {
       .catch((err) => dispatch(loginError()));
   }, []);
 
-<<<<<<< HEAD
   //  login functions
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -89,7 +49,7 @@ const LoginForm = () => {
 
   const handleFormSubmit = (): void => {
     dispatch(loginRequest());
-    if (loginDetails.email == "" || loginDetails.password == "") {
+    if (loginDetails.email === "" || loginDetails.password === "") {
       toast({
         title: "Warning! Form Incomplete",
         description: "Please fill all the details",
@@ -102,8 +62,8 @@ const LoginForm = () => {
     } else {
       allUsers?.forEach((el) => {
         if (
-          el.email == loginDetails.email &&
-          el.password == loginDetails.password
+          el.email === loginDetails.email &&
+          el.password === loginDetails.password
         ) {
           dispatch(loginSuccess(el));
         }
@@ -115,49 +75,6 @@ const LoginForm = () => {
     return <Navigate to={"/account"} replace={true} />;
   }
 
-=======
-
-  //  login functions
-
-  const handleChange = (e:React.ChangeEvent<HTMLInputElement>):void => {
-    const newDetails:LoginDetail = {...loginDetails,
-      [e.target.name]: e.target.value 
-    }
-    setLoginDetails(newDetails);
-
-  };
-  // console.log(loginDetails)
-
-   const handleFormSubmit = ():void => {
-    dispatch(loginRequest())
-     if (loginDetails.email == "" || loginDetails.password=="") {
-      toast({
-        title: 'Warning! Form Incomplete',
-        description: "Please fill all the details",
-        status: 'warning',
-        duration: 3000,
-        isClosable: true,
-        position:"top"
-      });
-       return;
-    }
-    else {
-      allUsers?.forEach((el)=>{
-        if(el.email == loginDetails.email && el.password == loginDetails.password ){
-          dispatch(loginSuccess(el))
-        }
-
-      }
-      )
-    }
-
-  }
-
-  if(isAuth){
-    return <Navigate to={"/account"} replace={true}/>
-  }
-  
->>>>>>> a770d649361f078b9049fd7cb8d9a09281f9d9c9
   return (
     <VStack
       mb={"80px"}
@@ -183,11 +100,7 @@ const LoginForm = () => {
         Forgot Your Password?
       </Text>
       <Button
-<<<<<<< HEAD
         onClick={handleFormSubmit}
-=======
-       onClick={handleFormSubmit}
->>>>>>> a770d649361f078b9049fd7cb8d9a09281f9d9c9
         variant={"solid"}
         bgColor={"black"}
         color={"white"}
