@@ -11,6 +11,7 @@ import WomensProduct from "../Pages/WomensProduct";
 import Admin from "../Pages/Admin";
 import PaymentPage from "../Pages/Payments/PaymentPage";
 import Wishlist from "../Pages/wishlist/Wishlist";
+import Account from "../Pages/Account";
 
 export default function MainRoute() {
   return (
@@ -19,6 +20,7 @@ export default function MainRoute() {
         <Route path={"/"} element={<Home />} />
         <Route path={"/login"} element={<Login />} />
         <Route path={"/signup"} element={<Signup />} />
+        <Route path={"/account"} element={<Account />} />
         <Route path={"/men"} element={<MensProduct />} />
         <Route path={"/women"} element={<WomensProduct />} />
         <Route path={"/men/:id"} element={<MenProductDetails />} />

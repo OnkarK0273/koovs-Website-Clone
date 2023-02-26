@@ -51,13 +51,31 @@ export interface Admin {
 // SIGNUP & LOGIN
 
 export interface SignupDetail {
-  fName: string,
-  lName: string,
-  email: string,
-  password: string
+  fName: string;
+  lName: string;
+  email: string;
+  password: string;
+  phone?: string;
+  address?: string;
+  image?: string;
 }
 
 export interface LoginDetail {
-  email: string,
-  password: string
+  email: string;
+  password: string;
+  fName?: string;
+  lName?: string;
+  phone?: string;
+  address?: string;
+  image?: string;
+
 }
+
+export interface LoginState {
+  isLoading: boolean;
+  isError: boolean;
+  isAuth: boolean;
+  details: LoginDetail;
+}
+
+

@@ -6,8 +6,10 @@ import { SlMagnifier } from "react-icons/sl";
 import { BsPerson } from "react-icons/bs";
 import { BiShoppingBag } from "react-icons/bi";
 import { AiOutlineStar } from "react-icons/ai";
+import { useAppSelector } from "../Redux/store";
 
 export default function Navbar1() {
+  const {isAuth} = useAppSelector((store)=> store.loginReducer);
   return (
     <>
       <Box px={20}>
@@ -37,7 +39,7 @@ export default function Navbar1() {
                 </Button>
               </Tooltip>
               <Tooltip hasArrow label="Account " bg="black" color="white">
-                <Button backgroundColor={"white"}>
+                <Button as={Link} to={isAuth? "/account" : "/login"} backgroundColor={"white"}>
                   <BsPerson size={"20px"} />
                 </Button>
               </Tooltip>
