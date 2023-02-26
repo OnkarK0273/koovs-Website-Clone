@@ -26,7 +26,15 @@ function App() {
       )}
 
       <MainRoute />
-      <Footer/>
+      
+      {location.pathname === "/admin" ? (
+        false
+      ) : (
+        <Box>
+          <Footer/>
+        </Box>
+      )}
+      
     </div>
   );
 }

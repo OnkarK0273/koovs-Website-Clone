@@ -6,8 +6,8 @@
       "img1": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/komatoes-tokeyos-green-camos-resized-04.jpg?v=1668080478&width=360",
       "img2": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/komatoes-tokeyos-green-camos-resized-03.jpg?v=1668084853&width=360",
       "brand": "Comatoes",
-      "title": "MEN'S TOKYOES IN GREEN CAMO",
-      "price": 1990,
+      "title": "MEN'S TOKYOES ",
+      "price": 1999,
       "description": "Get a seamless experience with koovs.",
       "category": "shoes",
       "is_best_seller": false,
@@ -371,7 +371,7 @@
       "img2": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/mlwb-149kaidenst_c1_back.jpg?v=1670234543&width=360",
       "brand": "Bravesoul",
       "title": "STONE 'WEEKEND MODE' SLOGAN JERSEY LOUNGE PANTS",
-      "price": 799,
+      "price": 790,
       "description": "BRAVE SOUL MENS LOUNGEWEAR FULL LENGTH TROUSERS STRAIGHT LEG COMFY FIT ELASTIC WAIST SLOGAN AROUND...",
       "category": "pants",
       "is_best_seller": false,
@@ -2884,15 +2884,48 @@
   ],
   "UserDetails": [
     {
-      "id": 1674393675928,
-      "Name": "test",
-      "Phone": "32222229",
-      "Email": "test@email.com",
-      "Image": "",
-      "Password": "13121111",
+      "id": 1674393678928,
+      "Name": "Arun",
+      "Phone": "8888888888",
+      "Email": "arun@email.com",
+      "Image": "https://arun24hrs.github.io/static/media/dp.81f2585b17e8c18f6269.jpg",
+      "Password": "12345",
       "IsPrime": false,
       "IsAuth": false,
-      "Address": ""
+      "Address": "Delhi"
+    },
+    {
+      "id": 1674393675928,
+      "Name": "Suman",
+      "Phone": "7777777777",
+      "Email": "suman@email.com",
+      "Image": "",
+      "Password": "12345",
+      "IsPrime": false,
+      "IsAuth": false,
+      "Address": "Bangol"
+    },
+    {
+      "id": 1674393675929,
+      "Name": "Noor",
+      "Phone": "6666666666",
+      "Email": "noor@email.com",
+      "Image": "https://avatars.githubusercontent.com/u/105936083?v=4",
+      "Password": "13121",
+      "IsPrime": false,
+      "IsAuth": false,
+      "Address": "Andra Pradesh"
+    },
+    {
+      "id": 1674393675938,
+      "Name": "Deepak",
+      "Phone": "5555555555",
+      "Email": "deepak@email.com",
+      "Image": "https://avatars.githubusercontent.com/u/103636083?v=4",
+      "Password": "123",
+      "IsPrime": false,
+      "IsAuth": false,
+      "Address": "Dhule"
     }
   ],
   "AdminDetails": {
@@ -2900,8 +2933,8 @@
     "Name": "Onkar.K",
     "EmailId": "onkar.k@koolz.com",
     "Image": "https://avatars.githubusercontent.com/u/110043714?v=4",
-    "Phone": "7066990272",
-    "Password": "abc@1235",
+    "Phone": "7066990275",
+    "Password": "abc@123",
     "isAuth": false
   },
   "WatchList": [
@@ -3005,7 +3038,9 @@
       "category": "shoes",
       "is_best_seller": false,
       "Order_status": "Pending",
-      "isOrdered": false
+      "isOrdered": false,
+      "size": "M",
+      "color": "Red"
     },
     {
       "id": 4,
@@ -3019,7 +3054,9 @@
       "category": "shoes",
       "is_best_seller": false,
       "Order_status": "Pending",
-      "isOrdered": false
+      "isOrdered": false,
+      "size": "S",
+      "color": "Green"
     },
     {
       "id": 5,
@@ -3033,7 +3070,9 @@
       "category": "shoes",
       "is_best_seller": false,
       "Order_status": "Pending",
-      "isOrdered": false
+      "isOrdered": false,
+      "size": "XL",
+      "color": "Blue"
     },
     {
       "id": 6,
@@ -3047,7 +3086,9 @@
       "category": "shoes",
       "is_best_seller": false,
       "Order_status": "Pending",
-      "isOrdered": false
+      "isOrdered": false,
+      "size": "L",
+      "color": "White"
     },
     {
       "id": 8,
@@ -3061,7 +3102,16 @@
       "category": "shoes",
       "is_best_seller": false,
       "Order_status": "Pending",
-      "isOrdered": false
+      "isOrdered": false,
+      "size": "M",
+      "color": "Red"
     }
-  ]
+
+  ],
+  "total": {
+    "total": 21567
+  }
+
+ ]
+
 }

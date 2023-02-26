@@ -12,6 +12,7 @@ export interface Product {
   Order_status: string;
   isOrdered: boolean;
   size?: string;
+  quantity: number;
 }
 
 export type CartItemType = {
@@ -27,11 +28,11 @@ export type CartItemType = {
 
 export interface Userdetails {
   id: number;
-  Name: number;
-  Phone: number;
+  Name: string;
+  Phone: string;
   Email: string;
   Image: string;
-  Password: String;
+  Password: string;
   IsPrime: boolean;
   IsAuth: boolean;
   Address: string;

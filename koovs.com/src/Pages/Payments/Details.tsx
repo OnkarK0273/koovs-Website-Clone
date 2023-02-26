@@ -124,10 +124,12 @@ const Details: React.FC = () => {
               shopping or go to home page?
             </AlertDialogBody>
             <AlertDialogFooter>
-              <Button ref={cancelRef} onClick={onClose}>
-                Continue Shopping
-              </Button>
-              <Link to="/">
+              <Link to={"/"}>
+                <Button ref={cancelRef} onClick={onClose}>
+                  Continue Shopping
+                </Button>
+              </Link>
+              <Link to={"/"}>
                 <Button colorScheme="blue" ml={3} onClick={handleHome}>
                   Home
                 </Button>
