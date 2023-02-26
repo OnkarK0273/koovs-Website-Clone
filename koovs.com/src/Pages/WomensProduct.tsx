@@ -22,6 +22,7 @@ import { getProducts } from "../Redux/Product/product.action";
 import WomenProductCard from "./WomenProductCard";
 import { Checkbox } from "@chakra-ui/react";
 import Footer from "../HomeComponent/Footer";
+import { Product } from "../utils/types";
 
 export default function WomensProduct() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -256,9 +257,9 @@ export default function WomensProduct() {
       <div style={{ width: "80%" }}>
         <Grid margin="auto" templateColumns="repeat(4, 1fr)">
           {womenProducts?.length > 0 &&
-            womenProducts?.map((item) => (
-              <WomenProductCard key={item.id} {...item} />
-            ))}
+            womenProducts?.map((item: Product) =>
+              item.active ? <WomenProductCard key={item.id} {...item} /> : false
+            )}
         </Grid>
       </div>
       <Footer />
