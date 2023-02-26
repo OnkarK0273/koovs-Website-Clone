@@ -6,7 +6,7 @@ import {
   singleProduct,
 } from "../Redux/Product/product.action";
 import { Link } from "react-router-dom";
-import { Button, Text } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 
 const MenProductDetails = () => {
   const myData = {
@@ -69,35 +69,127 @@ const MenProductDetails = () => {
           <h1 style={{ fontSize: "30px" }}>{data.title}</h1>
           <h3>Rs. {data.price}</h3>
           <p>Tax included</p>
-          <p>Quantity</p>
 
-          <Text onClick={handleSize}>S</Text>
-          <Text onClick={handleSize}>M</Text>
-          <Text onClick={handleSize}>L</Text>
+          <Flex justify={"space-evenly"} direction={"row"} mb={4}>
+            <Text
+              border={"1px solid black"}
+              borderRadius={"7px"}
+              onClick={handleSize}
+              height={"25px"}
+              width={"25px"}
+              padding={4}
+              textAlign={"center"}
+              display={"inline-flex"}
+              alignItems={"center"}
+              justifyContent={"center"}
+              cursor={"pointer"}
+              _hover={{ bg: "blue", color: "white", border: "none" }}
+              _active={{ bg: "red", color: "white", border: "none" }}
+              title={"Small"}
+            >
+              S
+            </Text>
+            <Text
+              border={"1px solid black"}
+              borderRadius={"7px"}
+              onClick={handleSize}
+              height={"25px"}
+              width={"25px"}
+              padding={4}
+              textAlign={"center"}
+              display={"inline-flex"}
+              alignItems={"center"}
+              justifyContent={"center"}
+              cursor={"pointer"}
+              _hover={{ bg: "green", color: "white", border: "none" }}
+              _active={{ bg: "blue", color: "white", border: "none" }}
+              title={"Medium"}
+            >
+              M
+            </Text>
+            <Text
+              border={"1px solid black"}
+              borderRadius={"7px"}
+              onClick={handleSize}
+              height={"25px"}
+              width={"25px"}
+              padding={4}
+              textAlign={"center"}
+              display={"inline-flex"}
+              alignItems={"center"}
+              justifyContent={"center"}
+              cursor={"pointer"}
+              _hover={{ bg: "red", color: "white", border: "none" }}
+              _active={{ bg: "blue", color: "white", border: "none" }}
+              title={"Large"}
+            >
+              L
+            </Text>
+          </Flex>
 
-          <Button
-            style={{
-              marginLeft: "50px",
-              border: "1px solid black",
-              padding: "5px",
-            }}
-          >
-            ADD TO CART
-          </Button>
-          {/* <Link to={`/cart`}> */}
-          <Button
-            as={Link}
-            to={`/cart`}
-            onClick={handleFetch}
-            style={{
-              border: "1px solid black",
-              marginLeft: "50px",
-              padding: "5px",
-            }}
-          >
-            BUY IT NOW
-          </Button>
-          {/* </Link> */}
+          <Flex justify={"space-evenly"} direction={"row"} mb={4}>
+            <Text
+              border={"none"}
+              borderRadius={"full"}
+              onClick={handleSize}
+              height={"25px"}
+              width={"25px"}
+              padding={4}
+              textAlign={"center"}
+              display={"inline-flex"}
+              alignItems={"center"}
+              justifyContent={"center"}
+              cursor={"pointer"}
+              bg={"blue"}
+              title={"Blue"}
+            ></Text>
+            <Text
+              border={"none"}
+              borderRadius={"full"}
+              onClick={handleSize}
+              height={"25px"}
+              width={"25px"}
+              padding={4}
+              textAlign={"center"}
+              display={"inline-flex"}
+              alignItems={"center"}
+              justifyContent={"center"}
+              cursor={"pointer"}
+              bg={"green"}
+              title={"Green"}
+            ></Text>
+            <Text
+              border={"none"}
+              borderRadius={"full"}
+              onClick={handleSize}
+              height={"25px"}
+              width={"25px"}
+              padding={4}
+              textAlign={"center"}
+              display={"inline-flex"}
+              alignItems={"center"}
+              justifyContent={"center"}
+              cursor={"pointer"}
+              bg={"red"}
+              title={"Red"}
+            ></Text>
+          </Flex>
+
+          <Flex gap={4}>
+            <Button colorScheme={"blue"} border={"none"}>
+              ADD TO CART
+            </Button>
+
+            <Button
+              as={Link}
+              to={`/cart`}
+              onClick={handleFetch}
+              colorScheme={"blue"}
+              border={"none"}
+            >
+              BUY IT NOW
+            </Button>
+          </Flex>
         </div>
       </div>
     </div>

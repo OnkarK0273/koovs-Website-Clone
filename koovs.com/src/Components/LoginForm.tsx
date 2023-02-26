@@ -1,31 +1,36 @@
 // import { Button } from "@chakra-ui/button";
 // import { Image } from "@chakra-ui/image";
 // import { Input } from "@chakra-ui/input";
-// import { Box, Divider, Flex, Heading, Link, Text, VStack } from "@chakra-ui/layout";
+// import {
+//   Box,
+//   Divider,
+//   Flex,
+//   Heading,
+//   Link,
+//   Text,
+//   VStack,
+// } from "@chakra-ui/layout";
 // import React from "react";
 // import fb from "../Utils/Images/fbIcon.png";
 // import google from "../Utils/Images/googleIcon.png";
 // import { LoginDetail } from "../utils/types";
 
-
-// interface StoreLoginDetail  {
+// interface StoreLoginDetail {
 //   login: false;
-//   details: LoginDetail
+//   details: LoginDetail;
 // }
 
 // const LoginForm = (): JSX.Element => {
-
 //   const [loginDetails, setLoginDetails] = React.useState<StoreLoginDetail>({
 //     login: false,
-//     details: {email:"",password:""}
+//     details: { email: "", password: "" },
 //   });
 //   const [passIsEmpty, setPassIsEmpty] = React.useState<boolean>(false);
 //   const [emailIsEmpty, setEmailIsEmpty] = React.useState<boolean>(false);
 
-
 //   // login functions
 
-//   const handleChange = (e:React.ChangeEvent<HTMLInputElement>):void => {
+//   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
 //     const newDetails = {
 //       ...loginDetails,
 //       details: { ...loginDetails.details, [e.target.name]: e.target.value },
@@ -77,18 +82,29 @@
 //   };
 //   return (
 //     <VStack
-    
 //       gap={3}
 //       width={{ base: "90%", md: "30%" }}
 //       alignItems={"left"}
 //       padding={"10px"}
 //     >
-//         <Heading size={"md"}>Log In</Heading>
-//       <Input type="email" placeholder="Email" name="email" onChange={(e)=>handleChange(e)}/>
-//       <Input type="password" placeholder="Password" name="password" onChange={(e)=>handleChange(e)}/>
-//       <Text pt={"15px"} textDecoration={"underline"}>Forgot Your Password?</Text>
+//       <Heading size={"md"}>Log In</Heading>
+//       <Input
+//         type="email"
+//         placeholder="Email"
+//         name="email"
+//         onChange={(e) => handleChange(e)}
+//       />
+//       <Input
+//         type="password"
+//         placeholder="Password"
+//         name="password"
+//         onChange={(e) => handleChange(e)}
+//       />
+//       <Text pt={"15px"} textDecoration={"underline"}>
+//         Forgot Your Password?
+//       </Text>
 //       <Button
-//       onClick={handleFormSubmit}
+//         onClick={handleFormSubmit}
 //         variant={"solid"}
 //         bgColor={"black"}
 //         color={"white"}
@@ -111,7 +127,7 @@
 //         color={"#fff"}
 //         fontWeight={"semibold"}
 //         justifyContent={"space-between"}
-//         _hover={{opacity:"85%"}}
+//         _hover={{ opacity: "85%" }}
 //       >
 //         Sign in with Facebook
 //         <Image src={fb} maxH={"40px"} p="0px" />
@@ -125,7 +141,7 @@
 //         color={"#fff"}
 //         fontWeight={"semibold"}
 //         justifyContent={"space-between"}
-//         _hover={{opacity:"85%"}}
+//         _hover={{ opacity: "85%" }}
 //       >
 //         Sign in with Google
 //         <Image src={google} maxH={"34px"} p="0px" bgColor="red.400" />
@@ -135,12 +151,11 @@
 // };
 
 // export default LoginForm;
-import React from 'react'
+
+import React from "react";
 
 const LoginForm = () => {
-  return (
-    <div>LoginForm</div>
-  )
-}
+  return <div>LoginForm</div>;
+};
 
-export default LoginForm
+export default LoginForm;

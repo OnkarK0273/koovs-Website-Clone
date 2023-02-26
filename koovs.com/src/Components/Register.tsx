@@ -7,14 +7,14 @@
 // const Register = () => {
 //   return (
 //     <VStack
-    
+
 //       gap={3}
 //       width={{ base: "90%", md: "35%" }}
 //       alignItems={"left"}
 //       padding={"10px"}
 //     >
 //         <Heading size={"md"}>New Customer</Heading>
-      
+
 //       <Text pt={"5px"} fontSize={"15px"}>Sign up for early Sale access plus tailored new arrivals, trends and promotions. To opt out, click unsubscribe in our emails.</Text>
 //       <Button
 //         variant={"solid"}
@@ -38,12 +38,10 @@
 
 // export default Register
 
-import React from 'react'
+import React from "react";
 
 const Register = () => {
-  return (
-    <div>Register</div>
-  )
-}
+  return <div>Register</div>;
+};
 
-export default Register
+export default Register;
