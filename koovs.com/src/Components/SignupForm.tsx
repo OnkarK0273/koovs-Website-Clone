@@ -1,7 +1,6 @@
 import { Button } from "@chakra-ui/button";
 import { Image } from "@chakra-ui/image";
 import { Input } from "@chakra-ui/input";
-
 import {Link} from "react-router-dom"
 
 import {
@@ -9,9 +8,7 @@ import {
   Divider,
   Flex,
   Heading,
-
   Link,
-
   Text,
   VStack,
 } from "@chakra-ui/layout";

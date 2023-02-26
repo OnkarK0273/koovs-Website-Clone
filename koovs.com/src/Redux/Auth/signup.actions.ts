@@ -15,7 +15,7 @@ export const signupError = () => {
 }
 
 export const signupUserApi = (payload:SignupDetail) => async(dispatch: AppDispatch) => {
-    console.log("asdg")
+
     try {
         const response = await axios.post(
             `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/allUsers`, payload

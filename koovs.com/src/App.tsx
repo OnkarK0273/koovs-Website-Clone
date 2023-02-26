@@ -6,6 +6,7 @@ import Footer from "./HomeComponent/Footer";
 import { useLocation } from "react-router-dom";
 
 import "./App.css";
+import BackToTop from "./HomeComponent/BackToTop";
 
 function App() {
   const location = useLocation();
@@ -16,6 +17,7 @@ function App() {
         false
       ) : (
         <Box>
+          <BackToTop/>
           <Navbar />
           <Divider />
           <Navbar1 />
