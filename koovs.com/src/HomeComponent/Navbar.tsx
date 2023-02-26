@@ -9,15 +9,17 @@ import {
   MenuItem,
   Stack,
   Link,
+  useBreakpointValue
 } from "@chakra-ui/react";
 import { BsInstagram } from "react-icons/bs";
 import { BiChevronDown } from "react-icons/bi";
 import { MdFacebook } from "react-icons/md";
 
 export default function Navbar() {
+  const isSmallScreen = useBreakpointValue({ base: true, lg: false });
   return (
     <>
-      <Box px={20} id="home">
+      <Box px={20} display={isSmallScreen ? "none" : "auto"} bg='white' >
         <Flex alignItems={"center"} justifyContent={"space-between"}>
           <Stack direction="row" spacing={-5}>
             <Text>
