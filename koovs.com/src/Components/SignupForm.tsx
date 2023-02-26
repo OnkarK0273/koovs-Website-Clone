@@ -9,7 +9,6 @@ import {
   Divider,
   Flex,
   Heading,
-  Link,
   Text,
   VStack,
 } from "@chakra-ui/layout";
