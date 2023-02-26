@@ -43,7 +43,6 @@ const SignupForm = (): JSX.Element => {
   };
 
   console.log(state);
-  // console.log(signupDetails);
 
   const handleSignupFormSubmit = () => {
     
@@ -80,6 +79,7 @@ const SignupForm = (): JSX.Element => {
   };
 
   return (
+    <>
     <VStack
     mb={"80px"}
       width={{ base: "90%", md: "50%" }}
@@ -189,6 +189,7 @@ const SignupForm = (): JSX.Element => {
         <Image src={google} maxH={"34px"} p="0px" bgColor="red.400" />
       </Flex>
     </VStack>
+    </>
   );
 };
 
