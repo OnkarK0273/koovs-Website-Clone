@@ -1,6 +1,6 @@
 import { ArrowUpIcon } from '@chakra-ui/icons'
-import { Button,Box, Link } from '@chakra-ui/react'
-import React from 'react'
+import { Button, Link } from '@chakra-ui/react'
+
 
 const BackToTop = () => {
   return (
