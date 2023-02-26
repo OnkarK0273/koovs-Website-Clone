@@ -9,7 +9,7 @@ const Register = () => {
     <VStack
     
       gap={3}
-      width={{ base: "90%", md: "35%" }}
+      width={{ base: "100%", md: "35%" }}
       alignItems={"left"}
       padding={"10px"}
     >

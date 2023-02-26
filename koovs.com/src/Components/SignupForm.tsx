@@ -1,90 +1,129 @@
 import { Button } from "@chakra-ui/button";
 import { Image } from "@chakra-ui/image";
 import { Input } from "@chakra-ui/input";
-import { Box, Divider, Flex, Heading, Link, Text, VStack } from "@chakra-ui/layout";
+import {
+  Box,
+  Divider,
+  Flex,
+  Heading,
+  Link,
+  Text,
+  VStack,
+} from "@chakra-ui/layout";
 import React from "react";
-import fb from "../utils/Images/fbicon.png";
+import fb from "../utils/Images/fbIcon.png";
 import google from "../utils/Images/googleIcon.png";
-import {SignupDetail} from "../utils/types"
-import { useDispatch } from "react-redux";
-
+import { SignupDetail } from "../utils/types";
+import { useAppDispatch, useAppSelector } from "../Redux/store";
+import { signupSuccess, signupUserApi } from "../Redux/Auth/signup.actions";
+import { useToast } from "@chakra-ui/react";
 
 const SignupForm = (): JSX.Element => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [signupDetails, setSignupDetails] = React.useState<SignupDetail>({
-    fName:"",
-    lName:"",
-    email:"",
-    password:""
-  })
-  const [insecurePassword, setInsecurePassword] = React.useState<boolean>(false);
+    fName: "",
+    lName: "",
+    email: "",
+    password: "",
+  });
+  const [insecurePassword, setInsecurePassword] =
+  React.useState<boolean>(false);
   const [invalidEmail, setInvalidEmail] = React.useState<boolean>(false);
+  const state = useAppSelector((store) => store.signupReducer);
+  const toast = useToast()
 
-  const handleDetails = (e:React.ChangeEvent<HTMLInputElement>) => {
-    const newDetails:SignupDetail = {
+  const handleDetails = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newDetails: SignupDetail = {
       ...signupDetails,
       [e.target.name]: e.target.value,
     };
-
+    setInsecurePassword(false)
+    setInvalidEmail(false)
     setSignupDetails(newDetails);
-    setInvalidEmail(false);
-    setInsecurePassword(false);
-  }
+  };
+
+  console.log(state);
+  // console.log(signupDetails);
 
   const handleSignupFormSubmit = () => {
-    let isValid = true;
-    Object.keys(signupDetails).forEach((key:string) => {
-      const value:string = signupDetails[key];
-
-      if (!value) {
-        isValid = false;
-      }
-    });
-
-    if (!isValid) {
-      window.alert("Please fill the form!");
+    
+    if(signupDetails.email=="" || signupDetails.fName== "" || signupDetails.lName == "" || signupDetails.password === ""){
+      toast({
+        title: 'Warning! Form Incomplete',
+        description: "Please fill all the details",
+        status: 'warning',
+        duration: 3000,
+        isClosable: true,
+        position:"top"
+      })
       return;
-    } else if (
-      signupDetails.email == "" ||
-      (signupDetails.email &&
-        (!signupDetails.email.includes("@")))
-    ) {
+    }
+
+    if( !signupDetails.email.includes("@")){
       setInvalidEmail(true);
       return;
-    } else if (
-      signupDetails.password.length >= 8 &&
-      signupDetails.password.match(/[!\@\#\$\%\^\&\*\+\-]/)
-    ) {
-    } else if (
-      signupDetails.password.length < 8 &&
-      signupDetails.password.match(/[!\@\#\$\%\^\&\*\+\-]/)
-    ) {
-      setInsecurePassword(true);
-      return;
-    } else if (!signupDetails.password.match(/[!\@\#\$\%\^\&\*\+\-]/)) {
+    }
+    if( signupDetails.password.length < 8 && !signupDetails.password.match(/[!\@\#\$\%\^\&\*\+\-]/) ){
       setInsecurePassword(true);
       return;
     }
 
-    setInvalidEmail(false);
-    setInsecurePassword(false);
-    // dispatch(signupSuccess(signupDetails));
+    dispatch(signupUserApi(signupDetails));
+    toast({
+      status: "success",
+      title: "Congratulations!",
+      description: "Your account has been created successfully",
+      duration: 3000,
+      isClosable: true
+    })
+
   };
 
   return (
     <VStack
-    
-      gap={3}
+    mb={"80px"}
       width={{ base: "90%", md: "50%" }}
       alignItems={"left"}
       padding={"10px"}
     >
-      <Heading size={"md"} fontWeight={"semibold"} >Register</Heading>
-      <Input type="text" placeholder="First Name" name="fname" onChange={(e)=> handleDetails(e)}/>
-      <Input type="text" placeholder="Last Name" name="lname" onChange={(e)=> handleDetails(e)}/>
-      <Input type="email" placeholder="Email" name="email" onChange={(e)=> handleDetails(e)}/>
-      <Input type="password" placeholder="Password" name="password" onChange={(e)=> handleDetails(e)}/>
-      <Text pt={"15px"} fontWeight={"normal"}>Sign up for early Sale access plus tailored new arrivals, trends and promotions. To opt out, click unsubscribe in our emails.</Text>
+      <Heading size={"md"} 
+       fontWeight={"semibold"}>
+        Register
+      </Heading>
+      <Input
+        type="text"
+        placeholder="First Name"
+        name="fName"
+        onChange={(e) => handleDetails(e)}
+        
+      />
+      <Text fontSize={"xs"} color={"white"}>Email should be valid and must have '@' special characters</Text>
+
+      <Input
+        type="text"
+        placeholder="Last Name"
+        name="lName"
+        onChange={(e) => handleDetails(e)}
+      />
+      <Text fontSize={"xs"} color={"white"}>Email should be valid and must have '@' special characters</Text>
+      <Input
+        type="email"
+        placeholder="Email"
+        name="email"
+        onChange={(e) => handleDetails(e)}
+        />
+        <Text fontSize={"xs"} color={invalidEmail?"red.500":"white"}>Email should be valid and must have '@' special characters</Text>
+      <Input
+        type="password"
+        placeholder="Password"
+        name="password"
+        onChange={(e) => handleDetails(e)}
+        />
+        <Text fontSize={"xs"} color={insecurePassword?"red.500":"white"}>Password should be minimum 8 characters long and must have special characters like: !@#$%^</Text>
+      <Text pt={"15px"} fontWeight={"normal"}>
+        Sign up for early Sale access plus tailored new arrivals, trends and
+        promotions. To opt out, click unsubscribe in our emails.
+      </Text>
       <Button
         onClick={handleSignupFormSubmit}
         variant={"solid"}
@@ -107,9 +146,12 @@ const SignupForm = (): JSX.Element => {
         color={"black"}
         w={"100%"}
         border={"1px solid black"}
-        _hover={{  border: "1px solid black",
-        bgColor: "black",
-        color: "white", transform: "scale(1.03)" }}
+        _hover={{
+          border: "1px solid black",
+          bgColor: "black",
+          color: "white",
+          transform: "scale(1.03)",
+        }}
         _active={{
           border: "1px solid black",
           bgColor: "white",
@@ -127,7 +169,7 @@ const SignupForm = (): JSX.Element => {
         color={"#fff"}
         fontWeight={"semibold"}
         justifyContent={"space-between"}
-        _hover={{opacity:"85%"}}
+        _hover={{ opacity: "85%" }}
       >
         Sign in with Facebook
         <Image src={fb} maxH={"40px"} p="0px" />
@@ -141,7 +183,7 @@ const SignupForm = (): JSX.Element => {
         color={"#fff"}
         fontWeight={"semibold"}
         justifyContent={"space-between"}
-        _hover={{opacity:"85%"}}
+        _hover={{ opacity: "85%" }}
       >
         Sign in with Google
         <Image src={google} maxH={"34px"} p="0px" bgColor="red.400" />

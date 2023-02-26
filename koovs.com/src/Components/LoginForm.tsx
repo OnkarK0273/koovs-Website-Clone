@@ -1,85 +1,86 @@
 import { Button } from "@chakra-ui/button";
 import { Image } from "@chakra-ui/image";
 import { Input } from "@chakra-ui/input";
-import { Flex, Heading, Text, VStack } from "@chakra-ui/layout";
-import React from "react";
-import fb from "../utils/Images/fbicon.png";
+import { Box, Divider, Flex, Heading, Link, Text, VStack } from "@chakra-ui/layout";
+import React, { useEffect } from "react";
+import fb from "../utils/Images/fbIcon.png";
 import google from "../utils/Images/googleIcon.png";
-import { LoginDetail } from "../utils/types";
+import { LoginDetail, SignupDetail } from "../utils/types";
+import { useToast } from "@chakra-ui/react";
+import axios from "axios";
+import { useAppDispatch, useAppSelector } from "../Redux/store";
+import { loginError, loginRequest, loginSuccess } from "../Redux/Auth/login.action";
+import { Navigate } from "react-router-dom";
+import App from "../App";
 
 
-interface StoreLoginDetail  {
-  login: false;
-  details: LoginDetail
-}
 
-const LoginForm = (): JSX.Element => {
+const LoginForm = () => {
+  const toast = useToast();
+  const dispatch = useAppDispatch();
+  const {isAuth} = useAppSelector((store)=> store.loginReducer);
+  
 
-  const [loginDetails, setLoginDetails] = React.useState<StoreLoginDetail>({
-    login: false,
-    details: {email:"",password:""}
+  const [loginDetails, setLoginDetails] = React.useState<LoginDetail>({
+    email:"",password:""
   });
-  const [passIsEmpty, setPassIsEmpty] = React.useState<boolean>(false);
-  const [emailIsEmpty, setEmailIsEmpty] = React.useState<boolean>(false);
+  const [allUsers, setAllUsers] = React.useState<SignupDetail[] | undefined>()
+  
+  useEffect(()=>{
+    axios.get(`http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/allUsers`)
+    .then((res)=> setAllUsers(res.data))
+    .catch((err)=>dispatch(loginError()))
+  },[])
+  
+  
 
 
-  // login functions
+
+  //  login functions
 
   const handleChange = (e:React.ChangeEvent<HTMLInputElement>):void => {
-    const newDetails = {
-      ...loginDetails,
-      details: { ...loginDetails.details, [e.target.name]: e.target.value },
-    };
-    setLoginDetails(newDetails);
-    setPassIsEmpty(false);
-    setEmailIsEmpty(false);
-  };
-
-  const handleFormSubmit = () => {
-    if (loginDetails == null) {
-      window.alert("Please fill the form!");
-      return;
-    } else if (
-      loginDetails.details.email == undefined ||
-      loginDetails.details.email == ""
-    ) {
-      setEmailIsEmpty(true);
-      return;
-    } else if (
-      loginDetails.details.password == undefined ||
-      loginDetails.details.password == ""
-    ) {
-      setPassIsEmpty(true);
-      return;
+    const newDetails:LoginDetail = {...loginDetails,
+      [e.target.name]: e.target.value 
     }
-    setPassIsEmpty(false);
-    setEmailIsEmpty(false);
+    setLoginDetails(newDetails);
 
-    // signupStore.details.map((el:any) => {
-    //   if (
-    //     el.email == loginDetails.details.email ||
-    //     el.mobile == loginDetails.details.email
-    //   ) {
-    //     if (el.password == loginDetails.details.password) {
-    //       dispatch(loginSuccess(el));
-    //       onLoginClose();
-    //       toast({
-    //         title: "Login Successfull",
-    //         status: "success",
-    //         duration: 9000,
-    //         isClosable: true,
-    //       });
-    //       location.reload();
-    //       return;
-    //     }
-    //   }
-    // });
   };
+  // console.log(loginDetails)
+
+   const handleFormSubmit = ():void => {
+    dispatch(loginRequest())
+     if (loginDetails.email == "" || loginDetails.password=="") {
+      toast({
+        title: 'Warning! Form Incomplete',
+        description: "Please fill all the details",
+        status: 'warning',
+        duration: 3000,
+        isClosable: true,
+        position:"top"
+      });
+       return;
+    }
+    else {
+      allUsers?.forEach((el)=>{
+        if(el.email == loginDetails.email && el.password == loginDetails.password ){
+          dispatch(loginSuccess(el))
+        }
+
+      }
+      )
+    }
+
+  }
+
+  if(isAuth){
+    return <Navigate to={"/account"} replace={true}/>
+  }
+  
   return (
     <VStack
-    
+      mb={"80px"}
       gap={3}
-      width={{ base: "90%", md: "30%" }}
+      width={{ base: "100%", md: "30%" }}
       alignItems={"left"}
       padding={"10px"}
     >
@@ -88,7 +89,7 @@ const LoginForm = (): JSX.Element => {
       <Input type="password" placeholder="Password" name="password" onChange={(e)=>handleChange(e)}/>
       <Text pt={"15px"} textDecoration={"underline"}>Forgot Your Password?</Text>
       <Button
-      onClick={handleFormSubmit}
+       onClick={handleFormSubmit}
         variant={"solid"}
         bgColor={"black"}
         color={"white"}

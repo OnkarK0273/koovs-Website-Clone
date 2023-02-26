@@ -2859,6 +2859,22 @@
       "isOrdered": false
     }
   ],
+  "allUsers": [
+    {
+      "fName": "Arun",
+      "lName": "Rana",
+      "email": "abc@gmail.com",
+      "password": "qwe123!@#",
+      "id": 1
+    },
+    {
+      "fName": "Test",
+      "lName": "Tester",
+      "email": "test@gmail.com",
+      "password": "test23!@#",
+      "id": 2
+    }
+  ],
   "UserDetails": [
     {
       "id": 1674393675928,
@@ -3050,12 +3066,5 @@
       "size": "M",
       "color": "Red"
     }
-
-  ],
-
- 
-  "total": {
-    "total": 21567
-  }
-
+ ]
 }
