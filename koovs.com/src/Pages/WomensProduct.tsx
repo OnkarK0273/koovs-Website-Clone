@@ -21,7 +21,7 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useAppDispatch, useAppSelector } from "../Redux/store";
 import {
   getProducts,
-  updateMensProduct,
+  updateWomenProduct,
 } from "../Redux/Product/product.action";
 import WomenProductCard from "./WomenProductCard";
 import { Checkbox, CheckboxGroup } from "@chakra-ui/react";
@@ -62,24 +62,24 @@ export default function MensProduct() {
     const sortProducts = [...womenProducts].sort((a, b) =>
       a.title.localeCompare(b.title)
     );
-    dispatch(updateMensProduct(sortProducts));
+    dispatch(updateWomenProduct(sortProducts));
   };
 
   const handleSortZA = () => {
     const sortProducts = [...womenProducts].sort((a, b) =>
       b.title.localeCompare(a.title)
     );
-    dispatch(updateMensProduct(sortProducts));
+    dispatch(updateWomenProduct(sortProducts));
   };
 
   const handleHighToLow = () => {
     const priceData = [...womenProducts].sort((a, b) => b.price - a.price);
-    dispatch(updateMensProduct(priceData));
+    dispatch(updateWomenProduct(priceData));
   };
 
   const handleLowToHigh = () => {
     const priceData = [...womenProducts].sort((a, b) => a.price - b.price);
-    dispatch(updateMensProduct(priceData));
+    dispatch(updateWomenProduct(priceData));
   };
 
   return (
