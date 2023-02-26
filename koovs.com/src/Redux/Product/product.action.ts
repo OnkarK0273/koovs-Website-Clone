@@ -25,12 +25,23 @@ export interface IGetWomenProductSuccess {
   payload: Product[];
 }
 
+export interface IUpdateMensProduct {
+  type: typeof types.UPDATE_MEN_PRODUCTS;
+  payload: Product[];
+}
+export interface IUpdateWomenProduct {
+  type: typeof types.UPDATE_WOMEN_PRODUCTS;
+  payload: Product[];
+}
+
 export type ProductAction =
   | IProductRequest
   | IProductError
   | IGetProductSuccess
   | IGetWomenProductSuccess
-  | IProductSuccess;
+  | IProductSuccess
+  | IUpdateMensProduct
+  | IUpdateWomenProduct;
 
 const productRequest = (): IProductRequest => {
   return { type: types.PRODUCT_REQUEST };
@@ -51,6 +62,14 @@ const getSingleProductSuccess = (data: Product): IProductSuccess => {
   return { type: types.SINGLE_PRODUCT_SUCCESS };
 };
 
+export const updateMensProduct = (data: Product[]): IUpdateMensProduct => {
+  return { type: types.UPDATE_MEN_PRODUCTS, payload: data };
+};
+
+export const updateWomenProduct = (data: Product[]): IUpdateWomenProduct => {
+  return { type: types.UPDATE_WOMEN_PRODUCTS, payload: data };
+};
+
 export const getProducts = (): any => async (dispatch: AppDispatch) => {
   dispatch(productRequest());
   try {
@@ -66,8 +85,16 @@ export const getProducts = (): any => async (dispatch: AppDispatch) => {
 export const singleProduct = async (id: string) => {
   try {
     let res = await axios.get(`http://localhost:8080/mens/${id}`);
-    let data = res.data;
+    let data = await res.data;
     return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const postSingleProduct = async (payload: any) => {
+  try {
+    await axios.post(`http://localhost:8080/cart`, payload);
   } catch (error) {
     console.log(error);
   }
