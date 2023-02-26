@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   Heading,
@@ -15,6 +15,11 @@ import {
   Image,
 } from "@chakra-ui/react";
 import image from "./2.jpeg";
+import axios from "axios";
+import { useAppDispatch, useAppSelector } from "../../Redux/store";
+import { getCartApi } from "../../Redux/Cart/cart.action";
+
+// import { shallowEqual } from "react-redux";
 // import { getTotal } from "../Cart/Cart";
 // import { useAppSelector } from "../../Redux/store";
 // import { shallowEqual } from "react-redux";
@@ -24,6 +29,12 @@ const CartPayment: React.FC = () => {
   const bgColor = useColorModeValue("gray.50", "whiteAlpha.50");
   const secondaryTextColor = useColorModeValue("gray.600", "gray.400");
   const [isLoading, setIsLoading] = useState(false);
+  const [total, setTotal] = useState(0);
+  const [phone, setPhone] = useState("");
+  const cart = useAppSelector((store) => store.CartReducer.cart);
+  console.log(cart);
+
+  const dispatch = useAppDispatch();
 
   // const { cart } = useAppSelector((store) => {
   //   return {
@@ -32,15 +43,50 @@ const CartPayment: React.FC = () => {
   //   };
   // }, shallowEqual);
 
-  let getNo = "7908357708";
-  let getPrice = 20;
+  const getTotal = async () => {
+    let res = await axios.get(`http://localhost:8080/total`);
+    let data = await res.data;
+    setTotal(data.total);
+  };
 
-  const handleCart = () => {
+  const getPhone = async () => {
+    let res = await axios.get(`http://localhost:8080/UserDetails`);
+    let data = await res.data;
+    setPhone(data[0].Phone);
+  };
+
+  useEffect(() => {
+    // getTotal();
+    getPhone();
+    dispatch(getCartApi());
+    getTotal();
+    // eslint-disable-next-line
+  }, []);
+
+  let getNo = phone;
+
+  const handleCart = async () => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
     }, 2000);
+
+    for (let i = 0; i < cart.length; i++) {
+      await axios.delete(`http://localhost:8080/cart/${cart[i].id}`);
+    }
+
+    await axios.post(`http://localhost:8080/total`, {
+      total: 0,
+    });
+
+    dispatch(getCartApi());
+    setTotal(0);
+    getTotal();
   };
+
+  console.log(total);
+
+  let getPrice = total;
 
   return (
     <VStack

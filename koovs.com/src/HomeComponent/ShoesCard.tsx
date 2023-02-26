@@ -2,17 +2,14 @@ import React from "react";
 import { Box, Text } from "@chakra-ui/react";
 import { Product } from "../utils/types";
 
-import {Link} from "react-router-dom"
-
-
-const MensCard = ({ img1, img2,title, price }: Product) => {
+const ShoesCard = ({ img1, img2,title, price }: Product) => {
   return (
     //For Artis Collaboraion
 
-    <Box as ={Link} to="/men">
+    <Box>
       <Box
         // w={"s"}
-        h={350}
+        h={320}
         // border="1px solid red"
         bgImage={`url(${img1})`}
         bgSize="100% 100%"
@@ -75,4 +72,4 @@ const MensCard = ({ img1, img2,title, price }: Product) => {
   );
 };
 
-export default MensCard;
+export default ShoesCard;

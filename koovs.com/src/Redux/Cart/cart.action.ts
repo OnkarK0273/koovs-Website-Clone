@@ -26,7 +26,7 @@ const getCartApiFail = () => {
   };
 };
 
-export const getCartApi = async (dispatch: any) => {
+export const getCartApi = () => async (dispatch: AppDispatch) => {
   dispatch(getCartApiReq());
   try {
     const response = await axios.get(
@@ -58,3 +58,5 @@ export const delCartApi = (id: number) => async (dispatch: AppDispatch) => {
     console.log(error);
   }
 };
+
+

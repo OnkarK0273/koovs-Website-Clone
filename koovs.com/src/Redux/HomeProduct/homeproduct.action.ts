@@ -1,8 +1,7 @@
-import axios from "axios";
 import { Product } from "../../utils/types";
 import { AppDispatch } from "../store";
-import { getProductsAPI, getWomenProductsAPI } from "./product.api";
-import * as types from "./product.types";
+import { getHomeMenProductsAPI, getHomeWomenProductsAPI , getHomeShoesProductsAPI, getHomeTshirtsProductsAPI} from "./homeproduct.api";
+import * as types from "./homeproduct.types";
 
 export interface IProductRequest {
   type: typeof types.PRODUCT_REQUEST;
@@ -10,10 +9,6 @@ export interface IProductRequest {
 
 export interface IProductError {
   type: typeof types.PRODUCT_ERROR;
-}
-
-export interface IProductSuccess {
-  type: typeof types.SINGLE_PRODUCT_SUCCESS;
 }
 
 export interface IGetProductSuccess {
@@ -24,13 +19,23 @@ export interface IGetWomenProductSuccess {
   type: typeof types.GET_WOMEN_PRODUCTS_SUCCESS;
   payload: Product[];
 }
+export interface IGetShoesProductSuccess {
+  type: typeof types.GET_SHOES_PRODUCTS_SUCCESS;
+  payload: Product[];
+}
+
+export interface IGetTshirtsProductSuccess {
+  type: typeof types.GET_TSHIRTS_PRODUCTS_SUCCESS;
+  payload: Product[];
+}
 
 export type ProductAction =
   | IProductRequest
   | IProductError
   | IGetProductSuccess
   | IGetWomenProductSuccess
-  | IProductSuccess;
+  | IGetShoesProductSuccess
+  | IGetTshirtsProductSuccess;
 
 const productRequest = (): IProductRequest => {
   return { type: types.PRODUCT_REQUEST };
@@ -47,14 +52,18 @@ const getWomenProductSuccess = (data: Product[]): IGetWomenProductSuccess => {
   return { type: types.GET_WOMEN_PRODUCTS_SUCCESS, payload: data };
 };
 
-const getSingleProductSuccess = (data: Product): IProductSuccess => {
-  return { type: types.SINGLE_PRODUCT_SUCCESS };
+const getShoesProductSuccess = (data: Product[]): IGetShoesProductSuccess => {
+  return { type: types.GET_SHOES_PRODUCTS_SUCCESS, payload: data };
+};
+
+const getTshirtsProductSuccess = (data: Product[]): IGetTshirtsProductSuccess => {
+  return { type: types.GET_TSHIRTS_PRODUCTS_SUCCESS, payload: data };
 };
 
 export const getProducts = (): any => async (dispatch: AppDispatch) => {
   dispatch(productRequest());
   try {
-    let data = await getProductsAPI();
+    let data = await getHomeMenProductsAPI();
     if (data) {
       dispatch(getProductSuccess(data));
     }
@@ -62,32 +71,33 @@ export const getProducts = (): any => async (dispatch: AppDispatch) => {
     dispatch(productError());
   }
 };
-
-export const singleProduct = async (id: string) => {
+export const getShoesProducts = (): any => async (dispatch: AppDispatch) => {
+  dispatch(productRequest());
   try {
-    let res = await axios.get(`http://localhost:8080/mens/${id}`);
-    let data = res.data;
-    return data;
+    let data = await getHomeShoesProductsAPI();
+    if (data) {
+      dispatch(getShoesProductSuccess(data));
+    }
   } catch (error) {
-    console.log(error);
+    dispatch(productError());
   }
 };
 
-export const singleWomenProduct =
-  (id: string) => async (dispatch: AppDispatch) => {
-    try {
-      let res = await axios.get(`http://localhost:8080/women/${id}`);
-      let data = res.data;
-      dispatch(getSingleProductSuccess(data));
-    } catch (error) {
-      console.log(error);
+export const getTshirtsProducts = (): any => async (dispatch: AppDispatch) => {
+  dispatch(productRequest());
+  try {
+    let data = await getHomeTshirtsProductsAPI();
+    if (data) {
+      dispatch(getTshirtsProductSuccess(data));
     }
-  };
-
+  } catch (error) {
+    dispatch(productError());
+  }
+};
 export const getWomenProducts = (): any => async (dispatch: AppDispatch) => {
   dispatch(productRequest());
   try {
-    let data = await getWomenProductsAPI();
+    let data = await getHomeWomenProductsAPI();
     if (data) {
       dispatch(getWomenProductSuccess(data));
     }

@@ -28,7 +28,7 @@ export default function MainRoute() {
         <Route path={"/admin"} element={<Admin />} />
         <Route path={"/cart"} element={<Cart />} />
         <Route path={"/payments"} element={<Payments />} />
-        <Route path={"/paymentspage"} element={<PaymentPage />} />
+        <Route path={"/paymentpage"} element={<PaymentPage />} />
         <Route path={"/wishlist"} element={<Wishlist />} />
         <Route path="*" element={<h1>Page not found</h1>} />
       </Routes>

@@ -57,7 +57,7 @@ export default function Piechart() {
         setwomensArr([sneakers.length,loungwear.length,bodysuit.length])
 
 
-    },[toggle])
+    },[!toggle])
     
     const variant = useBreakpointValue(
         {
@@ -196,4 +196,4 @@ export default function Piechart() {
 
     </Box>
   )
-          }
+}

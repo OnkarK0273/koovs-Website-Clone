@@ -21,6 +21,7 @@ import { useAppDispatch, useAppSelector } from "../Redux/store";
 import { getProducts } from "../Redux/Product/product.action";
 import WomenProductCard from "./WomenProductCard";
 import { Checkbox } from "@chakra-ui/react";
+import Footer from "../HomeComponent/Footer";
 
 export default function WomensProduct() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -260,6 +261,7 @@ export default function WomensProduct() {
             ))}
         </Grid>
       </div>
+      <Footer />
     </>
   );
 }

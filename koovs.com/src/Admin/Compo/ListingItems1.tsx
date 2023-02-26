@@ -24,17 +24,17 @@ import {
 } from "@chakra-ui/react";
 import Pagination from './Pagination';
 import { useAppDispatch } from '../../Redux/store';
-import { getAdminMenToggle } from '../../Redux/admin/admin.action';
+import { getAdminWomenToggle } from '../../Redux/admin/admin.action';
 interface listingListProps{
   setPage:(page:number)=>void
   page:number
   data:Product[]
 }
-export default function ListingItems({data,setPage,page}:listingListProps) {
+export default function ListingItems1({data,setPage,page}:listingListProps) {
   const dispatch = useAppDispatch()
   const handleToggle = (id:string,val:boolean)=>{
 
-    dispatch(getAdminMenToggle(id,val))
+    dispatch(getAdminWomenToggle(id,val))
 
   }
 
