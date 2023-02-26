@@ -11,7 +11,7 @@ import { reducer as HomeProductReducer } from "./HomeProduct/homeproduct.reducer
 import { reducer as CartReducer } from "./Cart/cart.reducer";
 import { adminReducer } from "./admin/admin.reducer";
 import { reducer as PaymentReducer } from "./Payments/payment.reducer";
-import { signupReducer} from "./Auth/signup.reducer"
+import { signupReducer } from "./Auth/signup.reducer";
 import { loginReducer } from "./Auth/login.reducer";
 
 const root = combineReducers({

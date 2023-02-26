@@ -14,7 +14,7 @@ import {
   Input,
   Image,
 } from "@chakra-ui/react";
-import image from "./2.jpeg";
+import image from "../../assets/Koolz-logo.png";
 import axios from "axios";
 import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import { getCartApi } from "../../Redux/Cart/cart.action";
@@ -44,13 +44,17 @@ const CartPayment: React.FC = () => {
   // }, shallowEqual);
 
   const getTotal = async () => {
-    let res = await axios.get(`http://localhost:8080/total`);
+    let res = await axios.get(
+      `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/total`
+    );
     let data = await res.data;
     setTotal(data.total);
   };
 
   const getPhone = async () => {
-    let res = await axios.get(`http://localhost:8080/UserDetails`);
+    let res = await axios.get(
+      `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/UserDetails`
+    );
     let data = await res.data;
     setPhone(data[0].Phone);
   };
@@ -72,12 +76,17 @@ const CartPayment: React.FC = () => {
     }, 2000);
 
     for (let i = 0; i < cart.length; i++) {
-      await axios.delete(`http://localhost:8080/cart/${cart[i].id}`);
+      await axios.delete(
+        `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/cart/${cart[i].id}`
+      );
     }
 
-    await axios.post(`http://localhost:8080/total`, {
-      total: 0,
-    });
+    await axios.post(
+      `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/total`,
+      {
+        total: 0,
+      }
+    );
 
     dispatch(getCartApi());
     setTotal(0);

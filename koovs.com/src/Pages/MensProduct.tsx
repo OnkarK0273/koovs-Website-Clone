@@ -26,7 +26,6 @@ import {
 import MenProductCard from "./MenProductCard";
 import { Checkbox, CheckboxGroup } from "@chakra-ui/react";
 import { useSearchParams } from "react-router-dom";
-import Footer from "../HomeComponent/Footer";
 import { Product } from "../utils/types";
 
 export default function MensProduct() {
