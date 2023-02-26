@@ -16,8 +16,8 @@ export default function Listing() {
   const [searchParams] = useSearchParams()
   const location = useLocation()
 
-  console.log("mens",mens)
-  console.log("womens",womens)
+  // console.log("mens",mens)
+  // console.log("womens",womens)
   
 
   // console.log(location,searchParams.getAll('product')[0],searchParams.getAll('catagory'))
