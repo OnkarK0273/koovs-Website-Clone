@@ -4,7 +4,7 @@ import { Image } from "@chakra-ui/image";
 import { Input } from "@chakra-ui/input";
 import { Box, Divider, Flex, Heading, Text, VStack } from "@chakra-ui/layout";
 import { Link } from "react-router-dom";
-import {Link} from "react-router-dom"
+
 
 const Register = () => {
   return (
