@@ -15,7 +15,7 @@ import {
   Button,
   Image,
 } from "@chakra-ui/react";
-import paymentFooter  from "../assets/FooterPayment.jpeg"
+import paymentFooter from "../assets/FooterPayment.jpeg";
 import { FiArrowRight } from "react-icons/fi";
 import { MdOutlineMail } from "react-icons/md";
 import { FaInstagram, FaFacebook } from "react-icons/fa";
@@ -103,37 +103,6 @@ export default function Footer() {
                   />
                 </InputGroup>
               </Stack>
-
-            </Flex>
-          </SimpleGrid>
-          <Divider sx={{ borderColor: "gray.300", height: "0px" }} />
-        </Container>
-        <Container
-          as={Stack}
-          maxW={'100%'}
-          py={4}
-          direction={{ base: 'column', md: 'row' }}
-          spacing={4}
-          justify={{ base: 'center', md: 'space-between' }} 
-          align={{ base: 'center', md: 'center' }}>
-            <Stack direction={'row'} spacing={1}>
-            <Button>
-              <FaFacebook /> 
-            </Button>
-            
-            <Button>
-              <FaInstagram />
-            </Button>
-          </Stack>
-          <Text>© NEWBRAVE VENTURE PRIVATE _limitED</Text>
-          <Text>jhgidfgfiudg</Text>
-          
-        </Container>
-        
-      </Box>
-    );
-  }
-
             </Stack>
           </Flex>
         </SimpleGrid>
@@ -161,10 +130,9 @@ export default function Footer() {
         </Stack>
         <Text fontSize={14}>© NEWBRAVE VENTURE PRIVATE LIMITED</Text>
         <Box width={290}>
-          <Image src={paymentFooter} alt="footerPayment"/>
+          <Image src={paymentFooter} alt="footerPayment" />
         </Box>
       </Container>
     </Box>
   );
 }
-

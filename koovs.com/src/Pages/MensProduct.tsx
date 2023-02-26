@@ -22,7 +22,6 @@ import { getProducts } from "../Redux/Product/product.action";
 import MenProductCard from "./MenProductCard";
 import { Checkbox, CheckboxGroup } from "@chakra-ui/react";
 import { useSearchParams } from "react-router-dom";
-import Footer from "../HomeComponent/Footer";
 
 export default function MensProduct() {
   const { isOpen, onOpen, onClose } = useDisclosure();
