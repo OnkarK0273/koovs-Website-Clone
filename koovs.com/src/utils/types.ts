@@ -28,11 +28,11 @@ export type CartItemType = {
 
 export interface Userdetails {
   id: number;
-  Name: number;
-  Phone: number;
+  Name: string;
+  Phone: string;
   Email: string;
   Image: string;
-  Password: String;
+  Password: string;
   IsPrime: boolean;
   IsAuth: boolean;
   Address: string;
@@ -52,13 +52,31 @@ export interface Admin {
 // SIGNUP & LOGIN
 
 export interface SignupDetail {
-  fName: string,
-  lName: string,
-  email: string,
-  password: string
+  fName: string;
+  lName: string;
+  email: string;
+  password: string;
+  phone?: string;
+  address?: string;
+  image?: string;
 }
 
 export interface LoginDetail {
-  email: string,
-  password: string
+  email: string;
+  password: string;
+  fName?: string;
+  lName?: string;
+  phone?: string;
+  address?: string;
+  image?: string;
+
 }
+
+export interface LoginState {
+  isLoading: boolean;
+  isError: boolean;
+  isAuth: boolean;
+  details: LoginDetail;
+}
+
+

@@ -6,26 +6,37 @@ export default function ListingSerch() {
   const [searchParams, setSearchParams] = useSearchParams();
   const intialProduct = searchParams.getAll('product')
   const intialCatagory = searchParams.getAll('catagory')
+  const initalSerch = searchParams.getAll('serch')
   const [product,setProduct] = useState<string[]>(intialProduct || ["Mens"])
   const [Catagory,setCatogory] = useState<string[]>(intialCatagory||[])
+  const [serch,setSerch] =  useState<string[]>([''])
+  
+
+  const handleOnChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+
+    setSerch([e.target.value])
+  };
  
-
   useEffect(()=>{
-    let params:{product?:string[],catagory?:string[]} = {}
-
+    let params:{product?:string[],catagory?:string[],serch?:string[]} = {}
     if(Catagory.length){
       params.catagory = Catagory
       params.product = product
-
+      // params.serch = serch
     }
+    if(serch[0] !==""){
+      params.serch = serch
+    }
+  
     setSearchParams(params)
 
-  },[Catagory,product])
+  },[Catagory,product,serch])
 
   return (
     <>
 
     <Box>
+     
       <Heading>{product} Products</Heading>
       <Text color='teal' >List of Products</Text>
     </Box>
@@ -39,7 +50,9 @@ export default function ListingSerch() {
               color='teal'
               colorScheme='teal'
               borderColor={'teal'}
+              onChange={handleOnChange}
               // onKeyDown={handleKeyDown}
+              value={serch[0]}
               ></Input>
             </Box>
             <HStack>

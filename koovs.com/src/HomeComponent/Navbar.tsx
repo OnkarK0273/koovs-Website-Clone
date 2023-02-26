@@ -17,7 +17,7 @@ import { MdFacebook } from "react-icons/md";
 export default function Navbar() {
   return (
     <>
-      <Box px={20}>
+      <Box px={20} id="home">
         <Flex alignItems={"center"} justifyContent={"space-between"}>
           <Stack direction="row" spacing={-5}>
             <Text>

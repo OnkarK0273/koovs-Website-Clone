@@ -22,10 +22,18 @@ import { AiFillInfoCircle } from "react-icons/ai";
 import AdminDrawer from "./AdminDrawer";
 import Dashbord from "../tabpanal/Dashbord";
 import Listing from "../tabpanal/Listing";
+import Customers from "../tabpanal/Customers";
+import AccountInfo from "../tabpanal/AccountInfo";
+import { useAppDispatch, useAppSelector } from "../../Redux/store";
+import { getAdminAdmin } from "../../Redux/admin/admin.action";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
 export default function AdminPage() {
+  const admin = useAppSelector((store)=>store.adminReducer.admin)
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
   const prodRef:any= useRef();
   const dashboardRef:any = useRef();
   const customerRef:any = useRef();
@@ -34,12 +42,17 @@ export default function AdminPage() {
 
   useEffect(()=>{
     document.title = 'Koolz | Admin'
+    dispatch(getAdminAdmin())
   },[])
+
+  const handleRoute = ()=>{
+    navigate('/')
+  }
 
 
   return (
     <>
-            <Tabs display={"flex"}>
+      <Tabs display={"flex"}>
         <TabList
           display={{ base: "none", md: "inherit" }}
           textAlign={"center"}
@@ -61,11 +74,11 @@ export default function AdminPage() {
           </Box>
 
           <Box textAlign={"center"} mt={"20px"}>
-            <Avatar size={"2xl"} src={'https://avatars.githubusercontent.com/u/110043714?v=4'}></Avatar>
+            <Avatar border='2px' size={"2xl"} src={admin.Image}></Avatar>
           </Box>
           <Box textAlign={"center"} mt={"20px"} mb={"20px"}>
-            <Text>{'Onkar.K'}</Text>
-            <Text color={"black"}>{'onkar.k@koolz.com'}</Text>
+            <Text>{admin.Name}</Text>
+            <Text color={"black"}>{admin.EmailId}</Text>
     
           </Box>
 
@@ -150,7 +163,7 @@ export default function AdminPage() {
             variant={"solid"}
             borderRadius={"5px"}
             colorScheme={"red"}
-           
+           onClick={handleRoute}
           >
             Logout
           </Button>
@@ -168,10 +181,10 @@ export default function AdminPage() {
           Orders page
           </TabPanel>
           <TabPanel p={0}>
-          Customers
+            <Customers/>
           </TabPanel>
           <TabPanel p={0}>
-            account info page
+            <AccountInfo/>
           </TabPanel>
         </TabPanels>
       </Tabs>
@@ -228,9 +241,9 @@ export default function AdminPage() {
                 >
                   {" "}
                   <FiLogOut />{" "}
-                  <Text ml={"20px"} fontSize={"md"} >
+                  <Link  to='/' >
                     Logout
-                  </Text>
+                  </Link>
                 </Box>
               </MenuItem>
             </MenuList>

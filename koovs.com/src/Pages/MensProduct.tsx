@@ -27,6 +27,7 @@ import MenProductCard from "./MenProductCard";
 import { Checkbox, CheckboxGroup } from "@chakra-ui/react";
 import { useSearchParams } from "react-router-dom";
 import Footer from "../HomeComponent/Footer";
+import { Product } from "../utils/types";
 
 export default function MensProduct() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -315,14 +316,11 @@ export default function MensProduct() {
       <Box style={{ width: "75%" }}>
         <Grid margin="auto" templateColumns="repeat(3, 1fr)">
           {menProducts?.length > 0 &&
-            menProducts?.map((item) => (
-              <MenProductCard key={item.id} {...item} />
-            ))}
+            menProducts?.map((item: Product) =>
+              item.active ? <MenProductCard key={item.id} {...item} /> : false
+            )}
         </Grid>
       </Box>
-      <div>
-        <Footer />
-      </div>
     </>
   );
 }
