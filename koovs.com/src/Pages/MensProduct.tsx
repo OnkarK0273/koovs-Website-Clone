@@ -26,11 +26,7 @@ import {
 import MenProductCard from "./MenProductCard";
 import { Checkbox, CheckboxGroup } from "@chakra-ui/react";
 import { useSearchParams } from "react-router-dom";
-<<<<<<< HEAD
-=======
-import Footer from "../HomeComponent/Footer";
 import { Product } from "../utils/types";
->>>>>>> 55a029b306f256b9231fb204e507f5d8d4d0bbcc
 
 export default function MensProduct() {
   const { isOpen, onOpen, onClose } = useDisclosure();
