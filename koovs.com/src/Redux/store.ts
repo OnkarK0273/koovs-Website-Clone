@@ -20,7 +20,7 @@ const root = combineReducers({
   PaymentReducer,
   adminReducer,
   signupReducer,
-  loginReducer
+  loginReducer,
   HomeProductReducer,
 });
 export const store = legacy_createStore(root, compose(applyMiddleware(thunk)));
