@@ -47,3 +47,18 @@ export interface Admin {
   Password: string;
   isAuth: boolean;
 }
+
+
+// SIGNUP & LOGIN
+
+export interface SignupDetail {
+  fName: string,
+  lName: string,
+  email: string,
+  password: string
+}
+
+export interface LoginDetail {
+  email: string,
+  password: string
+}

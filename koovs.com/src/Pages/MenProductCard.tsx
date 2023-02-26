@@ -42,6 +42,7 @@ function MenProductCard({
         alignItems="center"
         justifyContent="center"
       >
+
         <Box
           bg={"white"}
           maxW="sm"
@@ -62,6 +63,20 @@ function MenProductCard({
           <Link to={`/men/${id}`}>
             <Image src={img1} alt={`Picture of ${title}`} roundedTop="lg" />
           </Link>
+
+        {data.isNew && (
+          <Circle
+            size="10px"
+            position="absolute"
+            top={2}
+            right={2}
+            bg="red.200"
+          />
+        )}
+        <Link to={`/men/${id}`}>
+          <Image src={img1} alt={`Picture of ${title}`} roundedTop="lg" />
+        </Link>
+
 
           <Box p="6">
             <Box display="flex" alignItems="baseline">
