@@ -6,7 +6,7 @@ import {
   singleProduct,
 } from "../Redux/Product/product.action";
 import { Link } from "react-router-dom";
-import { Button, Flex, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 
 const MenProductDetails = () => {
   const myData = {
@@ -55,8 +55,8 @@ const MenProductDetails = () => {
   }, []);
 
   return (
-    <div>
-      <div
+    <Box>
+      <Box
         style={{
           display: "flex",
           padding: "10px",
@@ -64,8 +64,8 @@ const MenProductDetails = () => {
           marginLeft: "30px",
         }}
       >
-        <img src={data.img1} alt={data.title} />
-        <div style={{ marginLeft: "50px" }}>
+        <Image src={data.img1} alt={data.title} />
+        <Box style={{ marginLeft: "50px" }}>
           <h1 style={{ fontSize: "30px" }}>{data.title}</h1>
           <h3>Rs. {data.price}</h3>
           <p>Tax included</p>
@@ -190,9 +190,9 @@ const MenProductDetails = () => {
               BUY IT NOW
             </Button>
           </Flex>
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
