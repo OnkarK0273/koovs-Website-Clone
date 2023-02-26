@@ -1,12 +1,12 @@
 import { Button } from "@chakra-ui/button";
 import { Image } from "@chakra-ui/image";
 import { Input } from "@chakra-ui/input";
+import {Link} from "react-router-dom"
 import {
   Box,
   Divider,
   Flex,
   Heading,
-  Link,
   Text,
   VStack,
 } from "@chakra-ui/layout";
@@ -140,7 +140,7 @@ const SignupForm = (): JSX.Element => {
       >
         Register
       </Button>
-      <Button
+      <Link to="/login"><Button
         variant={"outline"}
         bgColor={"white"}
         color={"black"}
@@ -159,7 +159,7 @@ const SignupForm = (): JSX.Element => {
         }}
       >
         Log In
-      </Button>
+      </Button></Link>
       <Flex
         alignItems={"center"}
         p={"1px"}
