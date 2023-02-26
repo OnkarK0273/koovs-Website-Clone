@@ -3,9 +3,8 @@ import { ArrowUpIcon } from "@chakra-ui/icons";
 import { Button, Link } from "@chakra-ui/react";
 
 const BackToTop = () => {
-  return (
-    <>
-    <Link href="#home">
+  return (<>
+  <Link href="#home">
       <Button
         borderRadius="50%"
         w="30px"
