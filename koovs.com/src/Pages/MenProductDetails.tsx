@@ -1,16 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { singleProduct } from "../Redux/Product/product.action";
+import {
+  postSingleProduct,
+  singleProduct,
+} from "../Redux/Product/product.action";
 import { Link } from "react-router-dom";
+import { Button, Text } from "@chakra-ui/react";
 
 const MenProductDetails = () => {
   const myData = {
-    title: "",
+    id: "",
+    active: false,
     img1: "",
     img2: "",
+    brand: "",
+    title: "",
+    price: 0,
+    description: "",
+    category: "",
+    is_best_seller: false,
+    Order_status: "",
     isOrdered: false,
-    size: "",
-    price: "",
+    size: {
+      S: "small",
+      M: "medium",
+      L: "large",
+    },
     quantity: 1,
   };
 
@@ -22,14 +37,23 @@ const MenProductDetails = () => {
       return res;
     });
     setData(data);
-    // console.log(data);
+  };
+
+  const handleFetch = async () => {
+    // singleData = data;
+    // setSingleData(data);
+    postSingleProduct(data);
+  };
+
+  const handleSize = (e: any) => {
+    // const sizeKey = e.currentTarget.innerText;
+    // const selectedSize = data.size[sizeKey as "S" | "M" | "L"];
+    postSingleProduct(data.size[e.currentTarget.innerText as "S" | "M" | "L"]);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
-
-  console.log(data);
 
   return (
     <div>
@@ -47,45 +71,25 @@ const MenProductDetails = () => {
           <h3>Rs. {data.price}</h3>
           <p>Tax included</p>
           <p>Quantity</p>
-          <button
+
+          <Text onClick={handleSize}>S</Text>
+          {/* <Text onClick={handleSize}>M</Text> */}
+          {/* <Text onClick={handleSize}>L</Text> */}
+
+          <Button
             style={{
-              marginLeft: "20px",
+              marginLeft: "50px",
               border: "1px solid black",
               padding: "5px",
             }}
           >
-            -
-          </button>
-          <button
-            style={{
-              marginLeft: "20px",
-              border: "1px solid black",
-              padding: "5px",
-            }}
-          >
-            1
-          </button>
-          <button
-            style={{
-              marginLeft: "20px",
-              border: "1px solid black",
-              padding: "5px",
-            }}
-          >
-            +
-          </button>
-          <Link to={`/cart`}>
-            <button
-              style={{
-                marginLeft: "50px",
-                border: "1px solid black",
-                padding: "5px",
-              }}
-            >
-              ADD TO CART
-            </button>
-          </Link>
-          <button
+            ADD TO CART
+          </Button>
+          {/* <Link to={`/cart`}> */}
+          <Button
+            as={Link}
+            to={`/cart`}
+            onClick={handleFetch}
             style={{
               border: "1px solid black",
               marginLeft: "50px",
@@ -93,7 +97,8 @@ const MenProductDetails = () => {
             }}
           >
             BUY IT NOW
-          </button>
+          </Button>
+          {/* </Link> */}
         </div>
       </div>
     </div>

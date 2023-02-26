@@ -14,11 +14,15 @@ import {
   MenuItem,
   Text,
   Grid,
+  Box,
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useAppDispatch, useAppSelector } from "../Redux/store";
-import { getProducts } from "../Redux/Product/product.action";
+import {
+  getProducts,
+  updateMensProduct,
+} from "../Redux/Product/product.action";
 import MenProductCard from "./MenProductCard";
 import { Checkbox, CheckboxGroup } from "@chakra-ui/react";
 import { useSearchParams } from "react-router-dom";
@@ -51,6 +55,30 @@ export default function MensProduct() {
     }
     // eslint-disable-next-line
   }, []);
+
+  const handleSortAZ = () => {
+    const sortProducts = [...menProducts].sort((a, b) =>
+      a.title.localeCompare(b.title)
+    );
+    dispatch(updateMensProduct(sortProducts));
+  };
+
+  const handleSortZA = () => {
+    const sortProducts = [...menProducts].sort((a, b) =>
+      b.title.localeCompare(a.title)
+    );
+    dispatch(updateMensProduct(sortProducts));
+  };
+
+  const handleHighToLow = () => {
+    const priceData = [...menProducts].sort((a, b) => b.price - a.price);
+    dispatch(updateMensProduct(priceData));
+  };
+
+  const handleLowToHigh = () => {
+    const priceData = [...menProducts].sort((a, b) => a.price - b.price);
+    dispatch(updateMensProduct(priceData));
+  };
 
   return (
     <>
@@ -277,26 +305,24 @@ export default function MensProduct() {
           Featured
         </MenuButton>
         <MenuList>
-          <MenuItem>Featured</MenuItem>
-          <MenuItem>Best Selling</MenuItem>
-          <MenuItem>Alphabetically, A-Z</MenuItem>
-          <MenuItem>Alphabetically, Z-A</MenuItem>
-          <MenuItem>Price, low to high</MenuItem>
-          <MenuItem>Price, high to low</MenuItem>
-          <MenuItem>Date, old to new</MenuItem>
-          <MenuItem>Date, new to old</MenuItem>
+          <MenuItem onClick={handleSortAZ}>Alphabetically, A-Z</MenuItem>
+          <MenuItem onClick={handleSortZA}>Alphabetically, Z-A</MenuItem>
+          <MenuItem onClick={handleLowToHigh}>Price, low to high</MenuItem>
+          <MenuItem onClick={handleHighToLow}>Price, high to low</MenuItem>
         </MenuList>
       </Menu>
 
-      <div style={{ width: "80%" }}>
-        <Grid margin="auto" templateColumns="repeat(4, 1fr)">
+      <Box style={{ width: "75%" }}>
+        <Grid margin="auto" templateColumns="repeat(3, 1fr)">
           {menProducts?.length > 0 &&
             menProducts?.map((item) => (
               <MenProductCard key={item.id} {...item} />
             ))}
         </Grid>
+      </Box>
+      <div>
+        <Footer />
       </div>
-      {/* <Footer /> */}
     </>
   );
 }
