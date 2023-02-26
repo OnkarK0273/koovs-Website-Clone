@@ -14,7 +14,7 @@ import {
   Input,
   Image,
 } from "@chakra-ui/react";
-import image from "./2.jpeg";
+import image from "../../assets/Koolz-logo.png";
 import axios from "axios";
 import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import { getCartApi } from "../../Redux/Cart/cart.action";

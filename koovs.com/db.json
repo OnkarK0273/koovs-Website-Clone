@@ -3055,24 +3055,9 @@
       "Order_status": "Pending",
       "isOrdered": false,
       "size": ""
-    },
-    {
-      "id": "M8HBC",
-      "active": true,
-      "img1": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/1_ff6ad16a-7248-4871-8fa8-a2a7d5a34a2e.jpg?v=1674226969&width=360",
-      "img2": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/3_e521083d-44f4-4ad9-8737-b7c738a02d51.jpg?v=1674226968&width=360",
-      "brand": "Bravesoul",
-      "title": "KHAKI FAUX LEATHER BUCKLE STRAP DETAIL CORK SANDALS",
-      "price": 1299,
-      "description": "BRAVE SOUL MEN'S SHOES LEATHER LOOK DOUBLE BUCKLE STRAPS CORK BASE MOULDED FOOT BED TEXTURED...",
-      "category": "shoes",
-      "is_best_seller": false,
-      "Order_status": "Pending",
-      "isOrdered": false,
-      "size": ""
     }
   ],
   "total": {
-    "total": 5288
+    "total": 3989
   }
 }
