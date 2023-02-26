@@ -1,8 +1,6 @@
 import { Button } from "@chakra-ui/button";
 import { Image } from "@chakra-ui/image";
 import { Input } from "@chakra-ui/input";
-import { Link } from "react-router-dom";
-import { Box, Divider, Flex, Heading, Text, VStack } from "@chakra-ui/layout";
 import {Link} from "react-router-dom"
 import {
   Box,
@@ -12,7 +10,6 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/layout";
-
 import React from "react";
 import fb from "../utils/Images/fbIcon.png";
 import google from "../utils/Images/googleIcon.png";
@@ -30,56 +27,16 @@ const SignupForm = (): JSX.Element => {
     password: "",
   });
   const [insecurePassword, setInsecurePassword] =
-    React.useState<boolean>(false);
-  const [invalidEmail, setInvalidEmail] = React.useState<boolean>(false);
-  const state = useAppSelector((store) => store.signupReducer);
-  const toast = useToast();
-
   React.useState<boolean>(false);
   const [invalidEmail, setInvalidEmail] = React.useState<boolean>(false);
   const state = useAppSelector((store) => store.signupReducer);
   const toast = useToast()
-
 
   const handleDetails = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newDetails: SignupDetail = {
       ...signupDetails,
       [e.target.name]: e.target.value,
     };
-
-    setInsecurePassword(false);
-    setInvalidEmail(false);
-    setSignupDetails(newDetails);
-  };
-  console.log(state);
-  // console.log(signupDetails);
-  const handleSignupFormSubmit = () => {
-    if (
-      signupDetails.email == "" ||
-      signupDetails.fName == "" ||
-      signupDetails.lName == "" ||
-      signupDetails.password === ""
-    ) {
-      toast({
-        title: "Warning! Form Incomplete",
-        description: "Please fill all the details",
-        status: "warning",
-        duration: 3000,
-        isClosable: true,
-        position: "top",
-      });
-      return;
-    }
-
-    if (!signupDetails.email.includes("@")) {
-      setInvalidEmail(true);
-      return;
-    }
-    if (
-      signupDetails.password.length < 8 &&
-      !signupDetails.password.match(/[!\@\#\$\%\^\&\*\+\-]/)
-    ) {
-
     setInsecurePassword(false)
     setInvalidEmail(false)
     setSignupDetails(newDetails);
@@ -107,7 +64,6 @@ const SignupForm = (): JSX.Element => {
       return;
     }
     if( signupDetails.password.length < 8 && !signupDetails.password.match(/[!\@\#\$\%\^\&\*\+\-]/) ){
-
       setInsecurePassword(true);
       return;
     }
@@ -118,26 +74,20 @@ const SignupForm = (): JSX.Element => {
       title: "Congratulations!",
       description: "Your account has been created successfully",
       duration: 3000,
-      isClosable: true,
-    });
       isClosable: true
     })
+
   };
 
   return (
     <VStack
-      mb={"80px"}
     mb={"80px"}
-
       width={{ base: "90%", md: "50%" }}
       alignItems={"left"}
       padding={"10px"}
     >
-
-      <Heading size={"md"} fontWeight={"semibold"}>
       <Heading size={"md"} 
        fontWeight={"semibold"}>
-
         Register
       </Heading>
       <Input
@@ -145,16 +95,9 @@ const SignupForm = (): JSX.Element => {
         placeholder="First Name"
         name="fName"
         onChange={(e) => handleDetails(e)}
-
-      />
-      <Text fontSize={"xs"} color={"white"}>
-        Email should be valid and must have '@' special characters
-      </Text>
-
         
       />
       <Text fontSize={"xs"} color={"white"}>Email should be valid and must have '@' special characters</Text>
-
 
       <Input
         type="text"
@@ -162,37 +105,19 @@ const SignupForm = (): JSX.Element => {
         name="lName"
         onChange={(e) => handleDetails(e)}
       />
-
-      <Text fontSize={"xs"} color={"white"}>
-        Email should be valid and must have '@' special characters
-      </Text>
       <Text fontSize={"xs"} color={"white"}>Email should be valid and must have '@' special characters</Text>
       <Input
         type="email"
         placeholder="Email"
         name="email"
         onChange={(e) => handleDetails(e)}
-
-      />
-      <Text fontSize={"xs"} color={invalidEmail ? "red.500" : "white"}>
-        Email should be valid and must have '@' special characters
-      </Text>
-
         />
         <Text fontSize={"xs"} color={invalidEmail?"red.500":"white"}>Email should be valid and must have '@' special characters</Text>
-
       <Input
         type="password"
         placeholder="Password"
         name="password"
         onChange={(e) => handleDetails(e)}
-
-      />
-      <Text fontSize={"xs"} color={insecurePassword ? "red.500" : "white"}>
-        Password should be minimum 8 characters long and must have special
-        characters like: !@#$%^
-      </Text>
-
         />
         <Text fontSize={"xs"} color={insecurePassword?"red.500":"white"}>Password should be minimum 8 characters long and must have special characters like: !@#$%^</Text>
       <Text pt={"15px"} fontWeight={"normal"}>
@@ -215,29 +140,6 @@ const SignupForm = (): JSX.Element => {
       >
         Register
       </Button>
-
-      <Link to="/login">
-        <Button
-          variant={"outline"}
-          bgColor={"white"}
-          color={"black"}
-          w={"100%"}
-          border={"1px solid black"}
-          _hover={{
-            border: "1px solid black",
-            bgColor: "black",
-            color: "white",
-            transform: "scale(1.03)",
-          }}
-          _active={{
-            border: "1px solid black",
-            bgColor: "white",
-            color: "black",
-          }}
-        >
-          Log In
-        </Button>
-      </Link>
       <Link to="/login"><Button
         variant={"outline"}
         bgColor={"white"}
@@ -289,4 +191,5 @@ const SignupForm = (): JSX.Element => {
     </VStack>
   );
 };
+
 export default SignupForm;
