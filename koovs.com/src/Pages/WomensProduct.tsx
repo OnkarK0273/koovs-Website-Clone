@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   Button,
   Input,
@@ -14,23 +14,42 @@ import {
   MenuItem,
   Text,
   Grid,
+  Box,
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useAppDispatch, useAppSelector } from "../Redux/store";
-import { getProducts } from "../Redux/Product/product.action";
+import {
+  getProducts,
+  updateWomenProduct,
+} from "../Redux/Product/product.action";
 import WomenProductCard from "./WomenProductCard";
-import { Checkbox } from "@chakra-ui/react";
-import Footer from "../HomeComponent/Footer";
+import { Checkbox, CheckboxGroup } from "@chakra-ui/react";
+import { useSearchParams } from "react-router-dom";
 import { Product } from "../utils/types";
 
-export default function WomensProduct() {
+export default function MensProduct() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const size = "sm";
   const dispatch = useAppDispatch();
   const womenProducts = useAppSelector(
     (store) => store.ProductReducer.womenData
   );
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialFIlterValues = searchParams.getAll("filter");
+  const [filterValues, setFilterValues] = useState<string[]>(
+    initialFIlterValues || []
+  );
+
+  const handleFilterChange = (value: string[]) => {
+    setFilterValues(value);
+  };
+
+  useEffect(() => {
+    let params: { filter?: string[] } = {};
+    if (filterValues.length) params.filter = filterValues;
+    setSearchParams(params);
+  }, [filterValues, setSearchParams]);
 
   useEffect(() => {
     if (womenProducts.length === 0) {
@@ -38,6 +57,30 @@ export default function WomensProduct() {
     }
     // eslint-disable-next-line
   }, []);
+
+  const handleSortAZ = () => {
+    const sortProducts = [...womenProducts].sort((a, b) =>
+      a.title.localeCompare(b.title)
+    );
+    dispatch(updateWomenProduct(sortProducts));
+  };
+
+  const handleSortZA = () => {
+    const sortProducts = [...womenProducts].sort((a, b) =>
+      b.title.localeCompare(a.title)
+    );
+    dispatch(updateWomenProduct(sortProducts));
+  };
+
+  const handleHighToLow = () => {
+    const priceData = [...womenProducts].sort((a, b) => b.price - a.price);
+    dispatch(updateWomenProduct(priceData));
+  };
+
+  const handleLowToHigh = () => {
+    const priceData = [...womenProducts].sort((a, b) => a.price - b.price);
+    dispatch(updateWomenProduct(priceData));
+  };
 
   return (
     <>
@@ -75,36 +118,43 @@ export default function WomensProduct() {
                 Product type
               </MenuButton>
               <MenuList>
-                <MenuItem>
-                  <Checkbox>Bags (1)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>Co-ords (10)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>Hats (3)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>Hats & Caps (5)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>Hoodies & sweatshirts (3)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>Jackets & coats (10)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>Joggers (2)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>Outwear (11)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>Pants (20)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>Sandals (4)</Checkbox>
-                </MenuItem>
+                <CheckboxGroup
+                  value={filterValues}
+                  onChange={handleFilterChange}
+                >
+                  <MenuItem>
+                    <Checkbox value="bags">Bags (1)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="coords">Co-ords (10)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="hats">Hats (3)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="hatscaps">Hats & Caps (5)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="hoodies">
+                      Hoodies & sweatshirts (3)
+                    </Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="jackets">Jackets & coats (10)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="joggers">Joggers (2)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="outwear">Outwear (11)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="pants">Pants (20)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="sandals">Sandals (4)</Checkbox>
+                  </MenuItem>
+                </CheckboxGroup>
               </MenuList>
             </Menu>
             <Menu>
@@ -120,48 +170,50 @@ export default function WomensProduct() {
                 Size
               </MenuButton>
               <MenuList>
-                <MenuItem>
-                  <Checkbox>XXS (1)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>XS (10)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>S (3)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>M (5)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>L (3)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>Jackets & coats (10)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>XL (2)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>XXL (11)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>6 (20)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>7 (4)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>8 (30)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>9 (42)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>9.5 (2)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>10 (29)</Checkbox>
-                </MenuItem>
+                <CheckboxGroup
+                  value={filterValues}
+                  onChange={handleFilterChange}
+                >
+                  <MenuItem>
+                    <Checkbox value="XXS">XXS (1)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="XS">XS (10)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="S">S (3)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="M">M (5)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="L">L (3)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="XL">XL (10)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="XXL">XXL (11)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="6">6 (20)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="7">7 (4)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="8">8 (30)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="9">9 (42)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="9.5">9.5 (2)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="10">10 (29)</Checkbox>
+                  </MenuItem>
+                </CheckboxGroup>
               </MenuList>
             </Menu>
             <Menu>
@@ -177,36 +229,43 @@ export default function WomensProduct() {
                 Brand
               </MenuButton>
               <MenuList>
-                <MenuItem>
-                  <Checkbox>5ive (5)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>Arkk Copenhagen (10)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>BALL (3)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>Bravesoul (5)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>Comatoes</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>Essentials by Coovs (10)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>Garcon (2)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>KEEN (11)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>Kangol (20)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>Koovs (4)</Checkbox>
-                </MenuItem>
+                <CheckboxGroup
+                  value={filterValues}
+                  onChange={handleFilterChange}
+                >
+                  <MenuItem>
+                    <Checkbox value="5ive">5ive (5)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="arkk">Arkk Copenhagen (10)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="ball">BALL (3)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="bravesoul">Bravesoul (5)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="comatoes">Comatoes</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="essentials">
+                      Essentials by Coovs (10)
+                    </Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="garcon">Garcon (2)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="keen">KEEN (11)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="kangol">Kangol (20)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="koovs">Koovs (4)</Checkbox>
+                  </MenuItem>
+                </CheckboxGroup>
               </MenuList>
             </Menu>
             <Menu>
@@ -222,12 +281,17 @@ export default function WomensProduct() {
                 Availability
               </MenuButton>
               <MenuList>
-                <MenuItem>
-                  <Checkbox>In stock (204)</Checkbox>
-                </MenuItem>
-                <MenuItem>
-                  <Checkbox>Out of stock (297)</Checkbox>
-                </MenuItem>
+                <CheckboxGroup
+                  value={filterValues}
+                  onChange={handleFilterChange}
+                >
+                  <MenuItem>
+                    <Checkbox value="instock">In stock (204)</Checkbox>
+                  </MenuItem>
+                  <MenuItem>
+                    <Checkbox value="outofstock">Out of stock (297)</Checkbox>
+                  </MenuItem>
+                </CheckboxGroup>
               </MenuList>
             </Menu>
           </DrawerBody>
@@ -243,26 +307,21 @@ export default function WomensProduct() {
           Featured
         </MenuButton>
         <MenuList>
-          <MenuItem>Featured</MenuItem>
-          <MenuItem>Best Selling</MenuItem>
-          <MenuItem>Alphabetically, A-Z</MenuItem>
-          <MenuItem>Alphabetically, Z-A</MenuItem>
-          <MenuItem>Price, low to high</MenuItem>
-          <MenuItem>Price, high to low</MenuItem>
-          <MenuItem>Date, old to new</MenuItem>
-          <MenuItem>Date, new to old</MenuItem>
+          <MenuItem onClick={handleSortAZ}>Alphabetically, A-Z</MenuItem>
+          <MenuItem onClick={handleSortZA}>Alphabetically, Z-A</MenuItem>
+          <MenuItem onClick={handleLowToHigh}>Price, low to high</MenuItem>
+          <MenuItem onClick={handleHighToLow}>Price, high to low</MenuItem>
         </MenuList>
       </Menu>
 
-      <div style={{ width: "80%" }}>
-        <Grid margin="auto" templateColumns="repeat(4, 1fr)">
+      <Box style={{ width: "75%" }}>
+        <Grid margin="auto" templateColumns="repeat(3, 1fr)">
           {womenProducts?.length > 0 &&
             womenProducts?.map((item: Product) =>
               item.active ? <WomenProductCard key={item.id} {...item} /> : false
             )}
         </Grid>
-      </div>
-      <Footer />
+      </Box>
     </>
   );
 }

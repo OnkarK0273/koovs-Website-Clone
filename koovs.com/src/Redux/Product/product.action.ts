@@ -100,16 +100,15 @@ export const postSingleProduct = async (payload: any) => {
   }
 };
 
-export const singleWomenProduct =
-  (id: string) => async (dispatch: AppDispatch) => {
-    try {
-      let res = await axios.get(`http://localhost:8080/women/${id}`);
-      let data = res.data;
-      dispatch(getSingleProductSuccess(data));
-    } catch (error) {
-      console.log(error);
-    }
-  };
+export const singleWomenProduct = async (id: string) => {
+  try {
+    let res = await axios.get(`http://localhost:8080/women/${id}`);
+    let data = await res.data;
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const getWomenProducts = (): any => async (dispatch: AppDispatch) => {
   dispatch(productRequest());
