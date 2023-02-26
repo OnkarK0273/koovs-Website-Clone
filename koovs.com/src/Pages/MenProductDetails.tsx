@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+// import { MouseEventHandler } from "react";
 import { useParams } from "react-router-dom";
 import {
   postSingleProduct,
@@ -21,16 +22,20 @@ const MenProductDetails = () => {
     is_best_seller: false,
     Order_status: "",
     isOrdered: false,
-    size: {
-      S: "small",
-      M: "medium",
-      L: "large",
-    },
+    size: "",
     quantity: 1,
   };
 
   const [data, setData] = useState(myData);
   const { id } = useParams();
+
+  const handleSize = (e: any) => {
+    const selectedSize = e.currentTarget.innerText;
+    setData((prevState) => ({
+      ...prevState,
+      size: selectedSize,
+    }));
+  };
 
   const fetchData = async () => {
     let data = await singleProduct(id as string).then((res: any) => {
@@ -43,12 +48,6 @@ const MenProductDetails = () => {
     // singleData = data;
     // setSingleData(data);
     postSingleProduct(data);
-  };
-
-  const handleSize = (e: any) => {
-    // const sizeKey = e.currentTarget.innerText;
-    // const selectedSize = data.size[sizeKey as "S" | "M" | "L"];
-    postSingleProduct(data.size[e.currentTarget.innerText as "S" | "M" | "L"]);
   };
 
   useEffect(() => {
@@ -73,8 +72,8 @@ const MenProductDetails = () => {
           <p>Quantity</p>
 
           <Text onClick={handleSize}>S</Text>
-          {/* <Text onClick={handleSize}>M</Text> */}
-          {/* <Text onClick={handleSize}>L</Text> */}
+          <Text onClick={handleSize}>M</Text>
+          <Text onClick={handleSize}>L</Text>
 
           <Button
             style={{
