@@ -2221,7 +2221,7 @@
       "img2": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/koovs-3384.jpg?v=1670758925&width=360",
       "brand": null,
       "title": "Drink Up Grinches Christmas Print Pyjama Set",
-      "price": 790,
+      "price": 799,
       "description": "Power through each rep with a redesigned shoe that brings support and stability to your...",
       "category": "loungwear",
       "is_best_seller": false,
@@ -3027,8 +3027,6 @@
   ],
   "cart": [
     {
-
-
       "id": "M1HBC",
       "active": true,
       "img1": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/komatoes-tokeyos-green-camos-resized-04.jpg?v=1668080478&width=360",
@@ -3044,7 +3042,6 @@
       "size": ""
     },
     {
-
       "id": "M3HBC",
       "active": true,
       "img1": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/komatoes-tokeyos-navy-yellow-resized-03.jpg?v=1668080471&width=360",
@@ -3056,13 +3053,12 @@
       "category": "shoes",
       "is_best_seller": false,
       "Order_status": "Pending",
-
       "isOrdered": false
     }
   ],
   "total": {
-    "total": 3980
-      "isOrdered": false,
-      "size": ""
-    }
+    "total": 3980,
+    "isOrdered": false,
+    "size": ""
+  }
 }
