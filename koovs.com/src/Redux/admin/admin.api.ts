@@ -5,7 +5,7 @@ export const getMensAPI = async (getProductsParam?: {
   params: { category: string[]; _limit: number; _page: number; q: string[] };
 }) => {
   let res: AxiosResponse<Product[]> = await axios.get(
-    `http://localhost:8080/mens`,
+    `https://kools.onrender.com/mens`,
     getProductsParam
   );
   return res.data;
@@ -15,7 +15,7 @@ export const getWomensAPI = async (getProductsParam?: {
   params: { category: string[]; _limit: number; _page: number; q: string[] };
 }) => {
   let res: AxiosResponse<Product[]> = await axios.get(
-    `http://localhost:8080/womens`,
+    `https://kools.onrender.com/womens`,
     getProductsParam
   );
   return res.data;
@@ -25,7 +25,7 @@ export const getUsersAPI = async (getUserParam?: {
   params: { _limit: number; _page: number; q: string[] };
 }) => {
   let res: AxiosResponse<Userdetails[]> = await axios.get(
-    `http://localhost:8080/UserDetails`,
+    `https://kools.onrender.com/UserDetails`,
     getUserParam
   );
   return res.data;
@@ -33,14 +33,14 @@ export const getUsersAPI = async (getUserParam?: {
 
 export const getAdminAPI = async () => {
   let res: AxiosResponse<Admin> = await axios.get(
-    `http://localhost:8080/AdminDetails`
+    `https://kools.onrender.com/AdminDetails`
   );
   return res.data;
 };
 
 export const getMensToggleAPI = async (id: string, val: boolean) => {
   let res: AxiosResponse<Product> = await axios.patch(
-    `http://localhost:8080/mens/${id}`,
+    `https://kools.onrender.com/mens/${id}`,
     { active: !val }
   );
   return res.data;
@@ -48,7 +48,7 @@ export const getMensToggleAPI = async (id: string, val: boolean) => {
 
 export const getWomensToggleAPI = async (id: string, val: boolean) => {
   let res: AxiosResponse<Product> = await axios.patch(
-    `http://localhost:8080/womens/${id}`,
+    `https://kools.onrender.com/womens/${id}`,
     { active: !val }
   );
   return res.data;
@@ -61,7 +61,7 @@ export const getMensPatchAPI = async (
   title: string
 ) => {
   let res: AxiosResponse<Product> = await axios.patch(
-    `http://localhost:8080/mens/${id}`,
+    `https://kools.onrender.com/mens/${id}`,
     { img1: image, price: price, title: title }
   );
   return res.data;
@@ -74,7 +74,7 @@ export const getWomensPatchAPI = async (
   title: string
 ) => {
   let res: AxiosResponse<Product> = await axios.patch(
-    `http://localhost:8080/womens/${id}`,
+    `https://kools.onrender.com/womens/${id}`,
     { img1: image, price: price, title: title }
   );
   return res.data;
@@ -89,7 +89,7 @@ export const getUsersPatchAPI = async (
   Email: string
 ) => {
   let res: AxiosResponse<Userdetails> = await axios.patch(
-    `http://localhost:8080/UserDetails/${id}`,
+    `https://kools.onrender.com/UserDetails/${id}`,
     { Name: Name, Phone: Phone, Email: Email, Image: Image, Password: Password }
   );
   return res.data;
@@ -103,7 +103,7 @@ export const getAdminUserPatchAPI = async (
   Image:string
 ) => {
   let res: AxiosResponse<Userdetails> = await axios.patch(
-    `http://localhost:8080/AdminDetails`,
+    `https://kools.onrender.com/AdminDetails`,
     { Name,EmailId,Phone,Password,Image}
   );
   return res.data;

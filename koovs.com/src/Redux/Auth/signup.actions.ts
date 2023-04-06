@@ -18,7 +18,7 @@ export const signupUserApi = (payload:SignupDetail) => async(dispatch: AppDispat
 
     try {
         const response = await axios.post(
-            `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/allUsers`, payload
+            `https://kools.onrender.com/allUsers`, payload
             );
         dispatch(signupSuccess(response.data));
         console.log(response.data)

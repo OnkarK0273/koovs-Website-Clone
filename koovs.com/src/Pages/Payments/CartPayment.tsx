@@ -45,7 +45,7 @@ const CartPayment: React.FC = () => {
 
   const getTotal = async () => {
     let res = await axios.get(
-      `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/total`
+      `https://kools.onrender.com/total`
     );
     let data = await res.data;
     setTotal(data.total);
@@ -53,7 +53,7 @@ const CartPayment: React.FC = () => {
 
   const getPhone = async () => {
     let res = await axios.get(
-      `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/UserDetails`
+      `https://kools.onrender.com/UserDetails`
     );
     let data = await res.data;
     setPhone(data[0].Phone);
@@ -77,12 +77,12 @@ const CartPayment: React.FC = () => {
 
     for (let i = 0; i < cart.length; i++) {
       await axios.delete(
-        `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/cart/${cart[i].id}`
+        `https://kools.onrender.com/cart/${cart[i].id}`
       );
     }
 
     await axios.post(
-      `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/total`,
+      `https://kools.onrender.com/total`,
       {
         total: 0,
       }

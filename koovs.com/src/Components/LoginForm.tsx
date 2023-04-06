@@ -30,7 +30,7 @@ const LoginForm = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/allUsers`
+        `https://kools.onrender.com/allUsers`
       )
       .then((res) => setAllUsers(res.data))
       .catch((err) => dispatch(loginError()));

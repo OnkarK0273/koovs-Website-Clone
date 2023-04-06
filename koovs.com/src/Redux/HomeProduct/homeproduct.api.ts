@@ -4,7 +4,7 @@ import { Product } from "../../utils/types";
 export const getHomeMenProductsAPI = async () => {
   try {
     let res: AxiosResponse<Product[]> = await axios.get(
-      `http://localhost:8080/mens?category_like=hoodes&_limit=8`
+      `https://kools.onrender.com/mens?category_like=hoodes&_limit=8`
     );
     return res.data;
   } catch (error) {
@@ -14,7 +14,7 @@ export const getHomeMenProductsAPI = async () => {
 export const getHomeWomenProductsAPI = async () => {
   try {
     let res: AxiosResponse<Product[]> = await axios.get(
-      `http://localhost:8080/womens?category_like=loungwear&_start=1&_end=9&_limit=8`
+      `https://kools.onrender.com/womens?category_like=loungwear&_start=1&_end=9&_limit=8`
     );
     return res.data;
   } catch (error) {
@@ -25,7 +25,7 @@ export const getHomeWomenProductsAPI = async () => {
 export const getHomeShoesProductsAPI = async () => {
   try {
     let res: AxiosResponse<Product[]> = await axios.get(
-      `http://localhost:8080/womens?category_like=sneakers&_start=2&_end=8&_limit=8`
+      `https://kools.onrender.com/womens?category_like=sneakers&_start=2&_end=8&_limit=8`
     );
     return res.data;
   } catch (error) {
@@ -36,7 +36,7 @@ export const getHomeShoesProductsAPI = async () => {
 export const getHomeTshirtsProductsAPI = async () => {
   try {
     let res: AxiosResponse<Product[]> = await axios.get(
-      `http://localhost:8080/mens?category_like=t-shirt&_start=2&_end=8&_limit=8`
+      `https://kools.onrender.com/mens?category_like=t-shirt&_start=2&_end=8&_limit=8`
     );
     return res.data;
   } catch (error) {
