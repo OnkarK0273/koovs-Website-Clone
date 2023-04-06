@@ -30,7 +30,7 @@ export const getCartApi = () => async (dispatch: AppDispatch) => {
   dispatch(getCartApiReq());
   try {
     const response = await axios.get(
-      `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/cart`
+      `https://kools.onrender.com/cart`
     );
     dispatch(getCartApiSuc(response.data));
   } catch (error) {
@@ -41,7 +41,7 @@ export const getCartApi = () => async (dispatch: AppDispatch) => {
 // export const delCartApi = async (id: number) => {
 //   try {
 //     await axios.delete(
-//       `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/cart/${id}`
+//       `https://kools.onrender.com/cart/${id}`
 //     );
 //   } catch (error) {
 //     console.log(error);
@@ -51,7 +51,7 @@ export const getCartApi = () => async (dispatch: AppDispatch) => {
 export const delCartApi = (id: number) => async (dispatch: AppDispatch) => {
   try {
     await axios.delete(
-      `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/cart/${id}`
+      `https://kools.onrender.com/cart/${id}`
     );
     dispatch(getCartApi());
   } catch (error) {

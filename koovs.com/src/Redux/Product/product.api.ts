@@ -4,7 +4,7 @@ import { Product } from "../../utils/types";
 export const getProductsAPI = async () => {
   try {
     let res: AxiosResponse<Product[]> = await axios.get(
-      `http://localhost:8080/mens`
+      `https://kools.onrender.com/mens`
     );
     return res.data;
   } catch (error) {
@@ -16,7 +16,7 @@ export const getProductsAPI = async () => {
 // export const getSingleProductAPI = async ({ id: string }) => {
 //   try {
 //     let res: AxiosResponse<Product[]> = await axios.get(
-//       `http://localhost:8080/mens/${id}`
+//       `https://kools.onrender.com/mens/${id}`
 //     );
 //     return res.data;
 //   } catch (error) {
@@ -27,7 +27,7 @@ export const getProductsAPI = async () => {
 export const getWomenProductsAPI = async () => {
   try {
     let res: AxiosResponse<Product[]> = await axios.get(
-      `http://localhost:8080/womens`
+      `https://kools.onrender.com/womens`
     );
     return res.data;
   } catch (error) {

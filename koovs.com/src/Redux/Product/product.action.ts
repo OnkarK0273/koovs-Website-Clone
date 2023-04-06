@@ -84,7 +84,7 @@ export const getProducts = (): any => async (dispatch: AppDispatch) => {
 
 export const singleProduct = async (id: string) => {
   try {
-    let res = await axios.get(`http://localhost:8080/mens/${id}`);
+    let res = await axios.get(`https://kools.onrender.com/mens/${id}`);
     let data = await res.data;
     return data;
   } catch (error) {
@@ -94,7 +94,7 @@ export const singleProduct = async (id: string) => {
 
 export const postSingleProduct = async (payload: any) => {
   try {
-    await axios.post(`http://localhost:8080/cart`, payload);
+    await axios.post(`https://kools.onrender.com/cart`, payload);
   } catch (error) {
     console.log(error);
   }
@@ -102,7 +102,7 @@ export const postSingleProduct = async (payload: any) => {
 
 export const singleWomenProduct = async (id: string) => {
   try {
-    let res = await axios.get(`http://localhost:8080/women/${id}`);
+    let res = await axios.get(`https://kools.onrender.com/women/${id}`);
     let data = await res.data;
     return data;
   } catch (error) {
