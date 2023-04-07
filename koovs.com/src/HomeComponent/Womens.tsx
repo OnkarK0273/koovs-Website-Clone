@@ -9,7 +9,7 @@ const Womens = () => {
   const womenProducts = useAppSelector(
     (store) => store.HomeProductReducer.womenData
   );
-  console.log("women",womenProducts)
+  // console.log("women",womenProducts)
 
   useEffect(() => {
     if (womenProducts.length === 0) {

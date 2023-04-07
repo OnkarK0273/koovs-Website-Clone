@@ -32,7 +32,7 @@ const CartPayment: React.FC = () => {
   const [total, setTotal] = useState(0);
   const [phone, setPhone] = useState("");
   const cart = useAppSelector((store) => store.CartReducer.cart);
-  console.log(cart);
+  // console.log(cart);
 
   const dispatch = useAppDispatch();
 
@@ -93,7 +93,7 @@ const CartPayment: React.FC = () => {
     getTotal();
   };
 
-  console.log(total);
+  // console.log(total);
 
   let getPrice = total;
 

@@ -9,7 +9,7 @@ import { getShoesProducts } from "../Redux/HomeProduct/homeproduct.action";
 const Mens = () => {
      const dispatch = useAppDispatch();
   const shoesProducts = useAppSelector((store) => store.HomeProductReducer.shoesData);
-  console.log("shoes",shoesProducts);
+  // console.log("shoes",shoesProducts);
 
   useEffect(() => {
     if (shoesProducts.length === 0) {

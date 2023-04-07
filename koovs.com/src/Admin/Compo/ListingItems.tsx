@@ -168,7 +168,7 @@ export default function ListingItems({data,setPage,page}:listingListProps) {
                 value={image}
                 onChange={(e) => {
                   SetImage(e.target.value);
-                  console.log(e.target.value);
+                  // console.log(e.target.value);
                 }}
               >
                 {/* Title- {modalDetail.product_title} */}
@@ -180,7 +180,7 @@ export default function ListingItems({data,setPage,page}:listingListProps) {
                 value={title}
                 onChange={(e) => {
                   setTitle(e.target.value);
-                  console.log(e.target.value);
+                  // console.log(e.target.value);
                 }}
               >
                 {/* Title- {modalDetail.product_title} */}
@@ -192,7 +192,7 @@ export default function ListingItems({data,setPage,page}:listingListProps) {
                 value={price}
                 onChange={(e) => {
                   setPrice(Number(e.target.value));
-                  console.log(e.target.value);
+                  // console.log(e.target.value);
                 }}
               >
                 {/* Price- Rs {Math.floor(Number(modalDetail.product_price) * 60)} */}

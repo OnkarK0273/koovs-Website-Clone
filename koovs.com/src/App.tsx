@@ -10,14 +10,14 @@ import BackToTop from "./HomeComponent/BackToTop";
 
 function App() {
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   return (
     <div>
       {location.pathname === "/admin" ? (
         false
       ) : (
         <Box>
-          <BackToTop/>
+          {/* <BackToTop/> */}
           <Navbar />
           <Divider />
           <Navbar1 />

@@ -29,8 +29,7 @@ export default function Listing() {
           category: searchParams.getAll('catagory'),
           _limit:10,
           _page:page,
-         
-            q:searchParams?.getAll('serch')
+          q:searchParams?.getAll('serch')
           
 
 

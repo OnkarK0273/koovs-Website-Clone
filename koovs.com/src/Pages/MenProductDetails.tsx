@@ -6,7 +6,7 @@ import {
   singleProduct,
 } from "../Redux/Product/product.action";
 import { Link } from "react-router-dom";
-import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Text,Heading,VStack } from "@chakra-ui/react";
 
 const MenProductDetails = () => {
   const myData = {
@@ -25,7 +25,7 @@ const MenProductDetails = () => {
     size: "",
     quantity: 1,
   };
-
+ 
   const [data, setData] = useState(myData);
   const { id } = useParams();
 
@@ -57,20 +57,29 @@ const MenProductDetails = () => {
   return (
     <Box>
       <Box
-        style={{
-          display: "flex",
-          padding: "10px",
-          textAlign: "left",
-          marginLeft: "30px",
-        }}
+        display='flex'
+        justifyContent={"space-evenly"}
+        alignItems={"center"}
+        flexDirection={{base:"column",md:"row"}}
       >
-        <Image src={data.img1} alt={data.title} />
-        <Box style={{ marginLeft: "50px" }}>
-          <h1 style={{ fontSize: "30px" }}>{data.title}</h1>
-          <h3>Rs. {data.price}</h3>
-          <p>Tax included</p>
+        <Box p='20px'>
+           <Image 
+           src={data.img1}
+           objectFit="cover"
+           alt={data.title} 
+           
+            />
+        </Box>
+        <VStack 
+          rowGap='10px'
+          p='20px'
 
-          <Flex justify={"space-evenly"} direction={"row"} mb={4}>
+         >
+          <Heading>{data.title}</Heading>
+          <Heading size='md' >Rs. {data.price}</Heading>
+          <Text>Tax included</Text>
+
+          <Flex justify={"space-evenly"} direction={"row"} >
             <Text
               border={"1px solid black"}
               borderRadius={"7px"}
@@ -127,7 +136,7 @@ const MenProductDetails = () => {
             </Text>
           </Flex>
 
-          <Flex justify={"space-evenly"} direction={"row"} mb={4}>
+          <Flex justify={"space-evenly"} direction={"row"} >
             <Text
               border={"none"}
               borderRadius={"full"}
@@ -190,7 +199,8 @@ const MenProductDetails = () => {
               BUY IT NOW
             </Button>
           </Flex>
-        </Box>
+          <Heading size='md' pt='20px' >{data.description}</Heading>
+        </VStack>
       </Box>
     </Box>
   );

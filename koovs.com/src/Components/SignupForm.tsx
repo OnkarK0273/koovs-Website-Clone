@@ -35,7 +35,7 @@ const SignupForm = (): JSX.Element => {
     setSignupDetails(newDetails);
   };
 
-  console.log(state);
+  // console.log(state);
   // console.log(signupDetails);
 
   const handleSignupFormSubmit = () => {

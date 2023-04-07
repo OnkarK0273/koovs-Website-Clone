@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { Admin, Product, Userdetails } from "../../utils/types";
 
+// get requests -------------------------
 export const getMensAPI = async (getProductsParam?: {
   params: { category: string[]; _limit: number; _page: number; q: string[] };
 }) => {
@@ -37,6 +38,8 @@ export const getAdminAPI = async () => {
   );
   return res.data;
 };
+
+// patch requests ------------------------------------
 
 export const getMensToggleAPI = async (id: string, val: boolean) => {
   let res: AxiosResponse<Product> = await axios.patch(
