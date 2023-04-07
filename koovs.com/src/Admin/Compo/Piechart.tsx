@@ -1,4 +1,4 @@
-import { Box, Center, Heading, HStack, useBreakpointValue, VStack } from '@chakra-ui/react'
+import { Box, Center, Heading, HStack, useBreakpointValue, VStack,Flex } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import Chart from 'react-apexcharts'
 // import { getAdminMen, getAdminWomen } from '../../Redux/admin/admin.action'
@@ -11,59 +11,9 @@ interface piechartProp{
 }
 
 export default function Piechart({mens,womens}:piechartProp) {
-    // const mens = useAppSelector((store)=>store.adminReducer.mens)
-    // const womens = useAppSelector((store)=>store.adminReducer.womens)
-    // const dispatch = useAppDispatch()
     const [toggle,setToggle] = useState(true)
-    //mens
-    const [shoes,setShoes] = useState<Product[]>([])
-    const [pants,setPants] = useState<Product[]>([])
-    const [tshirt,setTshirt] = useState<Product[]>([])
-    const [hoodes,setHodees] = useState<Product[]>([])
-    const [mensarr,setArr] = useState<number[]>([])
-    // womens
-    const [sneakers,setsneakers ] = useState<Product[]>([])
-    const[loungwear,setloungwear ] = useState<Product[]>([])
-    const [bodysuit,setbodysuit] = useState<Product[]>([])
-    const [womensarr,setwomensArr] = useState<number[]>([])
+  
 
-
-
-    
-   
-    
-
-
-    // useEffect(()=>{
-    //     dispatch(getAdminMen())
-    //     dispatch(getAdminWomen())
-    // },[])
-
-
-    useEffect(()=>{
-       //mens
-        let shoesarr = mens?.filter((el:Product)=>el.category === 'shoes')
-        let pantsarr = mens?.filter((el:Product)=>el.category === 'pants')
-        let tshirtsarr = mens?.filter((el:Product)=>el.category === 't-shirt')
-        let hoodesarr = mens?.filter((el:Product)=>el.category === 'hoodes')
-        setShoes(shoesarr)
-        setPants(pantsarr)
-        setTshirt(tshirtsarr)
-        setHodees(hoodesarr)
-        setArr([shoes.length,pants.length,tshirt.length,hoodes.length])
-
-        //womens
-        let sneakersarr = womens?.filter((el:Product)=>el.category === 'sneakers')
-        let loungweararr = womens?.filter((el:Product)=>el.category === 'loungwear')
-        let bodysuitsarr = womens?.filter((el:Product)=>el.category === 'bodysuit')
-        setsneakers(sneakersarr)
-        setloungwear(loungweararr)
-        setbodysuit(bodysuitsarr)
-        setwomensArr([sneakers.length,loungwear.length,bodysuit.length])
-
-
-    },[toggle])
-    
     const variant = useBreakpointValue(
         {
           base: '350',
@@ -76,7 +26,7 @@ export default function Piechart({mens,womens}:piechartProp) {
   return (
     <Box >
 
-    <Center>
+    <Flex justifyContent='center' alignItems='center'  >
         <VStack boxShadow='dark-lg' p='5' rounded='md' bg='white'  >
             <HStack justifyContent={'space-evenly'} border='0px' w='99%' >
                 <Heading color={toggle?'black':'gray.400'} cursor='pointer' onClick={()=>{setToggle(true)}} pb='10px' >Mens</Heading>
@@ -88,7 +38,7 @@ export default function Piechart({mens,womens}:piechartProp) {
                 width={variant}
                 height={variant}
                 
-                series={mensarr}
+                series={[mens?.filter((el:Product)=>el.category === 'shoes').length,mens?.filter((el:Product)=>el.category === 'pants').length,mens?.filter((el:Product)=>el.category === 't-shirt').length,mens?.filter((el:Product)=>el.category === 'hoodes').length]}
                 
     
                 options={{
@@ -142,7 +92,7 @@ export default function Piechart({mens,womens}:piechartProp) {
                 width={variant}
                 height={variant}
                 
-                series={womensarr}
+                series={[womens?.filter((el:Product)=>el.category === 'sneakers').length,womens?.filter((el:Product)=>el.category === 'loungwear').length,womens?.filter((el:Product)=>el.category === 'bodysuit').length]}
                 
     
                 options={{
@@ -196,7 +146,7 @@ export default function Piechart({mens,womens}:piechartProp) {
             
         </VStack>
 
-    </Center> 
+    </Flex> 
 
 
     </Box>

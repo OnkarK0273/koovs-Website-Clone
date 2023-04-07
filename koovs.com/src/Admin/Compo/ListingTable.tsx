@@ -12,7 +12,7 @@ interface ListingtableProp{
 export default function ListingTable({data,handleToggle,handleOpenDetails}:ListingtableProp) {
     const loading = useAppSelector((store)=>store.adminReducer.loading)
     
-    console.log('loading',loading)
+    // console.log('loading',loading)
    
 
 

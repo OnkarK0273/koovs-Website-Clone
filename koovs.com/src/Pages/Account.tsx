@@ -10,7 +10,7 @@ const Account = () => {
     const {fName, lName, email} = details;
     const [forceRefresh, setForceReferesh] = React.useState(false)
     const dispatch = useAppDispatch()
-    console.log(isAuth)
+    // console.log(isAuth)
 
     const logoutfn = () => {
 

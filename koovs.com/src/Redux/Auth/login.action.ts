@@ -3,7 +3,7 @@ import { LoginDetail } from "../../utils/types";
 import * as types from "./login.types";
 
 export const loginSuccess = (payload: LoginDetail) => {
-    console.log(payload)
+    // console.log(payload)
     return {type: types.LOGIN_SUCCESS, payload}
 }
 

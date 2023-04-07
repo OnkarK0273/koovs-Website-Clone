@@ -6,7 +6,7 @@ import * as types from "./signup.types"
 // signup actions
 
 export const signupSuccess = (payload:SignupDetail) => {
-    console.log(payload)
+    // console.log(payload)
     return {type: types.SIGNUP_SUCCESS, payload}
 }
 
@@ -21,7 +21,7 @@ export const signupUserApi = (payload:SignupDetail) => async(dispatch: AppDispat
             `https://kools.onrender.com/allUsers`, payload
             );
         dispatch(signupSuccess(response.data));
-        console.log(response.data)
+        // console.log(response.data)
   } catch (error) {
     dispatch(signupError());
   }

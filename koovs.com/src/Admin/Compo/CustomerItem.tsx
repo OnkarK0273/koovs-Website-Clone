@@ -168,7 +168,7 @@ export default function CustomerItems({data,setPage,page}:listingListProps) {
                 value={image}
                 onChange={(e) => {
                   setImage(e.target.value);
-                  console.log(e.target.value);
+                  // console.log(e.target.value);
                 }}
               >
                 {/* Title- {modalDetail.product_title} */}

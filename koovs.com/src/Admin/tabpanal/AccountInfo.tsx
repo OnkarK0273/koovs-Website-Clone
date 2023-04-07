@@ -73,7 +73,7 @@ const AccountInfo = () => {
     
   };
 
-  console.log(admin);
+  // console.log(admin);
   
   useEffect(() => {
 

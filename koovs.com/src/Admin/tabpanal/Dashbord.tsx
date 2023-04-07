@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box,Center } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { getAdminMen, getAdminWomen } from "../../Redux/admin/admin.action";
 import { useAppDispatch, useAppSelector } from "../../Redux/store";
@@ -14,8 +14,10 @@ export default function Dashbord() {
   }, []);
   return (
 
-    <Box  pt={{ base: "80px", md: "20px" }} minH={"100vh"} >
-        <Piechart  mens={mens} womens={womens}/>
+    <Box  pt={{ base: "80px", md: "80px" }} minH={"100vh"} >
+       
+          <Piechart  mens={mens} womens={womens}/>
+        
     </Box>
   );
 }

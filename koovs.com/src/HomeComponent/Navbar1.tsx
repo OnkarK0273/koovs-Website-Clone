@@ -87,7 +87,9 @@ export default function Navbar1() {
               </Link>
             </Tooltip>
           </Stack>
+          <Box display={{ base: "flex", md: "none" }} >
 
+          </Box>
           <Flex
             direction={["column", "row"]}
             align={isSmallScreen ? "center" : "flex-right"}

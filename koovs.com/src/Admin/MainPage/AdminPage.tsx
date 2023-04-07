@@ -69,7 +69,7 @@ export default function AdminPage() {
           <Box width={"60%"} m={"auto"} mt={0} mb={0}>
             <Image
               alt="logo"
-              src="/images/koolz-logo.png"
+              src="https://raw.githubusercontent.com/OnkarK0273/penitent-degree-5872/main/koovs.com/public/images/Koolz-logo.png"
             ></Image>
           </Box>
 

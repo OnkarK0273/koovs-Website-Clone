@@ -7,7 +7,7 @@ import { getTshirtsProducts } from "../Redux/HomeProduct/homeproduct.action";
 const Tshirts = () => {
      const dispatch = useAppDispatch();
   const tshirtsProducts = useAppSelector((store) => store.HomeProductReducer.tshirtsData);
-  console.log("tshirts",tshirtsProducts);
+  // console.log("tshirts",tshirtsProducts);
 
   useEffect(() => {
     if (tshirtsProducts.length === 0) {
