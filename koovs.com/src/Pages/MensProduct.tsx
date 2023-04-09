@@ -20,6 +20,7 @@ import {
   Center,
   Heading
 } from "@chakra-ui/react";
+import NotFound from "../Components/Error";
 import { useDisclosure } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useAppDispatch, useAppSelector } from "../Redux/store";
@@ -37,10 +38,11 @@ export default function MensProduct() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const size = "sm";
   const [page,setPage] = useState(1)
-  const [gridsize,setSize] = useState('4')
+  
   const location = useLocation()
   const dispatch = useAppDispatch();
   const menProducts = useAppSelector((store) => store.ProductReducer.mensData);
+  
   const [searchParams, setSearchParams] = useSearchParams();
   const initialFIlterValues = searchParams.getAll("filter");
   const initialFIlterValues2 = searchParams.getAll("filter1");
@@ -99,7 +101,7 @@ export default function MensProduct() {
     setSearchParams(params);
   }, [filterValues, setSearchParams,filterValues2]);
 
-  // console.log(menProducts)
+  
 
   const handleSortAZ = () => {
     const sortProducts = [...menProducts].sort((a, b) =>
@@ -124,6 +126,7 @@ export default function MensProduct() {
     const priceData = [...menProducts].sort((a, b) => a.price - b.price);
     dispatch(updateMensProduct(priceData));
   };
+
 
   return (
     <>
@@ -237,7 +240,7 @@ export default function MensProduct() {
               rightIcon={<ChevronDownIcon />}
               backgroundColor="white"
             >
-              Featured
+              Sort
             </MenuButton>
             <MenuList>
               <MenuItem onClick={handleSortAZ}>Alphabetically, A-Z</MenuItem>
@@ -248,12 +251,11 @@ export default function MensProduct() {
           </Menu>
         </Box>
         <Box display={{base:'none',lg:"flex"}} >
-            <Icon as={TfiLayoutColumn4Alt} boxSize='8' onClick={()=>{setSize('4')}} cursor='pointer'  />
-            <Icon as={TfiLayoutColumn3Alt}  boxSize='8'ml='10px' onClick={()=>{setSize('3')}} cursor='pointer' />
+            
         </Box>
       </Flex>
       <Box  >
-        <Grid  templateColumns={{base:"repeat(1, 1fr)",md:"repeat(2, 1fr)",lg:`repeat(${gridsize}, 1fr)`}}  >
+        <Grid  templateColumns={{base:"repeat(1, 1fr)",md:"repeat(2, 1fr)",lg:`repeat(3, 1fr)`}}  >
           {menProducts?.length > 0 &&
             menProducts?.map((item: Product) =>
               item.active ? <MenProductCard key={item.id} {...item} /> : false

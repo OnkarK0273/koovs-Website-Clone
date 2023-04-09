@@ -8,8 +8,11 @@ import {
   Icon,
   chakra,
   Tooltip,
+  Skeleton,
+  Stack
 } from "@chakra-ui/react";
 import { FiShoppingCart } from "react-icons/fi";
+import { useAppDispatch, useAppSelector } from "../Redux/store";
 import { Link } from "react-router-dom";
 import { Product } from "../utils/types";
 import {  useState } from "react";
@@ -32,10 +35,15 @@ function MenProductCard({
   size,
   price,
 }: Product) {
+  const loading = useAppSelector((store) => store.ProductReducer.loading)
+
+  
 
   return (
-    <>
-      <Flex
+    <>{
+      loading? <Stack direction={'row'} w='400px' m='auto'    >
+      <Skeleton height='380px' p='20px' m='5px'  w='100%'  />
+      </Stack>:<Flex
         p={5}
         // w="80%"
         w="400px"
@@ -118,7 +126,7 @@ function MenProductCard({
             <Flex justifyContent="center" alignItems='center' >
               <Box
                 fontSize="2xl"
-                color={useColorModeValue("gray.800", "white")}
+               
                
               >
                 <Box as="span" color={"gray.600"} fontSize="lg">
@@ -130,6 +138,8 @@ function MenProductCard({
           </Box>
         </Box>
       </Flex>
+    }
+      
     </>
   );
 }
