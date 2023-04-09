@@ -89,7 +89,11 @@ export interface LoginState {
   isLoading: boolean;
   isError: boolean;
   isAuth: boolean;
-  details: LoginDetail;
+  email: string;
+  fName?: string;
+  lName?: string;
+  
+  
 }
 
 

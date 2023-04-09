@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { adminLogin, getAdminAdmin } from "../../Redux/admin/admin.action";
 import { getAdminAPI } from "../../Redux/admin/admin.api";
 import { loginRequest, loginSuccess } from "../../Redux/Auth/login.action";
@@ -22,15 +22,10 @@ import { AdminLoginDetails } from "../../utils/types";
 
 const AdminLogin = () => {
   
-  const isAdmin = useAppSelector((store) => store.adminReducer.isAdmin);
-
-  // if (isAdmin) {
-  //   return <Navigate to={"/admin"} replace={true} />;
-  // }
-
   const dispatch = useAppDispatch();
   const {admin} = useAppSelector((store)=> store.adminReducer)
   const toast = useToast()
+  const navigate = useNavigate()
 
   const [loginDetailsAdmin, setLoginDetailsAdmin] = React.useState<AdminLoginDetails>({
     email: "",
@@ -56,10 +51,32 @@ const AdminLogin = () => {
 
     const handleFormSubmit = ():void => {
       dispatch(loginRequest());
-      if(admin.EmailId == loginDetailsAdmin.email && admin.Password == loginDetailsAdmin.password){
-        dispatch(adminLogin());
-        admin.isAdmin && admin.isAuth && sessionStorage.setItem("KoolAdmin", JSON.stringify(true));
+      if(admin.EmailId === loginDetailsAdmin.email && admin.Password === loginDetailsAdmin.password){
+        dispatch(adminLogin()).then(()=>{
+
+          toast({
+            title: "Login Sucessfull",
+            status: "success",
+            duration: 2000,
+            isClosable: true,
+            position: "top",
+          })
+
+          navigate('/admin')
+        })
+        // admin.isAdmin && admin.isAuth && sessionStorage.setItem("KoolAdmin", JSON.stringify(true));
         return;
+      }else{
+
+        toast({
+          title: "invalid Email or Password",
+          status: "warning",
+          duration: 3000,
+          isClosable: true,
+          position: "top",
+        });
+        
+
       }
       if (loginDetailsAdmin.email === "" || loginDetailsAdmin.password === "") {
         toast({
@@ -128,7 +145,7 @@ const AdminLogin = () => {
               color: "black",
             }}
           >
-            Sign In
+            Login
           </Button>
         </VStack>
       </>

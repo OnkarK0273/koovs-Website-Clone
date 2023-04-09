@@ -63,7 +63,7 @@ export const getAdminAdmin = () => async (dispatch: AppDispatch) => {
 
 // admin login
 
-export const adminLogin = () =>async (dispatch:AppDispatch) => {
+export const adminLogin = ():any =>async (dispatch:AppDispatch) => {
   dispatch({type:types.ADMIN_LOADING});
   try {
     let data = await getAdminAPI();
@@ -72,6 +72,13 @@ export const adminLogin = () =>async (dispatch:AppDispatch) => {
     console.log(err);
     dispatch({ type: types.ADMIN_ERROR });
   }
+}
+
+// admin logout
+export const adminLogout = ():any =>async (dispatch:AppDispatch) => {
+  
+  dispatch({ type: types.ADMIN_LOGOUT });
+  
 }
 
 

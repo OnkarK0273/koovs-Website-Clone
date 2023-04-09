@@ -14,6 +14,7 @@ import Account from "../Pages/Account";
 import AdminLogin from "../Admin/MainPage/AdminLogin";
 import Admin from "../Pages/Admin";
 import PrivateRoute from "./PrivateRoute";
+import PrivateRoute2 from "./PrivateRoute2";
 
 export default function MainRoute() {
   return (
@@ -23,16 +24,16 @@ export default function MainRoute() {
         <Route path={"/login"} element={<Login />} />
         <Route path={"/signup"} element={<Signup />} />
         <Route path={"/account"} element={<Account />} />
-        <Route path={"/men"} element={<MensProduct />} />
-        <Route path={"/women"} element={<WomensProduct />} />
+        <Route path={"/men"} element={<PrivateRoute2><MensProduct /></PrivateRoute2>  } />
+        <Route path={"/women"} element={<PrivateRoute2><WomensProduct /></PrivateRoute2>} />
         <Route path={"/men/:id"} element={<MenProductDetails />} />
         <Route path={"/women/:id"} element={<WomenProductDetails />} />
         <Route path={"/adminlogin"} element={<AdminLogin />} />
-        <Route path={"/cart"} element={<Cart />} />
+        <Route path={"/cart"} element={<PrivateRoute2><Cart /></PrivateRoute2> } />
         <Route path={"/payments"} element={<Payments />} />
         <Route path={"/paymentpage"} element={<PaymentPage />} />
-        <Route path={"/wishlist"} element={<Wishlist />} />
-        <Route path={"/admin"} element={<Admin />} />
+        <Route path={"/wishlist"} element={<PrivateRoute2><Wishlist /></PrivateRoute2>} />
+        <Route path={"/admin"} element={ <PrivateRoute><Admin /></PrivateRoute> } />
         <Route path="*" element={<h1>Page not found</h1>} />
       </Routes>
     </>

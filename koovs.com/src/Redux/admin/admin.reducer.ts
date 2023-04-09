@@ -51,8 +51,14 @@ export const adminReducer = (
     }
 
     case types.ADMIN_LOGIN: {
+      sessionStorage.setItem("KoolAdmin", "true")
       const newPayload = {...payload, isAuth: true, isAdmin: true}
-      return { ...state, loading: false, admin: newPayload };
+      return { ...state, loading: false, admin: newPayload,isAdmin: true };
+    }
+
+    case types.ADMIN_LOGOUT:{
+      sessionStorage.removeItem("KoolAdmin")
+      return { ...state, loading: false, admin: [],isAdmin: false }
     }
 
     case types.TOGGLE_MEN:{
