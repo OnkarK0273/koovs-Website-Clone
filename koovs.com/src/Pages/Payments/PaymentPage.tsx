@@ -1,9 +1,10 @@
 import { Flex, Container, Box } from "@chakra-ui/react";
 import CartPayment from "./CartPayment";
-
+import React from 'react'
 import Details from "./Details";
 
 function PaymentPage(): JSX.Element {
+  
   return (
     <>
       <Box>
@@ -15,7 +16,7 @@ function PaymentPage(): JSX.Element {
               direction={{ base: "column-reverse", md: "row" }}
             >
               <Details />
-              <CartPayment />
+              <CartPayment  />
             </Flex>
           </Container>
         </Box>
