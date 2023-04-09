@@ -48,6 +48,11 @@ export const adminReducer = (
       return { ...state, loading: false, admin: payload };
     }
 
+    case types.ADMIN_LOGIN: {
+      const newPayload = {...payload, isAuth: true, isAdmin: true}
+      return { ...state, loading: false, admin: newPayload };
+    }
+
     case types.TOGGLE_MEN:{
       let arr = state.mens.map((el)=>{
         if(el.id===payload){

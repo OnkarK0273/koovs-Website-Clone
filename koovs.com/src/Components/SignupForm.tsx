@@ -1,15 +1,15 @@
 import { Button } from "@chakra-ui/button";
 import { Image } from "@chakra-ui/image";
 import { Input } from "@chakra-ui/input";
-import { Link } from "react-router-dom";
 import { Flex, Heading, Text, VStack } from "@chakra-ui/layout";
+import { useToast } from "@chakra-ui/react";
 import React from "react";
+import { Link } from "react-router-dom";
+import { signupUserApi } from "../Redux/Auth/signup.actions";
+import { useAppDispatch, useAppSelector } from "../Redux/store";
 import fb from "../utils/Images/fbIcon.png";
 import google from "../utils/Images/googleIcon.png";
 import { SignupDetail } from "../utils/types";
-import { useAppDispatch, useAppSelector } from "../Redux/store";
-import { signupUserApi } from "../Redux/Auth/signup.actions";
-import { useToast } from "@chakra-ui/react";
 
 const SignupForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -18,6 +18,7 @@ const SignupForm = (): JSX.Element => {
     lName: "",
     email: "",
     password: "",
+    isAdmin: false
   });
   const [insecurePassword, setInsecurePassword] =
     React.useState<boolean>(false);
@@ -79,6 +80,7 @@ const SignupForm = (): JSX.Element => {
   };
 
   return (
+    <>
     <VStack
       mb={"80px"}
       width={{ base: "90%", md: "50%" }}
@@ -197,6 +199,7 @@ const SignupForm = (): JSX.Element => {
         <Image src={google} maxH={"34px"} p="0px" bgColor="red.400" />
       </Flex>
     </VStack>
+    </>
   );
 };
 
