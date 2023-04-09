@@ -98,12 +98,13 @@ export default function Navbar1() {
            
             px={4}
             py={2}
-              position={{base:"fixed",lg:'absolute' }}
+            position={{base:"fixed",lg:'absolute' }}
+            bg={{base:"blue.300",lg:'none' }}
             top={isSmallScreen ? "auto" : 14}
             bottom={isSmallScreen ? 0 : "auto"}
             left={isSmallScreen ? 0 : "auto"}
             right={isSmallScreen ? "auto": 0}
-            zIndex={999}
+            zIndex={1999}
             mx={useBreakpointValue({ base: "auto", md: "auto" })}
           >
             <HStack 

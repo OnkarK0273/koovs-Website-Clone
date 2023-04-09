@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-
+import { ColorRing } from  'react-loader-spinner'
 import {
   Table,
   Thead,
@@ -86,7 +86,7 @@ const Cart: React.FC = () => {
         <TableContainer>
           <Table variant="simple">
             {/* <TableCaption>Imperial to metric conversion factors</TableCaption> */}
-            <Thead>
+            <Thead display={{base:'none',md:"table-header-group"}} >
               <Tr>
                 <Th pr={"100%"}>Product</Th>
                 <Th pr={"100%"} isNumeric>
@@ -98,79 +98,165 @@ const Cart: React.FC = () => {
             </Thead>
             {cart &&
               cart.map((cart: any, index: number) => (
-                <Tbody key={cart.id}>
+                <Tbody key={cart.id} >
                   <Tr>
-                    <Td>
-                      <Flex gap={8}>
-                        <Image w="120px" src={cart.img1} alt={cart.category} />
-                        <Box textAlign={"left"}>
-                          <Text>{cart.title}</Text>
-                          <Text>SIZE: {cart.size}</Text>
-                          <Text>Color: {cart.color}</Text>
-                          <br />
-                          <Text
-                            as={"button"}
-                            onClick={() => dispatch(delCartApi(cart.id))}
+                    {/* responsive for base */}
+                    <Flex  flexDirection="column" display={{base:'flex',md:"none"}} boxShadow='base'  rounded='md' bg='white' >
+                      <Box>
+                        <Td>
+                        <Flex  w='250px' justify="space-around" columnGap='40px' flexDirection="column" align='left' >
+                          <Image w="120px" m='auto' src={cart.img1} alt={cart.category} />
+                          <Box >
+                            <Text isTruncated  w="80%" pb='10px' >{cart.title}</Text>
+                            <Text pb='10px' >SIZE: {cart.size}</Text>
+                            <Text>Color: {cart.color}</Text>
+                            <br />
+                            <Text
+                              as={"button"}
+                              onClick={() => dispatch(delCartApi(cart.id))}
+                              bg='red.300'
+                              p='6px'
+                              rounded='5px'
+                            >
+                              Remove
+                            </Text>
+                          </Box>
+                        </Flex>
+                        </Td>
+                      </Box>
+                      <Box display={{base:'block',md:"none"}} >
+                      
+                        <Td>
+                          <Flex
+                            placeItems={"center"}
+                            textAlign={"center"}
+                            border={"1px solid #EEEEEE"}
+                            borderRadius={"5px"}
                           >
-                            Remove
-                          </Text>
-                        </Box>
-                      </Flex>
-                    </Td>
-                    <Td isNumeric>Rs. {cart.price}</Td>
-                    <Td>
-                      <Flex
-                        placeItems={"center"}
-                        textAlign={"center"}
-                        border={"1px solid #EEEEEE"}
-                        borderRadius={"5px"}
-                      >
-                        <Button
-                          border={"none"}
-                          bg={"none"}
-                          onClick={() => {
-                            const currentQuantity = quantities[index];
-                            if (currentQuantity > 1) {
-                              updateQuantity(index, currentQuantity - 1);
-                            }
-                          }}
-                          _hover={{}}
-                          _active={{}}
-                        >
-                          -
-                        </Button>
-                        <Input
-                          border={"none"}
-                          type="number"
-                          value={quantities[index]}
-                          onChange={(e) =>
-                            updateQuantity(index, parseInt(e.target.value))
-                          }
-                          min={1}
-                          defaultValue={1}
-                          w={"60px"}
-                          _focus={{ boxShadow: "none" }}
-                        />
-                        <Button
-                          bg={"none"}
-                          border={"none"}
-                          onClick={() => {
-                            const currentQuantity = quantities[index];
-                            updateQuantity(index, currentQuantity + 1);
-                          }}
-                          _hover={{}}
-                          _active={{}}
-                        >
-                          +
-                        </Button>
-                      </Flex>
-                    </Td>
-                    <Td isNumeric>
-                      Rs. {cart.price * (quantities[index] || 1)}
-                    </Td>
+                            <Button
+                              border={"none"}
+                              bg={"none"}
+                              onClick={() => {
+                                const currentQuantity = quantities[index];
+                                if (currentQuantity > 1) {
+                                  updateQuantity(index, currentQuantity - 1);
+                                }
+                              }}
+                              _hover={{}}
+                              _active={{}}
+                            >
+                              -
+                            </Button>
+                            <Input
+                              border={"none"}
+                              type="number"
+                              value={quantities[index]}
+                              onChange={(e) =>
+                                updateQuantity(index, parseInt(e.target.value))
+                              }
+                              min={1}
+                              defaultValue={1}
+                              w={"60px"}
+                              _focus={{ boxShadow: "none" }}
+                            />
+                            <Button
+                              bg={"none"}
+                              border={"none"}
+                              onClick={() => {
+                                const currentQuantity = quantities[index];
+                                updateQuantity(index, currentQuantity + 1);
+                              }}
+                              _hover={{}}
+                              _active={{}}
+                            >
+                              +
+                            </Button>
+                          </Flex>
+                        </Td>
+                        <Td isNumeric>
+                          Rs. {cart.price * (quantities[index] || 1)}
+                        </Td>
+                      </Box>
+                    </Flex>
+                    {/* responsive for md and ls */}
+                      <Td display={{base:'none',md:"block"}} >
+                        <Flex gap={8}>
+                          <Image w="120px" src={cart.img1} alt={cart.category} />
+                          <Box textAlign={"left"}>
+                            <Text>{cart.title}</Text>
+                            <Text>SIZE: {cart.size}</Text>
+                            <Text>Color: {cart.color}</Text>
+                            <br />
+                            <Text
+                              as={"button"}
+                              onClick={() => dispatch(delCartApi(cart.id))}
+                              bg='red.300'
+                              p='6px'
+                              rounded='5px'
+                            >
+                              Remove
+                            </Text>
+                          </Box>
+                        </Flex>
+                      </Td>
+                      <Td isNumeric display={{base:'none',md:"table-cell"}} >Rs. {cart.price}</Td>
+                        <Td display={{base:'none',md:"table-cell"}}>
+                          <Flex
+                            placeItems={"center"}
+                            textAlign={"center"}
+                            border={"1px solid #EEEEEE"}
+                            borderRadius={"5px"}
+                          >
+                            <Button
+                              border={"none"}
+                              bg={"none"}
+                              onClick={() => {
+                                const currentQuantity = quantities[index];
+                                if (currentQuantity > 1) {
+                                  updateQuantity(index, currentQuantity - 1);
+                                }
+                              }}
+                              _hover={{}}
+                              _active={{}}
+                            >
+                              -
+                            </Button>
+                            <Input
+                              border={"none"}
+                              type="number"
+                              value={quantities[index]}
+                              onChange={(e) =>
+                                updateQuantity(index, parseInt(e.target.value))
+                              }
+                              min={1}
+                              defaultValue={1}
+                              w={"60px"}
+                              _focus={{ boxShadow: "none" }}
+                            />
+                            <Button
+                              bg={"none"}
+                              border={"none"}
+                              onClick={() => {
+                                const currentQuantity = quantities[index];
+                                updateQuantity(index, currentQuantity + 1);
+                              }}
+                              _hover={{}}
+                              _active={{}}
+                            >
+                              +
+                            </Button>
+                          </Flex>
+                        </Td>
+                        <Td isNumeric display={{base:'none',md:"table-cell"}} >
+                          Rs. {cart.price * (quantities[index] || 1)}
+                        </Td>
+
+                    
+
                   </Tr>
                 </Tbody>
               ))}
+              
           </Table>
         </TableContainer>
       </Center>
