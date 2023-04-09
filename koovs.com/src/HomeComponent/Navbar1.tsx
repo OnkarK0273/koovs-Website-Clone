@@ -104,7 +104,7 @@ export default function Navbar1() {
             bottom={isSmallScreen ? 0 : "auto"}
             left={isSmallScreen ? 0 : "auto"}
             right={isSmallScreen ? "auto": 0}
-            zIndex={1999}
+            zIndex={1299}
             mx={useBreakpointValue({ base: "auto", md: "auto" })}
           >
             <HStack 

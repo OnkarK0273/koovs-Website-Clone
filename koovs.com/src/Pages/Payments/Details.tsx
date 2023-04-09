@@ -24,11 +24,13 @@ import {
   AlertDialogCloseButton,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../../Redux/store";
 
 const Details: React.FC = () => {
   const colSpan = useBreakpointValue({ base: 2, md: 1 });
   const getPrice = localStorage.getItem("Cart-Price") || 10;
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { isAuth,fName,lName,email } = useAppSelector((store) => store.loginReducer)
 
   const handleClick = () => {
     setIsLoading(true);
@@ -55,13 +57,13 @@ const Details: React.FC = () => {
         <GridItem colSpan={colSpan}>
           <FormControl>
             <FormLabel>First Name</FormLabel>
-            <Input placeholder="Suman" />
+            <Input placeholder={fName}  />
           </FormControl>
         </GridItem>
         <GridItem colSpan={colSpan}>
           <FormControl>
             <FormLabel>Last Name</FormLabel>
-            <Input placeholder="Biswas" />
+            <Input placeholder={lName} />
           </FormControl>
         </GridItem>
         <GridItem colSpan={2}>

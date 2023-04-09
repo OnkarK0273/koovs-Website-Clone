@@ -7,8 +7,9 @@ import {
   Input,
   Button,
   Divider,
+  Heading,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { ColorRing } from  'react-loader-spinner'
 import {
@@ -37,6 +38,7 @@ const Cart: React.FC = () => {
       isLoading: store.CartReducer.isLoading,
     };
   }, shallowEqual);
+  const navigate = useNavigate()
 
   const dispatch = useAppDispatch();
 
@@ -59,14 +61,14 @@ const Cart: React.FC = () => {
 
   return (
     <Box mt={"8%"} mb={"3%"}>
-      <Text
+      <Heading
         textAlign={"center"}
         fontFamily={"monospace"}
         fontWeight={"semibold"}
         fontSize={"31.5px"}
       >
         Shopping Cart
-      </Text>
+      </Heading>
       <Flex
         fontWeight={"medium"}
         justify={"center"}
@@ -82,7 +84,8 @@ const Cart: React.FC = () => {
         <MdOutlineKeyboardArrowRight />
         <Text as={"p"}>Your Shopping Cart</Text>
       </Flex>
-      <Center mt={"5%"}>
+     {
+        cart?.length && <Center mt={"5%"}>
         <TableContainer>
           <Table variant="simple">
             {/* <TableCaption>Imperial to metric conversion factors</TableCaption> */}
@@ -260,7 +263,10 @@ const Cart: React.FC = () => {
           </Table>
         </TableContainer>
       </Center>
-      <Center mr={"5.9%"}>
+     }
+      
+      {
+        cart?.length && <Center mr={"5.9%"}>
         <Flex mt={8} w={"76.5%"} flexDirection={"column"}>
           <Flex gap={"30px"} justify={"flex-end"}>
             <NoteforSeller />
@@ -301,6 +307,20 @@ const Cart: React.FC = () => {
           </Flex>
         </Flex>
       </Center>
+      }
+      {
+        cart?.length ===0 && <Center h='50vh'  >
+
+          <Box textAlign={'center'} >
+            <Heading  fontFamily={"monospace"} >Your cart is empty.</Heading>
+            <Button m='20px' variant={'outline'} colorScheme="blue" onClick={()=>{navigate("/men")}} >Go To the Shop!</Button>
+          </Box>
+
+
+        </Center>
+      }
+
+
     </Box>
   );
 };

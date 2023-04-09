@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useRef} from "react";
 
 import {
   Heading,
@@ -13,25 +13,42 @@ import {
   useColorModeValue,
   Input,
   Image,
+  AlertDialog,
+  AlertDialogOverlay,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogCloseButton,
+  AlertDialogBody,
+  AlertDialogFooter,
 } from "@chakra-ui/react";
 import image from "../../assets/Koolz-logo.png";
 import axios from "axios";
 import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import { getCartApi } from "../../Redux/Cart/cart.action";
-
+import { useDisclosure } from "@chakra-ui/react-use-disclosure";
+import { Link, useNavigate } from "react-router-dom";
 // import { shallowEqual } from "react-redux";
 // import { getTotal } from "../Cart/Cart";
 // import { useAppSelector } from "../../Redux/store";
 // import { shallowEqual } from "react-redux";
 
-const CartPayment: React.FC = () => {
-  const { toggleColorMode } = useColorMode();
-  const bgColor = useColorModeValue("gray.50", "whiteAlpha.50");
+
+
+const CartPayment = () => {
+
   const secondaryTextColor = useColorModeValue("gray.600", "gray.400");
   const [isLoading, setIsLoading] = useState(false);
   const [total, setTotal] = useState(0);
+  const [cardno,setCard] = useState("")
+  const [date,setMonth] = useState("")
+  const [cvv,setCvv] = useState("")
+  const val = cardno.length>0 && date.length>0 && cvv.length>0
+ 
   const [phone, setPhone] = useState("");
   const cart = useAppSelector((store) => store.CartReducer.cart);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const cancelRef = useRef<HTMLButtonElement>(null);
+  const navigate = useNavigate()
   // console.log(cart);
 
   const dispatch = useAppDispatch();
@@ -94,6 +111,17 @@ const CartPayment: React.FC = () => {
   };
 
   // console.log(total);
+  const handleHome = () => {
+    handleCart()
+    onClose()
+    navigate('/')
+  };
+
+  const handleShop=()=>{
+    handleCart()
+    onClose()
+    navigate('/men')
+  }
 
   let getPrice = total;
 
@@ -104,18 +132,16 @@ const CartPayment: React.FC = () => {
       p={10}
       spacing={6}
       align="flex-start"
-      bg={bgColor}
+     
     >
       <VStack alignItems="flex-start" spacing={3}>
         <Heading size="2xl">Card Details</Heading>
         <Text as="div" textAlign="left">
-          If You Think White Color is not Good for Your Eyes
-          <Button onClick={toggleColorMode} variant="link" colorScheme="black">
-            Change to Dark-Mode & Vice-Versa
-          </Button>
+        Fill All the Card Details
+          
         </Text>
       </VStack>
-      <HStack spacing={6} alignItems="center" w="full">
+      {/* <HStack spacing={6} alignItems="center" w="full">
         <AspectRatio ratio={2} w={40}>
           <Image borderRadius={"2px"} src={image} alt="logo" />
         </AspectRatio>
@@ -134,14 +160,14 @@ const CartPayment: React.FC = () => {
             Master, Visa & Rupay
           </Heading>
         </Stack>
-      </HStack>
+      </HStack> */}
       <VStack spacing={4} alignItems="stretch" w="full">
         <HStack justifyContent="space-between">
-          <Input placeholder="Card Number" maxLength={12} />
+          <Input type='text' placeholder="Card Number" maxLength={12} onChange={(e)=>{setCard(e.target.value)}} />
         </HStack>
         <HStack justifyContent="space-between">
-          <Input placeholder="Month/Year" />
-          <Input placeholder="CVV" />
+          <Input placeholder="Month/Year" type='text' onChange={(e)=>{setMonth(e.target.value)}}  />
+          <Input placeholder="CVV" type='text'  onChange={(e)=>{setCvv(e.target.value)}} />
         </HStack>
         {/* <Divider /> */}
         <HStack justifyContent="space-between">
@@ -163,12 +189,45 @@ const CartPayment: React.FC = () => {
         size="lg"
         w="full"
         colorScheme="blue"
-        onClick={handleCart}
+        onClick={onOpen}
         isLoading={isLoading}
         loadingText={"Clearing Cart..."}
+        isDisabled={!val}
       >
-        Clear All-Cart
+        Place Order
       </Button>
+      <>
+        <AlertDialog
+          motionPreset="slideInBottom"
+          leastDestructiveRef={cancelRef}
+          onClose={onClose}
+          isOpen={isOpen}
+          isCentered
+        >
+          <AlertDialogOverlay />
+
+          <AlertDialogContent>
+            <AlertDialogHeader>Order Placed</AlertDialogHeader>
+            <AlertDialogCloseButton />
+            <AlertDialogBody>
+              Your order has been placed successfully. Do you want to continue
+              shopping or go to home page?
+            </AlertDialogBody>
+            <AlertDialogFooter>
+              
+                <Button  onClick={handleShop}>
+                  Continue Shopping
+                </Button>
+              
+              
+                <Button colorScheme="blue" ml={3} onClick={handleHome}>
+                  Home
+                </Button>
+              
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      </>
     </VStack>
   );
 };
