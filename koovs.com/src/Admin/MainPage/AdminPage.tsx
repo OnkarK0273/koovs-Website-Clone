@@ -26,7 +26,7 @@ import Customers from "../tabpanal/Customers";
 import AccountInfo from "../tabpanal/AccountInfo";
 import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import { getAdminAdmin } from "../../Redux/admin/admin.action";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate as divert, useNavigate } from "react-router-dom";
 
 
 
@@ -39,6 +39,14 @@ export default function AdminPage() {
   const customerRef:any = useRef();
   const orderRef:any = useRef();
   const accountRef:any = useRef();
+
+
+  const isAdmin = useAppSelector((store) => store.adminReducer.isAdmin);
+
+  // if (!isAdmin) {
+  //   return <divert to={"/adminlogin"} replace={true} />;
+  // }
+
 
   useEffect(()=>{
     document.title = 'Koolz | Admin'

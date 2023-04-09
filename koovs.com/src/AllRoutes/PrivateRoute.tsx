@@ -1,12 +1,10 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
+import { useAppSelector } from "../Redux/store";
 
-let isLoggedin = (sessionStorage.getItem("KoolAdmin")) || null;
-console.log(isLoggedin, "login")
-const hello = () => {
-  if(isLoggedin){
-    <Navigate to={"/admin"} replace={true}/>
-  }
+const PrivateRoute = ({ children }: any) => {
+  
+  return children;
 };
 
-export default hello;
+export default PrivateRoute;

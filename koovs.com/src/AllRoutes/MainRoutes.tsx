@@ -13,6 +13,7 @@ import Wishlist from "../Pages/wishlist/Wishlist";
 import Account from "../Pages/Account";
 import AdminLogin from "../Admin/MainPage/AdminLogin";
 import Admin from "../Pages/Admin";
+import PrivateRoute from "./PrivateRoute";
 
 export default function MainRoute() {
   return (
