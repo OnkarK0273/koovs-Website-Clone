@@ -7,6 +7,8 @@ import {
 } from "../Redux/Product/product.action";
 import { Link } from "react-router-dom";
 import { Box, Button, Flex, Image, Text,Heading,VStack } from "@chakra-ui/react";
+import { useAppDispatch } from "../Redux/store";
+import { getCartApi } from "../Redux/Cart/cart.action";
 
 const MenProductDetails = () => {
   const myData = {
@@ -28,7 +30,7 @@ const MenProductDetails = () => {
  
   const [data, setData] = useState(myData);
   const { id } = useParams();
-
+  const dispatch = useAppDispatch();
   const handleSize = (e: any) => {
     const selectedSize = e.currentTarget.innerText;
     setData((prevState) => ({
@@ -47,7 +49,9 @@ const MenProductDetails = () => {
   const handleFetch = async () => {
     // singleData = data;
     // setSingleData(data);
-    postSingleProduct(data);
+    postSingleProduct(data).then(()=>{
+      dispatch(getCartApi())
+    })
   };
 
   useEffect(() => {
@@ -185,7 +189,7 @@ const MenProductDetails = () => {
           </Flex>
 
           <Flex gap={4}>
-            <Button colorScheme={"blue"} border={"none"}>
+            <Button colorScheme={"blue"} border={"none"}  onClick={handleFetch} >
               ADD TO CART
             </Button>
 
