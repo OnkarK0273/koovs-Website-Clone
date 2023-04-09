@@ -25,8 +25,8 @@ import Listing from "../tabpanal/Listing";
 import Customers from "../tabpanal/Customers";
 import AccountInfo from "../tabpanal/AccountInfo";
 import { useAppDispatch, useAppSelector } from "../../Redux/store";
-import { getAdminAdmin } from "../../Redux/admin/admin.action";
-import { Link, Navigate as divert, useNavigate } from "react-router-dom";
+import { adminLogout, getAdminAdmin } from "../../Redux/admin/admin.action";
+import { Link, Navigate , useNavigate } from "react-router-dom";
 
 
 
@@ -39,8 +39,6 @@ export default function AdminPage() {
   const customerRef:any = useRef();
   const orderRef:any = useRef();
   const accountRef:any = useRef();
-
-
   const isAdmin = useAppSelector((store) => store.adminReducer.isAdmin);
 
   // if (!isAdmin) {
@@ -54,6 +52,7 @@ export default function AdminPage() {
   },[])
 
   const handleRoute = ()=>{
+    dispatch(adminLogout())
     navigate('/')
   }
 
@@ -77,6 +76,8 @@ export default function AdminPage() {
           <Box width={"60%"} m={"auto"} mt={0} mb={0}>
             <Image
               alt="logo"
+              cursor={'pointer'}
+              onClick={()=>{navigate('/')}}
               src="https://raw.githubusercontent.com/OnkarK0273/penitent-degree-5872/main/koovs.com/public/images/Koolz-logo.png"
             ></Image>
           </Box>

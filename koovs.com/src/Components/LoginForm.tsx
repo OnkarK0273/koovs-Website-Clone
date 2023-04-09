@@ -65,7 +65,14 @@ const LoginForm = () => {
           el.email === loginDetails.email &&
           el.password === loginDetails.password
         ) {
-          dispatch(loginSuccess(el));
+          dispatch(loginSuccess(el))
+          toast({
+            title: "Login Sucessfull",
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+            position: "top",
+          });
         }
       });
     }
@@ -113,7 +120,7 @@ const LoginForm = () => {
           color: "black",
         }}
       >
-        Sign In
+        Login
       </Button>
       <Flex
         alignItems={"center"}

@@ -3,15 +3,19 @@ import * as types from "./login.types";
 import { ActionType } from "./signup.reducer";
 
 
+const email = sessionStorage.getItem('email')
+const fName = sessionStorage.getItem('fName')
+const lName = sessionStorage.getItem('lName')
+
 
 const initLoginState: LoginState = {
     isLoading: false,
-    isAuth: false,
+    isAuth: email?true:false ,
     isError: false,
-    details: {
-        email: "",
-        password: ""
-    }
+    email: email || "",
+    fName: fName || "",
+    lName: lName || "",
+   
 }
 
 export const loginReducer = (state = initLoginState, action: ActionType) => {
@@ -19,8 +23,11 @@ export const loginReducer = (state = initLoginState, action: ActionType) => {
     switch (type) {
 
         case (types.LOGIN_SUCCESS): {
+            sessionStorage.setItem("email",payload.email)
+            sessionStorage.setItem("fName",payload.fName)
+            sessionStorage.setItem("lName",payload.lName)
             return {
-                ...state, details: payload, isLoading: false, isAuth: true
+                ...state, isLoading: false, isAuth: true ,email:payload.email,fName:payload.fName,lName:payload.lName
             }
         }
 
@@ -37,14 +44,15 @@ export const loginReducer = (state = initLoginState, action: ActionType) => {
         }
 
         case (types.LOGOUT_USER): {
+            sessionStorage.removeItem('email')
+            sessionStorage.removeItem('fName')
+            sessionStorage.removeItem('lName')
             return { ...state,
                 isLoading: false,
                 isAuth: false,
                 isError: false,
-                details: {
-                    email: "",
-                    password: ""
-                }
+                email:"",fName:"",lName:""
+                
             }
         }
 
