@@ -17,14 +17,16 @@ import { getAdminAPI } from "../../Redux/admin/admin.api";
 import { loginRequest, loginSuccess } from "../../Redux/Auth/login.action";
 import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import adminImg from "../../utils/Images/admin.png";
-import { Admin, AdminLoginDetails } from "../../utils/types";
-
-
+import { AdminLoginDetails } from "../../utils/types";
 
 
 const AdminLogin = () => {
   
-  const [theAdmin, setTheAdmin] = React.useState<Admin | undefined>()
+  const isAdmin = useAppSelector((store) => store.adminReducer.isAdmin);
+
+  // if (isAdmin) {
+  //   return <Navigate to={"/admin"} replace={true} />;
+  // }
 
   const dispatch = useAppDispatch();
   const {admin} = useAppSelector((store)=> store.adminReducer)
@@ -56,6 +58,7 @@ const AdminLogin = () => {
       dispatch(loginRequest());
       if(admin.EmailId == loginDetailsAdmin.email && admin.Password == loginDetailsAdmin.password){
         dispatch(adminLogin());
+        admin.isAdmin && admin.isAuth && sessionStorage.setItem("KoolAdmin", JSON.stringify(true));
         return;
       }
       if (loginDetailsAdmin.email === "" || loginDetailsAdmin.password === "") {
@@ -71,9 +74,6 @@ const AdminLogin = () => {
       }
       
     }
-
-console.log(admin, "store")
-admin.isAdmin && admin.isAuth && sessionStorage.setItem("KoolAdmin", JSON.stringify(true));
 
 
   return (

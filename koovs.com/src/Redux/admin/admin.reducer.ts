@@ -8,6 +8,7 @@ interface IinitState {
   womens: Product[];
   users: Userdetails[];
   admin: Admin[];
+  isAdmin: boolean;
 }
 
 const initState = {
@@ -17,6 +18,7 @@ const initState = {
   womens: [],
   users: [],
   admin: [],
+  isAdmin: sessionStorage.getItem("KoolAdmin") ? true : false
 };
 
 export const adminReducer = (
@@ -54,7 +56,7 @@ export const adminReducer = (
     }
 
     case types.TOGGLE_MEN:{
-      let arr = state.mens.map((el)=>{
+      let arr:any = state.mens.map((el)=>{
         if(el.id===payload){
           el.active = !el.active
         }
