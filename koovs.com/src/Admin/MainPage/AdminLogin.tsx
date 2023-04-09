@@ -9,15 +9,15 @@ import {
   useToast,
   VStack,
 } from "@chakra-ui/react";
+import axios from "axios";
 import React from "react";
+import { Navigate } from "react-router-dom";
+import { adminLogin, getAdminAdmin } from "../../Redux/admin/admin.action";
+import { getAdminAPI } from "../../Redux/admin/admin.api";
+import { loginRequest, loginSuccess } from "../../Redux/Auth/login.action";
 import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import adminImg from "../../utils/Images/admin.png";
 import { Admin, AdminLoginDetails } from "../../utils/types";
-import axios from "axios";
-import { loginRequest, loginSuccess } from "../../Redux/Auth/login.action";
-import { adminLogin, getAdminAdmin } from "../../Redux/admin/admin.action";
-import { getAdminAPI } from "../../Redux/admin/admin.api";
-import { Navigate } from "react-router-dom";
 
 
 
