@@ -61,6 +61,19 @@ export const getAdminAdmin = () => async (dispatch: AppDispatch) => {
   }
 };
 
+// admin login
+
+export const adminLogin = () =>async (dispatch:AppDispatch) => {
+  dispatch({type:types.ADMIN_LOADING});
+  try {
+    let data = await getAdminAPI();
+    dispatch({ type: types.ADMIN_LOGIN, payload: data });
+  } catch (err) {
+    console.log(err);
+    dispatch({ type: types.ADMIN_ERROR });
+  }
+}
+
 
 
 // toogle men

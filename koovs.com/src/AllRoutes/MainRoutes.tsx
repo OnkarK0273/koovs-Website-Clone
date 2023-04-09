@@ -8,10 +8,11 @@ import MensProduct from "../Pages/MensProduct";
 import Signup from "../Pages/Signup";
 import WomenProductDetails from "../Pages/WomenProductDetails";
 import WomensProduct from "../Pages/WomensProduct";
-import Admin from "../Pages/Admin";
 import PaymentPage from "../Pages/Payments/PaymentPage";
 import Wishlist from "../Pages/wishlist/Wishlist";
 import Account from "../Pages/Account";
+import AdminLogin from "../Admin/MainPage/AdminLogin";
+import Admin from "../Pages/Admin";
 
 export default function MainRoute() {
   return (
@@ -25,11 +26,12 @@ export default function MainRoute() {
         <Route path={"/women"} element={<WomensProduct />} />
         <Route path={"/men/:id"} element={<MenProductDetails />} />
         <Route path={"/women/:id"} element={<WomenProductDetails />} />
-        <Route path={"/admin"} element={<Admin />} />
+        <Route path={"/adminlogin"} element={<AdminLogin />} />
         <Route path={"/cart"} element={<Cart />} />
         <Route path={"/payments"} element={<Payments />} />
         <Route path={"/paymentpage"} element={<PaymentPage />} />
         <Route path={"/wishlist"} element={<Wishlist />} />
+        <Route path={"/admin"} element={<Admin />} />
         <Route path="*" element={<h1>Page not found</h1>} />
       </Routes>
     </>

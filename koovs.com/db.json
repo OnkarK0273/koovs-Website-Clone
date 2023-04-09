@@ -2935,7 +2935,8 @@
     "Image": "https://avatars.githubusercontent.com/u/110043714?v=4",
     "Phone": "7066990275",
     "Password": "abc@123",
-    "isAuth": false
+    "isAuth": false,
+    "isAdmin": true
   },
   "WatchList": [
     {
