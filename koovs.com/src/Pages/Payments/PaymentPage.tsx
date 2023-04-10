@@ -13,7 +13,7 @@ function PaymentPage(): JSX.Element {
             <Flex
               h={{ base: "auto", md: "100vh" }}
               py={[0, 10, 20]}
-              direction={{ base: "column-reverse", md: "row" }}
+              direction={{ base: "column", md: "row" }}
             >
               <Details />
               <CartPayment  />

@@ -136,8 +136,8 @@ const CartPayment = () => {
     >
       <VStack alignItems="flex-start" spacing={3}>
         <Heading size="2xl">Card Details</Heading>
-        <Text as="div" textAlign="left">
-        Fill All the Card Details
+        <Text as="div" textAlign="left"  >
+        Fill All the Card Details *
           
         </Text>
       </VStack>
@@ -194,7 +194,10 @@ const CartPayment = () => {
         loadingText={"Clearing Cart..."}
         isDisabled={!val}
       >
-        Place Order
+        {
+          val?"Place Order" :"Please Fill Card Details"
+        }
+        
       </Button>
       <>
         <AlertDialog

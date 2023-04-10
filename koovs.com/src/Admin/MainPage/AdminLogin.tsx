@@ -94,25 +94,25 @@ const AdminLogin = () => {
 
 
   return (
-    <Box
-      display={"flex"}
+    <Flex
+      flexDirection={{base:"column",md:"row"}}
       justifyContent={"center"}
-      gap={"100px"}
+      gap={"40px"}
       alignItems={"center"}
       mt={"50px"}
     >
-      <Box pb={"100px"}>
+      <Box>
         <Heading size={"md"}>Hi, Admin.</Heading>
         <Text mb={2} color={"gray.500"}>
           Login to get your super powers...
         </Text>
-        <Image src={adminImg} p="0px" bgColor="blue.100" width={"450px"} />
+        <Image  display={{base:"none",md:"block"}}  src={adminImg} p="0px" bgColor="blue.100" width={"450px"} />
       </Box>
-      <>
+      <Box>
         <VStack
-          mb={"80px"}
+          
           gap={3}
-          width={{ base: "100%", md: "30%" }}
+          width={{ base: "100%", md: "100%" }}
           alignItems={"left"}
           padding={"10px"}
         >
@@ -148,8 +148,8 @@ const AdminLogin = () => {
             Login
           </Button>
         </VStack>
-      </>
-    </Box>
+      </Box>
+    </Flex>
   );
 };
 
