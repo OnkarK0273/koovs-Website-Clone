@@ -30,8 +30,8 @@ export default function MainRoute() {
         <Route path={"/women/:id"} element={<WomenProductDetails />} />
         <Route path={"/adminlogin"} element={<AdminLogin />} />
         <Route path={"/cart"} element={<PrivateRoute2><Cart /></PrivateRoute2> } />
-        <Route path={"/payments"} element={<Payments />} />
-        <Route path={"/paymentpage"} element={<PaymentPage />} />
+        <Route path={"/payments"} element={<PrivateRoute2><Payments /></PrivateRoute2> } />
+        <Route path={"/paymentpage"} element={ <PrivateRoute2><PaymentPage /></PrivateRoute2> } />
         <Route path={"/wishlist"} element={<PrivateRoute2><Wishlist /></PrivateRoute2>} />
         <Route path={"/admin"} element={ <PrivateRoute><Admin /></PrivateRoute> } />
         <Route path="*" element={<h1>Page not found</h1>} />

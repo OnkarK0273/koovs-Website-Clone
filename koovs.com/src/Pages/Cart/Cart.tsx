@@ -32,7 +32,7 @@ import image from "./1.png";
 import axios from "axios";
 
 const Cart: React.FC = () => {
-  const { cart } = useAppSelector((store) => {
+  const { cart ,isLoading} = useAppSelector((store) => {
     return {
       cart: store.CartReducer.cart,
       isLoading: store.CartReducer.isLoading,
@@ -58,6 +58,23 @@ const Cart: React.FC = () => {
     newQuantities[index] = value;
     setQuantities(newQuantities);
   };
+
+  if(isLoading){
+
+    return <Center>
+              <ColorRing
+                visible={true}
+                height="180"
+                width="180"
+                ariaLabel="blocks-loading"
+                wrapperStyle={{}}
+                wrapperClass="blocks-wrapper"
+                colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+              />
+        </Center>
+  }
+  
+ 
 
   return (
     <Box mt={"8%"} mb={"3%"}>
@@ -85,7 +102,7 @@ const Cart: React.FC = () => {
         <Text as={"p"}>Your Shopping Cart</Text>
       </Flex>
      {
-        cart?.length && <Center mt={"5%"}>
+        cart?.length>0 && <Center mt={"5%"}>
         <TableContainer>
           <Table variant="simple">
             {/* <TableCaption>Imperial to metric conversion factors</TableCaption> */}
@@ -264,9 +281,10 @@ const Cart: React.FC = () => {
         </TableContainer>
       </Center>
      }
+     
       
       {
-        cart?.length && <Center mr={"5.9%"}>
+        cart?.length>0 && <Center mr={"5.9%"}>
         <Flex mt={8} w={"76.5%"} flexDirection={"column"}>
           <Flex gap={"30px"} justify={"flex-end"}>
             <NoteforSeller />

@@ -93,53 +93,9 @@ const Details: React.FC = () => {
         <GridItem colSpan={2}>
           <Checkbox defaultChecked>Ship to billing address.</Checkbox>
         </GridItem>
-        <GridItem colSpan={2}>
-          <Button
-            variant="outline"
-            size="lg"
-            w="full"
-            colorScheme="blue"
-            isDisabled={getPrice === "" ? true : false}
-            isLoading={isLoading}
-            onClick={handleClick}
-            loadingText={"Placing Order..."}
-          >
-            Place Order
-          </Button>
-        </GridItem>
+        
       </SimpleGrid>
-      <>
-        <AlertDialog
-          motionPreset="slideInBottom"
-          leastDestructiveRef={cancelRef}
-          onClose={onClose}
-          isOpen={isOpen}
-          isCentered
-        >
-          <AlertDialogOverlay />
-
-          <AlertDialogContent>
-            <AlertDialogHeader>Order Placed</AlertDialogHeader>
-            <AlertDialogCloseButton />
-            <AlertDialogBody>
-              Your order has been placed successfully. Do you want to continue
-              shopping or go to home page?
-            </AlertDialogBody>
-            <AlertDialogFooter>
-              <Link to={"/"}>
-                <Button ref={cancelRef} onClick={onClose}>
-                  Continue Shopping
-                </Button>
-              </Link>
-              <Link to={"/"}>
-                <Button colorScheme="blue" ml={3} onClick={handleHome}>
-                  Home
-                </Button>
-              </Link>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
-      </>
+     
     </VStack>
   );
 };
