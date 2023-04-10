@@ -42,7 +42,7 @@ const CartPayment = () => {
   const [cardno,setCard] = useState("")
   const [date,setMonth] = useState("")
   const [cvv,setCvv] = useState("")
-  const val = cardno.length>0 && date.length>0 && cvv.length>0
+  const val = cardno.length>9 && date.length>4 && cvv.length>2
  
   const [phone, setPhone] = useState("");
   const cart = useAppSelector((store) => store.CartReducer.cart);
@@ -163,11 +163,11 @@ const CartPayment = () => {
       </HStack> */}
       <VStack spacing={4} alignItems="stretch" w="full">
         <HStack justifyContent="space-between">
-          <Input type='text' placeholder="Card Number" maxLength={12} onChange={(e)=>{setCard(e.target.value)}} />
+          <Input type='text' placeholder="Card Number" maxLength={10} onChange={(e)=>{setCard(e.target.value)}} />
         </HStack>
         <HStack justifyContent="space-between">
-          <Input placeholder="Month/Year" type='text' onChange={(e)=>{setMonth(e.target.value)}}  />
-          <Input placeholder="CVV" type='text'  onChange={(e)=>{setCvv(e.target.value)}} />
+          <Input placeholder="Month/Year" type='text' maxLength={5} onChange={(e)=>{setMonth(e.target.value)}}  />
+          <Input placeholder="CVV" type='text' maxLength={3}  onChange={(e)=>{setCvv(e.target.value)}} />
         </HStack>
         {/* <Divider /> */}
         <HStack justifyContent="space-between">
