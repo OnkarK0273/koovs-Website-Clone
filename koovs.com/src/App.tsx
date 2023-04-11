@@ -6,13 +6,13 @@ import Footer from "./HomeComponent/Footer";
 import { useLocation } from "react-router-dom";
 
 import "./App.css";
-import BackToTop from "./HomeComponent/BackToTop";
+
 
 function App() {
   const location = useLocation();
   // console.log(location);
   return (
-    <div>
+    <div  >
       {location.pathname === "/admin" ? (
         false
       ) : (

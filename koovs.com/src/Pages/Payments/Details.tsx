@@ -48,7 +48,7 @@ const Details: React.FC = () => {
   };
 
   return (
-    <VStack w="full" h="full" p={10} spacing={10} alignItems="flex-start">
+    <VStack w="full" h="full" p={10} spacing={10} alignItems="flex-start"  boxShadow='base'  rounded='md' bg='whiteAlpha.300'  >
       <VStack spacing={3} alignItems="flex-start">
         <Heading size="2xl">Delivery Address</Heading>
         <Text>Fill your all details & Shiping Details.</Text>

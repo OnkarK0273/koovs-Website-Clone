@@ -132,6 +132,9 @@ const CartPayment = () => {
       p={10}
       spacing={6}
       align="flex-start"
+      boxShadow='base' 
+      rounded='md'
+       bg='whiteAlpha.300'
      
     >
       <VStack alignItems="flex-start" spacing={3}>
