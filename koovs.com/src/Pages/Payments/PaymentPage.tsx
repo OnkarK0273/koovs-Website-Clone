@@ -7,11 +7,12 @@ function PaymentPage(): JSX.Element {
   
   return (
     <>
-      <Box>
+      <Box bg='whitesmoke' >
         <Box w="full">
           <Container maxW="container.xl" p={0}>
             <Flex
-              h={{ base: "auto", md: "100vh" }}
+              h={{ base: "auto", md: "90vh" }}
+              gap='20px'
               py={[0, 10, 20]}
               direction={{ base: "column", md: "row" }}
             >
