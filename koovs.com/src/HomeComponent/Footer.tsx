@@ -75,7 +75,7 @@ export default function Footer() {
               <ListHeader>Customer Care</ListHeader>
               <Text>Timings: 10 AM - 6 PM (Mon - Sat)</Text>
               <Text>Call: +91 7011263423</Text>
-              <Text>E-Mail: care@koovs.com</Text>
+              <Text>E-Mail: care@koolz.com</Text>
             </Stack>
             <Divider
               orientation="vertical"
