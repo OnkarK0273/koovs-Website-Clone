@@ -3027,8 +3027,6 @@
   ],
   "cart": [
     {
-
-
       "id": "M1HBC",
       "active": true,
       "img1": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/komatoes-tokeyos-green-camos-resized-04.jpg?v=1668080478&width=360",
@@ -3044,7 +3042,6 @@
       "size": ""
     },
     {
-
       "id": "M3HBC",
       "active": true,
       "img1": "https://cdn.shopify.com/s/files/1/0677/1464/6315/products/komatoes-tokeyos-navy-yellow-resized-03.jpg?v=1668080471&width=360",
@@ -3061,8 +3058,8 @@
     }
   ],
   "total": {
-    "total": 3980
-      "isOrdered": false,
-      "size": ""
-    }
+    "total": 3980,
+    "isOrdered": false,
+    "size": ""
+  }
 }

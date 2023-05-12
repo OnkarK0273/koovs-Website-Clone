@@ -1,8 +1,6 @@
 import React from "react";
 import { Box, Text, Flex } from "@chakra-ui/react";
-import { ArrowForwardIcon } from '@chakra-ui/icons'
-
-
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { IconButton } from "@chakra-ui/react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -71,7 +69,6 @@ const TopWomenCarousel = () => {
           content.map((el, i) => (
             <Box
               key={i}
-              
               borderRadius={0}
               transition="0.5s all ease-in-out"
               _hover={{ transform: "scale(0.95)" }}
@@ -84,7 +81,11 @@ const TopWomenCarousel = () => {
               mr="8%"
               h="400px"
             >
-              <Flex alignItems={"center"} justifyContent={"space-between"} pt="320px" >
+              <Flex
+                alignItems={"center"}
+                justifyContent={"space-between"}
+                pt="320px"
+              >
                 <Box textAlign={"left"} pl={5}>
                   <Text fontSize={17} color="black">
                     {el.title}
@@ -93,7 +94,7 @@ const TopWomenCarousel = () => {
                     {el.count} items
                   </Text>
                 </Box>
-                <Box pr={5} >
+                <Box pr={5}>
                   <IconButton
                     variant="none"
                     colorScheme="black"
@@ -101,8 +102,7 @@ const TopWomenCarousel = () => {
                     aria-label="Link to Categories"
                     icon={<ArrowForwardIcon />}
                     borderRadius="full"
-                    _hover={{ bg: "black.500" ,colorScheme:"white"}}
-                    
+                    _hover={{ bg: "black.500", colorScheme: "white" }}
                   />
                 </Box>
               </Flex>

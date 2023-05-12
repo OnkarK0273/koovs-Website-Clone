@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from "react";
 // import {SimpleGrid} from "@chakra-ui/react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -7,9 +7,11 @@ import { useAppDispatch, useAppSelector } from "../Redux/store";
 import { getShoesProducts } from "../Redux/HomeProduct/homeproduct.action";
 
 const Mens = () => {
-     const dispatch = useAppDispatch();
-  const shoesProducts = useAppSelector((store) => store.HomeProductReducer.shoesData);
-  console.log("shoes",shoesProducts);
+  const dispatch = useAppDispatch();
+  const shoesProducts = useAppSelector(
+    (store) => store.HomeProductReducer.shoesData
+  );
+  console.log("shoes", shoesProducts);
 
   useEffect(() => {
     if (shoesProducts.length === 0) {
@@ -39,17 +41,15 @@ const Mens = () => {
   };
 
   return (
-    <div  style={{width:"90%", margin:"auto"}}>
+    <div style={{ width: "90%", margin: "auto" }}>
       <Carousel responsive={responsive}>
-   {/* <SimpleGrid columns={{ sm: 2, md: 4 }} gap={"30px"}> */}
-      {shoesProducts?.length > 0 &&
-        shoesProducts?.map((item) => (
-          <ShoesCard key={item.id} {...item} />
-        ))}
-    {/* </SimpleGrid> */}
-    </Carousel>
-  </div>
-  )
-}
+        {/* <SimpleGrid columns={{ sm: 2, md: 4 }} gap={"30px"}> */}
+        {shoesProducts?.length > 0 &&
+          shoesProducts?.map((item) => <ShoesCard key={item.id} {...item} />)}
+        {/* </SimpleGrid> */}
+      </Carousel>
+    </div>
+  );
+};
 
-export default Mens
+export default Mens;

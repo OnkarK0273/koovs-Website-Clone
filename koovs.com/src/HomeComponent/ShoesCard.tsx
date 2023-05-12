@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Text } from "@chakra-ui/react";
 import { Product } from "../utils/types";
 
-const ShoesCard = ({ img1, img2,title, price }: Product) => {
+const ShoesCard = ({ img1, img2, title, price }: Product) => {
   return (
     //For Artis Collaboraion
 

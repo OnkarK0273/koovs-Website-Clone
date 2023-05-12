@@ -1,9 +1,8 @@
 body {
   margin: 0;
-  
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'PT Sans Narrow', sans-serif;
+  font-family: "PT Sans Narrow", sans-serif;
 }
 
 code {
@@ -11,6 +10,6 @@ code {
     monospace;
 }
 
-*{
+* {
   scroll-behavior: smooth;
 }

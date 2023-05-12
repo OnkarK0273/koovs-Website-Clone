@@ -1,6 +1,11 @@
 import { Product } from "../../utils/types";
 import { AppDispatch } from "../store";
-import { getHomeMenProductsAPI, getHomeWomenProductsAPI , getHomeShoesProductsAPI, getHomeTshirtsProductsAPI} from "./homeproduct.api";
+import {
+  getHomeMenProductsAPI,
+  getHomeWomenProductsAPI,
+  getHomeShoesProductsAPI,
+  getHomeTshirtsProductsAPI,
+} from "./homeproduct.api";
 import * as types from "./homeproduct.types";
 
 export interface IProductRequest {
@@ -56,7 +61,9 @@ const getShoesProductSuccess = (data: Product[]): IGetShoesProductSuccess => {
   return { type: types.GET_SHOES_PRODUCTS_SUCCESS, payload: data };
 };
 
-const getTshirtsProductSuccess = (data: Product[]): IGetTshirtsProductSuccess => {
+const getTshirtsProductSuccess = (
+  data: Product[]
+): IGetTshirtsProductSuccess => {
   return { type: types.GET_TSHIRTS_PRODUCTS_SUCCESS, payload: data };
 };
 

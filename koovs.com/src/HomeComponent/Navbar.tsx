@@ -9,7 +9,7 @@ import {
   MenuItem,
   Stack,
   Link,
-  useBreakpointValue
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { BsInstagram } from "react-icons/bs";
 import { BiChevronDown } from "react-icons/bi";
@@ -19,7 +19,7 @@ export default function Navbar() {
   const isSmallScreen = useBreakpointValue({ base: true, lg: false });
   return (
     <>
-      <Box px={20} display={isSmallScreen ? "none" : "auto"} bg='white' >
+      <Box px={20} display={isSmallScreen ? "none" : "auto"} bg="white">
         <Flex alignItems={"center"} justifyContent={"space-between"}>
           <Stack direction="row" spacing={-5}>
             <Text>

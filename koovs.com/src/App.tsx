@@ -4,7 +4,6 @@ import Navbar from "./HomeComponent/Navbar";
 import Navbar1 from "./HomeComponent/Navbar1";
 import Footer from "./HomeComponent/Footer";
 import { useLocation } from "react-router-dom";
-
 import "./App.css";
 import BackToTop from "./HomeComponent/BackToTop";
 
@@ -17,24 +16,22 @@ function App() {
         false
       ) : (
         <Box>
-          <BackToTop/>
+          <BackToTop />
           <Navbar />
           <Divider />
           <Navbar1 />
-          
         </Box>
       )}
 
       <MainRoute />
-      
+
       {location.pathname === "/admin" ? (
         false
       ) : (
         <Box>
-          <Footer/>
+          <Footer />
         </Box>
       )}
-      
     </div>
   );
 }

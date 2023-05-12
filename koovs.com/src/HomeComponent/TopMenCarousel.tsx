@@ -1,8 +1,6 @@
 import React from "react";
 import { Box, Text, Flex } from "@chakra-ui/react";
-import { ArrowForwardIcon } from '@chakra-ui/icons'
-
-
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { IconButton } from "@chakra-ui/react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -27,18 +25,17 @@ const responsive = {
   },
 };
 
-
 const content = [
-    {
-        src: "https://cdn.shopify.com/s/files/1/0677/1464/6315/files/ball_sweatshirt-01.jpg?v=1668170499&width=360",
-        title: "Sweatshirts",
-        count: 61,
-      },
-      {
-        src: "https://cdn.shopify.com/s/files/1/0677/1464/6315/files/unisex_accessories-01.jpg?v=1668170734&width=360",
-        title: "Accessories",
-        count: 9,
-      },
+  {
+    src: "https://cdn.shopify.com/s/files/1/0677/1464/6315/files/ball_sweatshirt-01.jpg?v=1668170499&width=360",
+    title: "Sweatshirts",
+    count: 61,
+  },
+  {
+    src: "https://cdn.shopify.com/s/files/1/0677/1464/6315/files/unisex_accessories-01.jpg?v=1668170734&width=360",
+    title: "Accessories",
+    count: 9,
+  },
   {
     src: "https://cdn.shopify.com/s/files/1/0677/1464/6315/files/Untitled-6-01.jpg?v=1667985899&width=360",
     title: "T-Shirts",
@@ -60,8 +57,6 @@ const content = [
     title: "Shorts",
     count: 27,
   },
-
-  
 ];
 const TopMenCarousel = () => {
   return (
@@ -71,7 +66,6 @@ const TopMenCarousel = () => {
           content.map((el, i) => (
             <Box
               key={i}
-              
               borderRadius={0}
               transition="0.5s all ease-in-out"
               _hover={{ transform: "scale(0.95)" }}
@@ -84,7 +78,11 @@ const TopMenCarousel = () => {
               mr="8%"
               h="400px"
             >
-              <Flex alignItems={"center"} justifyContent={"space-between"} pt="320px" >
+              <Flex
+                alignItems={"center"}
+                justifyContent={"space-between"}
+                pt="320px"
+              >
                 <Box textAlign={"left"} pl={5}>
                   <Text fontSize={17} color="black">
                     {el.title}
@@ -93,7 +91,7 @@ const TopMenCarousel = () => {
                     {el.count} items
                   </Text>
                 </Box>
-                <Box pr={5} >
+                <Box pr={5}>
                   <IconButton
                     variant="none"
                     colorScheme="black"
@@ -101,8 +99,7 @@ const TopMenCarousel = () => {
                     aria-label="Link to Categories"
                     icon={<ArrowForwardIcon />}
                     borderRadius="full"
-                    _hover={{ bg: "black.500" ,colorScheme:"white"}}
-                    
+                    _hover={{ bg: "black.500", colorScheme: "white" }}
                   />
                 </Box>
               </Flex>

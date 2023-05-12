@@ -29,7 +29,9 @@ const getUserfail = () => {
 const getUserDetails = async (dispatch: AppDispatch) => {
   dispatch(getUserreq());
   try {
-    let res = await axios.get(`http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/UserDetails`);
+    let res = await axios.get(
+      `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/UserDetails`
+    );
     let data = res.data;
     dispatch(getUsersuc(data));
   } catch (error) {

@@ -31,9 +31,9 @@ const reducer = (
     case types.GET_WOMEN_PRODUCTS_SUCCESS:
       return { ...oldState, loading: false, womenData: action.payload };
     case types.UPDATE_MEN_PRODUCTS:
-      return { ...oldState, mensData: action.payload,loading:false };
+      return { ...oldState, mensData: action.payload, loading: false };
     case types.UPDATE_WOMEN_PRODUCTS:
-      return { ...oldState, womenData: action.payload,loading:false };
+      return { ...oldState, womenData: action.payload, loading: false };
     default:
       return oldState;
   }

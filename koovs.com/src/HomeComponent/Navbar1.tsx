@@ -48,31 +48,43 @@ export default function Navbar1() {
             fontSize={14}
           >
             <Link to="/men">
-              <Text   _hover={{
+              <Text
+                _hover={{
                   textDecoration: "underline",
                   color: "teal",
                   fontWeight: "bold",
-                }}>Men</Text>
+                }}
+              >
+                Men
+              </Text>
             </Link>
             <Link to="/women">
-              <Text   _hover={{
+              <Text
+                _hover={{
                   textDecoration: "underline",
                   color: "teal",
                   fontWeight: "bold",
-                }}>Women</Text>
+                }}
+              >
+                Women
+              </Text>
             </Link>
             <Link to="/">
-              <Text   _hover={{
+              <Text
+                _hover={{
                   textDecoration: "underline",
                   color: "teal",
                   fontWeight: "bold",
-                }}>Artist collab</Text>
+                }}
+              >
+                Artist collab
+              </Text>
             </Link>
           </HStack>
           <Stack
-        //    display={{ md: "auto", base: "flex" }}
-        mx={{ base: "flex-right", md: "auto" }}
-           >
+            //    display={{ md: "auto", base: "flex" }}
+            mx={{ base: "flex-right", md: "auto" }}
+          >
             <Tooltip
               label="KoolZ"
               placement="bottom-end"
@@ -92,19 +104,18 @@ export default function Navbar1() {
             direction={["column", "row"]}
             align={isSmallScreen ? "center" : "flex-right"}
             justify={isSmallScreen ? "center" : "space-between"}
-            width={isSmallScreen?"100%" :"auto"}
-           
+            width={isSmallScreen ? "100%" : "auto"}
             px={4}
             py={2}
-              position={{base:"fixed",lg:'absolute' }}
+            position={{ base: "fixed", lg: "absolute" }}
             top={isSmallScreen ? "auto" : 14}
             bottom={isSmallScreen ? 0 : "auto"}
             left={isSmallScreen ? 0 : "auto"}
-            right={isSmallScreen ? "auto": 0}
+            right={isSmallScreen ? "auto" : 0}
             zIndex={999}
             mx={useBreakpointValue({ base: "auto", md: "auto" })}
           >
-            <HStack 
+            <HStack
             // display={{ md: "flex", base: "flex" }}
             >
               <Tooltip hasArrow label="Search " bg="black" color="white">
@@ -122,7 +133,6 @@ export default function Navbar1() {
                   <GrUserAdmin size={"20px"} />
                 </Button>
               </Tooltip>
-
 
               <Tooltip hasArrow label="Wishlist " bg="black" color="white">
                 <Button as={Link} to={"/wishlist"} backgroundColor={"white"}>

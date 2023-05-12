@@ -96,15 +96,15 @@ export const getUsersPatchAPI = async (
 };
 
 export const getAdminUserPatchAPI = async (
-  Name:string,
-  EmailId:string,
-  Phone:string,
-  Password:string,
-  Image:string
+  Name: string,
+  EmailId: string,
+  Phone: string,
+  Password: string,
+  Image: string
 ) => {
   let res: AxiosResponse<Userdetails> = await axios.patch(
     `http://localhost:8080/AdminDetails`,
-    { Name,EmailId,Phone,Password,Image}
+    { Name, EmailId, Phone, Password, Image }
   );
   return res.data;
 };

@@ -28,27 +28,24 @@ import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import { getAdminAdmin } from "../../Redux/admin/admin.action";
 import { Link, useNavigate } from "react-router-dom";
 
-
-
 export default function AdminPage() {
-  const admin = useAppSelector((store)=>store.adminReducer.admin)
-  const dispatch = useAppDispatch()
-  const navigate = useNavigate()
-  const prodRef:any= useRef();
-  const dashboardRef:any = useRef();
-  const customerRef:any = useRef();
-  const orderRef:any = useRef();
-  const accountRef:any = useRef();
+  const admin = useAppSelector((store) => store.adminReducer.admin);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const prodRef: any = useRef();
+  const dashboardRef: any = useRef();
+  const customerRef: any = useRef();
+  const orderRef: any = useRef();
+  const accountRef: any = useRef();
 
-  useEffect(()=>{
-    document.title = 'Koolz | Admin'
-    dispatch(getAdminAdmin())
-  },[])
+  useEffect(() => {
+    document.title = "Koolz | Admin";
+    dispatch(getAdminAdmin());
+  }, []);
 
-  const handleRoute = ()=>{
-    navigate('/')
-  }
-
+  const handleRoute = () => {
+    navigate("/");
+  };
 
   return (
     <>
@@ -67,22 +64,16 @@ export default function AdminPage() {
           h={"100vh"}
         >
           <Box width={"60%"} m={"auto"} mt={0} mb={0}>
-            <Image
-              alt="logo"
-              src="/images/koolz-logo.png"
-            ></Image>
+            <Image alt="logo" src="/images/koolz-logo.png"></Image>
           </Box>
 
           <Box textAlign={"center"} mt={"20px"}>
-            <Avatar border='2px' size={"2xl"} src={admin.Image}></Avatar>
+            <Avatar border="2px" size={"2xl"} src={admin.Image}></Avatar>
           </Box>
           <Box textAlign={"center"} mt={"20px"} mb={"20px"}>
             <Text>{admin.Name}</Text>
             <Text color={"black"}>{admin.EmailId}</Text>
-    
           </Box>
-
-          
 
           <Tab
             ref={dashboardRef}
@@ -130,7 +121,6 @@ export default function AdminPage() {
             ref={customerRef}
             mb={"5px"}
             borderRadius={"5px"}
-           
             // transition={"0.8s"}
             _selected={{
               color: "black",
@@ -163,33 +153,31 @@ export default function AdminPage() {
             variant={"solid"}
             borderRadius={"5px"}
             colorScheme={"red"}
-           onClick={handleRoute}
+            onClick={handleRoute}
           >
             Logout
           </Button>
         </TabList>
 
-            {/* tab panals */}
-        <TabPanels pl={{ md: "32%", lg: "21%" }}  bg='#CBEDD5'>
-          <TabPanel p={0}  >
-            <Dashbord/>
+        {/* tab panals */}
+        <TabPanels pl={{ md: "32%", lg: "21%" }} bg="#CBEDD5">
+          <TabPanel p={0}>
+            <Dashbord />
           </TabPanel>
           <TabPanel p={0}>
-            <Listing/>
+            <Listing />
+          </TabPanel>
+          <TabPanel p={0}>Orders page</TabPanel>
+          <TabPanel p={0}>
+            <Customers />
           </TabPanel>
           <TabPanel p={0}>
-          Orders page
-          </TabPanel>
-          <TabPanel p={0}>
-            <Customers/>
-          </TabPanel>
-          <TabPanel p={0}>
-            <AccountInfo/>
+            <AccountInfo />
           </TabPanel>
         </TabPanels>
       </Tabs>
 
-            {/* hambarger side manu bar */}
+      {/* hambarger side manu bar */}
       <Box
         display={{ base: "flex", md: "none" }}
         justifyContent={"space-between"}
@@ -210,8 +198,11 @@ export default function AdminPage() {
         />
         <Box>
           <Menu>
-            <MenuButton pr='15px'>
-              <Avatar  src={'https://avatars.githubusercontent.com/u/110043714?v=4'} name={'Onkar.k'}></Avatar>
+            <MenuButton pr="15px">
+              <Avatar
+                src={"https://avatars.githubusercontent.com/u/110043714?v=4"}
+                name={"Onkar.k"}
+              ></Avatar>
             </MenuButton>
             <MenuList backgroundColor={"#439A97"} border={"1px solid #439A97"}>
               <MenuItem backgroundColor={"#439A97"}>
@@ -240,17 +231,13 @@ export default function AdminPage() {
                   fontSize={"2xl"}
                 >
                   {" "}
-                  <FiLogOut />{" "}
-                  <Link  to='/' >
-                    Logout
-                  </Link>
+                  <FiLogOut /> <Link to="/">Logout</Link>
                 </Box>
               </MenuItem>
             </MenuList>
           </Menu>
         </Box>
       </Box>
-
     </>
-  )
+  );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
 import { Product } from "../utils/types";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 // const mens: Product[] = [
 //   {
 //     id: 1,
@@ -65,9 +65,8 @@ import {Link} from "react-router-dom"
 //   },
 // ];
 
-const WomensCard = ({ img1,img2, title, price }: Product) => {
+const WomensCard = ({ img1, img2, title, price }: Product) => {
   return (
-    
     <Box as={Link} to="/women">
       <Box
         // w={"s"}

@@ -225,9 +225,12 @@ export const getTotal = (cart: any[], quantities: number[]) => {
   for (let i = 0; i < cart.length; i++) {
     total += cartItems[i].price * (quantities[i] || 1);
   }
-  axios.post(`http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/total`, {
-    total,
-  });
+  axios.post(
+    `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/total`,
+    {
+      total,
+    }
+  );
   return total;
 };
 

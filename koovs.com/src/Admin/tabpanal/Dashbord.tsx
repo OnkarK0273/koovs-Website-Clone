@@ -5,17 +5,16 @@ import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import Piechart from "../Compo/Piechart";
 
 export default function Dashbord() {
-  const mens = useAppSelector((store)=>store.adminReducer.mens)
-  const womens = useAppSelector((store)=>store.adminReducer.womens)
-  const dispatch = useAppDispatch()
+  const mens = useAppSelector((store) => store.adminReducer.mens);
+  const womens = useAppSelector((store) => store.adminReducer.womens);
+  const dispatch = useAppDispatch();
   useEffect(() => {
-        dispatch(getAdminMen())
-        dispatch(getAdminWomen())
+    dispatch(getAdminMen());
+    dispatch(getAdminWomen());
   }, []);
   return (
-
-    <Box  pt={{ base: "80px", md: "20px" }} minH={"100vh"} >
-        <Piechart  mens={mens} womens={womens}/>
+    <Box pt={{ base: "80px", md: "20px" }} minH={"100vh"}>
+      <Piechart mens={mens} womens={womens} />
     </Box>
   );
 }

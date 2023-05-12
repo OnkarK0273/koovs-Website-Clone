@@ -1,13 +1,13 @@
 import React from "react";
 import { Box, Text, Flex } from "@chakra-ui/react";
 import { Product } from "../utils/types";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
-const TshirtCard = ({ img1, img2,title, price }: Product) => {
+const TshirtCard = ({ img1, img2, title, price }: Product) => {
   return (
     //For Varsiy Jackets Collaboration
 
-    <Box as ={Link} to="/men">
+    <Box as={Link} to="/men">
       <Box
         // w={"s"}
         h={350}
@@ -60,20 +60,19 @@ const TshirtCard = ({ img1, img2,title, price }: Product) => {
       </Box>
       <Box textAlign={"left"} pl="20px" py={5}>
         <Text color={"gray"} fontSize={12} fontWeight="bold">
-        THE COUTURE CLUB
+          THE COUTURE CLUB
         </Text>
         <Text color={"black"} fontSize={14} fontWeight="bold">
           {title}
         </Text>
         <Flex>
-        <Text fontWeight="normal" color={"gray"} fontSize={12} mr={5}>
-          Rs. {price}
-        </Text>
-        <Text  as="s" fontWeight="normal" color={"gray"} fontSize={12} >
-          Rs. 4,000
-        </Text>
+          <Text fontWeight="normal" color={"gray"} fontSize={12} mr={5}>
+            Rs. {price}
+          </Text>
+          <Text as="s" fontWeight="normal" color={"gray"} fontSize={12}>
+            Rs. 4,000
+          </Text>
         </Flex>
-        
       </Box>
     </Box>
   );

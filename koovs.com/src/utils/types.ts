@@ -48,7 +48,6 @@ export interface Admin {
   isAuth: boolean;
 }
 
-
 // SIGNUP & LOGIN
 
 export interface SignupDetail {
@@ -69,7 +68,6 @@ export interface LoginDetail {
   phone?: string;
   address?: string;
   image?: string;
-
 }
 
 export interface LoginState {
@@ -78,5 +76,3 @@ export interface LoginState {
   isAuth: boolean;
   details: LoginDetail;
 }
-
-
