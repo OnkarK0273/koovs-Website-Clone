@@ -24,11 +24,13 @@ import {
   AlertDialogCloseButton,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../../Redux/store";
 
 const Details: React.FC = () => {
   const colSpan = useBreakpointValue({ base: 2, md: 1 });
   const getPrice = localStorage.getItem("Cart-Price") || 10;
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { isAuth,fName,lName,email } = useAppSelector((store) => store.loginReducer)
 
   const handleClick = () => {
     setIsLoading(true);
@@ -46,7 +48,7 @@ const Details: React.FC = () => {
   };
 
   return (
-    <VStack w="full" h="full" p={10} spacing={10} alignItems="flex-start">
+    <VStack w="full" h="full" p={10} spacing={10} alignItems="flex-start"  boxShadow='base'  rounded='md' bg='whiteAlpha.300'  >
       <VStack spacing={3} alignItems="flex-start">
         <Heading size="2xl">Delivery Address</Heading>
         <Text>Fill your all details & Shiping Details.</Text>
@@ -55,13 +57,13 @@ const Details: React.FC = () => {
         <GridItem colSpan={colSpan}>
           <FormControl>
             <FormLabel>First Name</FormLabel>
-            <Input placeholder="Suman" />
+            <Input placeholder={fName}  />
           </FormControl>
         </GridItem>
         <GridItem colSpan={colSpan}>
           <FormControl>
             <FormLabel>Last Name</FormLabel>
-            <Input placeholder="Biswas" />
+            <Input placeholder={lName} />
           </FormControl>
         </GridItem>
         <GridItem colSpan={2}>
@@ -91,53 +93,9 @@ const Details: React.FC = () => {
         <GridItem colSpan={2}>
           <Checkbox defaultChecked>Ship to billing address.</Checkbox>
         </GridItem>
-        <GridItem colSpan={2}>
-          <Button
-            variant="outline"
-            size="lg"
-            w="full"
-            colorScheme="blue"
-            isDisabled={getPrice === "" ? true : false}
-            isLoading={isLoading}
-            onClick={handleClick}
-            loadingText={"Placing Order..."}
-          >
-            Place Order
-          </Button>
-        </GridItem>
+        
       </SimpleGrid>
-      <>
-        <AlertDialog
-          motionPreset="slideInBottom"
-          leastDestructiveRef={cancelRef}
-          onClose={onClose}
-          isOpen={isOpen}
-          isCentered
-        >
-          <AlertDialogOverlay />
-
-          <AlertDialogContent>
-            <AlertDialogHeader>Order Placed</AlertDialogHeader>
-            <AlertDialogCloseButton />
-            <AlertDialogBody>
-              Your order has been placed successfully. Do you want to continue
-              shopping or go to home page?
-            </AlertDialogBody>
-            <AlertDialogFooter>
-              <Link to={"/"}>
-                <Button ref={cancelRef} onClick={onClose}>
-                  Continue Shopping
-                </Button>
-              </Link>
-              <Link to={"/"}>
-                <Button colorScheme="blue" ml={3} onClick={handleHome}>
-                  Home
-                </Button>
-              </Link>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
-      </>
+     
     </VStack>
   );
 };

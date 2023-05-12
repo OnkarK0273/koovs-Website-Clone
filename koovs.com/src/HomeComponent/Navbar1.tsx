@@ -99,7 +99,9 @@ export default function Navbar1() {
               </Link>
             </Tooltip>
           </Stack>
+          <Box display={{ base: "flex", md: "none" }} >
 
+          </Box>
           <Flex
             direction={["column", "row"]}
             align={isSmallScreen ? "center" : "flex-right"}
@@ -107,12 +109,22 @@ export default function Navbar1() {
             width={isSmallScreen ? "100%" : "auto"}
             px={4}
             py={2}
+<<<<<<< HEAD
             position={{ base: "fixed", lg: "absolute" }}
             top={isSmallScreen ? "auto" : 14}
             bottom={isSmallScreen ? 0 : "auto"}
             left={isSmallScreen ? 0 : "auto"}
             right={isSmallScreen ? "auto" : 0}
             zIndex={999}
+=======
+            position={{base:"fixed",lg:'absolute' }}
+            bg={{base:"blue.300",lg:'none' }}
+            top={isSmallScreen ? "auto" : 14}
+            bottom={isSmallScreen ? 0 : "auto"}
+            left={isSmallScreen ? 0 : "auto"}
+            right={isSmallScreen ? "auto": 0}
+            zIndex={1299}
+>>>>>>> b9c71f51756986c4dd73d84e2dd673832e77dc93
             mx={useBreakpointValue({ base: "auto", md: "auto" })}
           >
             <HStack

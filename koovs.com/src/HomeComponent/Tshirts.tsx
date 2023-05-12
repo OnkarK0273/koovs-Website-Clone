@@ -5,11 +5,17 @@ import { useAppDispatch, useAppSelector } from "../Redux/store";
 import { getTshirtsProducts } from "../Redux/HomeProduct/homeproduct.action";
 
 const Tshirts = () => {
+<<<<<<< HEAD
   const dispatch = useAppDispatch();
   const tshirtsProducts = useAppSelector(
     (store) => store.HomeProductReducer.tshirtsData
   );
   console.log("tshirts", tshirtsProducts);
+=======
+     const dispatch = useAppDispatch();
+  const tshirtsProducts = useAppSelector((store) => store.HomeProductReducer.tshirtsData);
+  // console.log("tshirts",tshirtsProducts);
+>>>>>>> b9c71f51756986c4dd73d84e2dd673832e77dc93
 
   useEffect(() => {
     if (tshirtsProducts.length === 0) {

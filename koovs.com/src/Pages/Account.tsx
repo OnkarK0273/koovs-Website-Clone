@@ -13,6 +13,7 @@ import React from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../Redux/store";
 import { logoutUser } from "../Redux/Auth/login.action";
+<<<<<<< HEAD
 
 const Account = () => {
   const { isAuth, details } = useAppSelector((store) => store.loginReducer);
@@ -26,6 +27,24 @@ const Account = () => {
     setForceReferesh(!forceRefresh);
   };
 
+=======
+
+
+
+const Account = () => {
+  const { isAuth,fName,lName,email } = useAppSelector((store) => store.loginReducer);
+
+  const [forceRefresh, setForceReferesh] = React.useState(false);
+  const dispatch = useAppDispatch();
+  // console.log(isAuth)
+
+  const logoutfn = () => {
+    dispatch(logoutUser());
+    setForceReferesh(!forceRefresh);
+  }
+
+
+>>>>>>> b9c71f51756986c4dd73d84e2dd673832e77dc93
   if (!isAuth) {
     return <Navigate to={"/login"} />;
   }
@@ -43,10 +62,17 @@ const Account = () => {
       <HStack>
         <Box display={{ base: "none", md: "block" }}>
           <VStack mx={"80px"} justifyContent={"left"} gap={5}>
+<<<<<<< HEAD
             <Link to={"/account"} style={{ fontWeight: "bold" }}>
               Dashboard
             </Link>
             <Link to={"/wishlist"}>Wishlist</Link>
+=======
+            <Link to={"/"} style={{ fontWeight: "bold" }}>
+              Home Page
+            </Link>
+            <Link to={"/men"}>Shopping</Link>
+>>>>>>> b9c71f51756986c4dd73d84e2dd673832e77dc93
             <Button
               onClick={logoutfn}
               bgColor={"blackAlpha.900"}

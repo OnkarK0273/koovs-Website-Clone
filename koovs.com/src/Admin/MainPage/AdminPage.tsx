@@ -25,10 +25,11 @@ import Listing from "../tabpanal/Listing";
 import Customers from "../tabpanal/Customers";
 import AccountInfo from "../tabpanal/AccountInfo";
 import { useAppDispatch, useAppSelector } from "../../Redux/store";
-import { getAdminAdmin } from "../../Redux/admin/admin.action";
-import { Link, useNavigate } from "react-router-dom";
+import { adminLogout, getAdminAdmin } from "../../Redux/admin/admin.action";
+import { Link, Navigate , useNavigate } from "react-router-dom";
 
 export default function AdminPage() {
+<<<<<<< HEAD
   const admin = useAppSelector((store) => store.adminReducer.admin);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -42,6 +43,32 @@ export default function AdminPage() {
     document.title = "Koolz | Admin";
     dispatch(getAdminAdmin());
   }, []);
+=======
+  const admin = useAppSelector((store)=>store.adminReducer.admin)
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+  const prodRef:any= useRef();
+  const dashboardRef:any = useRef();
+  const customerRef:any = useRef();
+  const orderRef:any = useRef();
+  const accountRef:any = useRef();
+  const isAdmin = useAppSelector((store) => store.adminReducer.isAdmin);
+
+  // if (!isAdmin) {
+  //   return <divert to={"/adminlogin"} replace={true} />;
+  // }
+
+
+  useEffect(()=>{
+    document.title = 'Koolz | Admin'
+    dispatch(getAdminAdmin())
+  },[])
+
+  const handleRoute = ()=>{
+    dispatch(adminLogout())
+    navigate('/')
+  }
+>>>>>>> b9c71f51756986c4dd73d84e2dd673832e77dc93
 
   const handleRoute = () => {
     navigate("/");
@@ -64,7 +91,16 @@ export default function AdminPage() {
           h={"100vh"}
         >
           <Box width={"60%"} m={"auto"} mt={0} mb={0}>
+<<<<<<< HEAD
             <Image alt="logo" src="/images/koolz-logo.png"></Image>
+=======
+            <Image
+              alt="logo"
+              cursor={'pointer'}
+              onClick={()=>{navigate('/')}}
+              src="https://raw.githubusercontent.com/OnkarK0273/penitent-degree-5872/main/koovs.com/public/images/Koolz-logo.png"
+            ></Image>
+>>>>>>> b9c71f51756986c4dd73d84e2dd673832e77dc93
           </Box>
 
           <Box textAlign={"center"} mt={"20px"}>

@@ -8,11 +8,14 @@ import {
   Icon,
   chakra,
   Tooltip,
+  Skeleton,
+  Stack
 } from "@chakra-ui/react";
 import { FiShoppingCart } from "react-icons/fi";
+import { useAppDispatch, useAppSelector } from "../Redux/store";
 import { Link } from "react-router-dom";
 import { Product } from "../utils/types";
-
+import {  useState } from "react";
 const data = {
   isNew: true,
   imageURL:
@@ -32,18 +35,25 @@ function MenProductCard({
   size,
   price,
 }: Product) {
+  const loading = useAppSelector((store) => store.ProductReducer.loading)
+
+  
+
   return (
-    <>
-      <Flex
+    <>{
+      loading? <Stack direction={'row'} w='400px' m='auto'    >
+      <Skeleton height='380px' p='20px' m='5px'  w='100%'  />
+      </Stack>:<Flex
         p={5}
-        w="80%"
+        // w="80%"
+        w="400px"
         margin={"auto"}
         alignItems="center"
         justifyContent="center"
       >
         <Box
           bg={"white"}
-          maxW="sm"
+          w="sm"
           borderWidth="1px"
           rounded="lg"
           shadow="lg"
@@ -58,9 +68,21 @@ function MenProductCard({
               bg="red.200"
             />
           )}
-          <Link to={`/men/${id}`}>
-            <Image src={img1} alt={`Picture of ${title}`} roundedTop="lg" />
-          </Link>
+
+          <Box h="200px">
+            <Link to={`/men/${id}`}>
+              <Image      
+                src={img1}
+               
+                alt={`Picture of ${title}`}
+                w="50%"
+                m="auto"
+                objectFit="cover"
+                roundedTop="lg"
+              />
+            </Link>
+          </Box>
+         
 
           <Box p="6">
             <Box display="flex" alignItems="baseline">
@@ -70,7 +92,13 @@ function MenProductCard({
                 </Badge>
               )}
             </Box>
-            <Flex mt="1" justifyContent="space-between" alignContent="center">
+            <Flex
+              mt="1"
+              justifyContent="space-between"
+              rowGap="10px"
+              flexDirection={"column"}
+              alignItems='center'
+            >
               <Box
                 fontSize="2xl"
                 fontWeight="semibold"
@@ -78,6 +106,7 @@ function MenProductCard({
                 lineHeight="tight"
                 isTruncated
                 color={"black"}
+                w="180px"
               >
                 {title}
               </Box>
@@ -94,13 +123,14 @@ function MenProductCard({
               </Tooltip>
             </Flex>
 
-            <Flex justifyContent="space-between" alignContent="center">
+            <Flex justifyContent="center" alignItems='center' >
               <Box
                 fontSize="2xl"
-                color={useColorModeValue("gray.800", "white")}
+               
+               
               >
                 <Box as="span" color={"gray.600"} fontSize="lg">
-                  £
+                ₹
                 </Box>
                 {price.toFixed(2)}
               </Box>
@@ -108,6 +138,8 @@ function MenProductCard({
           </Box>
         </Box>
       </Flex>
+    }
+      
     </>
   );
 }

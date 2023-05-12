@@ -2,19 +2,19 @@ import { Button } from "@chakra-ui/button";
 import { Image } from "@chakra-ui/image";
 import { Input } from "@chakra-ui/input";
 import { Flex, Heading, Text, VStack } from "@chakra-ui/layout";
-import React, { useEffect } from "react";
-import fb from "../utils/Images/fbIcon.png";
-import google from "../utils/Images/googleIcon.png";
-import { LoginDetail, SignupDetail } from "../utils/types";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
-import { useAppDispatch, useAppSelector } from "../Redux/store";
+import React, { useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import {
   loginError,
   loginRequest,
   loginSuccess,
 } from "../Redux/Auth/login.action";
-import { Navigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../Redux/store";
+import fb from "../utils/Images/fbIcon.png";
+import google from "../utils/Images/googleIcon.png";
+import { LoginDetail, SignupDetail } from "../utils/types";
 
 const LoginForm = () => {
   const toast = useToast();
@@ -30,7 +30,7 @@ const LoginForm = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/allUsers`
+        `https://kools.onrender.com/allUsers`
       )
       .then((res) => setAllUsers(res.data))
       .catch((err) => dispatch(loginError()));
@@ -65,7 +65,14 @@ const LoginForm = () => {
           el.email === loginDetails.email &&
           el.password === loginDetails.password
         ) {
-          dispatch(loginSuccess(el));
+          dispatch(loginSuccess(el))
+          toast({
+            title: "Login Sucessfull",
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+            position: "top",
+          });
         }
       });
     }
@@ -76,6 +83,7 @@ const LoginForm = () => {
   }
 
   return (
+    <>
     <VStack
       mb={"80px"}
       gap={3}
@@ -112,7 +120,7 @@ const LoginForm = () => {
           color: "black",
         }}
       >
-        Sign In
+        Login
       </Button>
       <Flex
         alignItems={"center"}
@@ -143,6 +151,7 @@ const LoginForm = () => {
         <Image src={google} maxH={"34px"} p="0px" bgColor="red.400" />
       </Flex>
     </VStack>
+    </>
   );
 };
 

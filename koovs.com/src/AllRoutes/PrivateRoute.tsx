@@ -1,7 +1,15 @@
 import React from "react";
+import { Navigate } from "react-router-dom";
+import { useAppSelector } from "../Redux/store";
 
-const hello = () => {
-  return <h1>jio</h1>;
+const PrivateRoute = ({ children }: any) => {
+  const isAdmin = useAppSelector((store) => store.adminReducer.isAdmin);
+  console.log('isAdmin',isAdmin)
+  if(!isAdmin){
+    return <Navigate to={"/adminlogin"} />
+  }
+  
+  return children;
 };
 
-export default hello;
+export default PrivateRoute;

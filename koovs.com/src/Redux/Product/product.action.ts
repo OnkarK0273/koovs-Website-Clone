@@ -4,6 +4,7 @@ import { AppDispatch } from "../store";
 import { getProductsAPI, getWomenProductsAPI } from "./product.api";
 import * as types from "./product.types";
 
+// type interface------------------
 export interface IProductRequest {
   type: typeof types.PRODUCT_REQUEST;
 }
@@ -34,14 +35,17 @@ export interface IUpdateWomenProduct {
   payload: Product[];
 }
 
+// all type interfaces combined
 export type ProductAction =
-  | IProductRequest
+   IProductRequest
   | IProductError
   | IGetProductSuccess
   | IGetWomenProductSuccess
   | IProductSuccess
   | IUpdateMensProduct
   | IUpdateWomenProduct;
+
+
 
 const productRequest = (): IProductRequest => {
   return { type: types.PRODUCT_REQUEST };
@@ -70,10 +74,10 @@ export const updateWomenProduct = (data: Product[]): IUpdateWomenProduct => {
   return { type: types.UPDATE_WOMEN_PRODUCTS, payload: data };
 };
 
-export const getProducts = (): any => async (dispatch: AppDispatch) => {
+export const getProducts = (getProductsParam?: { params: { category: string[],brand:string[],_limit:number ,_page:number} }) => async (dispatch: AppDispatch) => {
   dispatch(productRequest());
   try {
-    let data = await getProductsAPI();
+    let data = await getProductsAPI(getProductsParam);
     if (data) {
       dispatch(getProductSuccess(data));
     }
@@ -84,7 +88,7 @@ export const getProducts = (): any => async (dispatch: AppDispatch) => {
 
 export const singleProduct = async (id: string) => {
   try {
-    let res = await axios.get(`http://localhost:8080/mens/${id}`);
+    let res = await axios.get(`https://kools.onrender.com/mens/${id}`);
     let data = await res.data;
     return data;
   } catch (error) {
@@ -94,7 +98,7 @@ export const singleProduct = async (id: string) => {
 
 export const postSingleProduct = async (payload: any) => {
   try {
-    await axios.post(`http://localhost:8080/cart`, payload);
+    await axios.post(`https://kools.onrender.com/cart`, payload);
   } catch (error) {
     console.log(error);
   }
@@ -102,7 +106,7 @@ export const postSingleProduct = async (payload: any) => {
 
 export const singleWomenProduct = async (id: string) => {
   try {
-    let res = await axios.get(`http://localhost:8080/women/${id}`);
+    let res = await axios.get(`https://kools.onrender.com/women/${id}`);
     let data = await res.data;
     return data;
   } catch (error) {

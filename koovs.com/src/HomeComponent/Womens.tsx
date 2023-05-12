@@ -9,7 +9,11 @@ const Womens = () => {
   const womenProducts = useAppSelector(
     (store) => store.HomeProductReducer.womenData
   );
+<<<<<<< HEAD
   console.log("women", womenProducts);
+=======
+  // console.log("women",womenProducts)
+>>>>>>> b9c71f51756986c4dd73d84e2dd673832e77dc93
 
   useEffect(() => {
     if (womenProducts.length === 0) {

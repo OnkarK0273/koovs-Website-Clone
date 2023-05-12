@@ -12,12 +12,20 @@ interface ListingtableProp {
     title: string
   ) => void;
 }
+<<<<<<< HEAD
 export default function ListingTable({
   data,
   handleToggle,
   handleOpenDetails,
 }: ListingtableProp) {
   const loading = useAppSelector((store) => store.adminReducer.loading);
+=======
+export default function ListingTable({data,handleToggle,handleOpenDetails}:ListingtableProp) {
+    const loading = useAppSelector((store)=>store.adminReducer.loading)
+    
+    // console.log('loading',loading)
+   
+>>>>>>> b9c71f51756986c4dd73d84e2dd673832e77dc93
 
   console.log("loading", loading);
 

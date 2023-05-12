@@ -23,9 +23,17 @@ export default function Listing() {
     if (searchParams.getAll("product")[0] === "Mens") {
       const getMensParam = {
         params: {
+<<<<<<< HEAD
           category: searchParams.getAll("catagory"),
           _limit: 10,
           _page: page,
+=======
+          category: searchParams.getAll('catagory'),
+          _limit:10,
+          _page:page,
+          q:searchParams?.getAll('serch')
+          
+>>>>>>> b9c71f51756986c4dd73d84e2dd673832e77dc93
 
           q: searchParams?.getAll("serch"),
         },

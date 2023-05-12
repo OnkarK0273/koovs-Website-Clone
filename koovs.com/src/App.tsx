@@ -5,18 +5,22 @@ import Navbar1 from "./HomeComponent/Navbar1";
 import Footer from "./HomeComponent/Footer";
 import { useLocation } from "react-router-dom";
 import "./App.css";
-import BackToTop from "./HomeComponent/BackToTop";
+
 
 function App() {
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   return (
-    <div>
+    <div  >
       {location.pathname === "/admin" ? (
         false
       ) : (
         <Box>
+<<<<<<< HEAD
           <BackToTop />
+=======
+          {/* <BackToTop/> */}
+>>>>>>> b9c71f51756986c4dd73d84e2dd673832e77dc93
           <Navbar />
           <Divider />
           <Navbar1 />

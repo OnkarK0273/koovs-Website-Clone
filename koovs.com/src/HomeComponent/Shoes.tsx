@@ -7,11 +7,17 @@ import { useAppDispatch, useAppSelector } from "../Redux/store";
 import { getShoesProducts } from "../Redux/HomeProduct/homeproduct.action";
 
 const Mens = () => {
+<<<<<<< HEAD
   const dispatch = useAppDispatch();
   const shoesProducts = useAppSelector(
     (store) => store.HomeProductReducer.shoesData
   );
   console.log("shoes", shoesProducts);
+=======
+     const dispatch = useAppDispatch();
+  const shoesProducts = useAppSelector((store) => store.HomeProductReducer.shoesData);
+  // console.log("shoes",shoesProducts);
+>>>>>>> b9c71f51756986c4dd73d84e2dd673832e77dc93
 
   useEffect(() => {
     if (shoesProducts.length === 0) {
