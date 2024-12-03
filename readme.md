@@ -20,13 +20,13 @@ Koolz.com is a cutting-edge e-commerce platform that reimagines online shopping 
 
 ## 👥 Dream Team
 
-| Name              | Role        | GitHub                                                |
-| ----------------- | ----------- | ----------------------------------------------------- |
-| Onkar Kalsannawar | Team Lead   | [@OnkarK0273](https://github.com/OnkarK0273)          |
-| Suman Biswas      | Team Member | -                                                     |
-| Arun Kumar Rana   | Team Member | -                                                     |
-| M Noor Mohammed   | Team Member | -                                                     |
-| Deepak Patil      | Team Member | -  [@deepakpatil26](https://github.com/deepakpatil26) |
+| Name              | Role        | GitHub                                                 |
+| ----------------- | ----------- | ------------------------------------------------------ |
+| Onkar Kalsannawar | Team Lead   | [@OnkarK0273](https://github.com/OnkarK0273)           |
+| Suman Biswas      | Team Member | - [@SumanBlswas](https://github.com/SumanBlswas)       |
+| Arun Kumar Rana   | Team Member | - [@arun24hrs](https://github.com/arun24hrs)           |
+| M Noor Mohammed   | Team Member | - [@NoorMohammed17](https://github.com/NoorMohammed17) |
+| Deepak Patil      | Team Member | - [@deepakpatil26](https://github.com/deepakpatil26)   |
 
 ## 🚦 Quick Start Guide
 
@@ -51,6 +51,25 @@ npm start
 
 # Visit http://localhost:3000
 ```
+
+## 🌐 Deployment
+
+### Live Demo
+🔗 **Explore the Live Site**: [koolz.vercel.app](https://koolz.vercel.app/)
+
+### Deployment Details
+- **Platform**: Vercel
+- **Branch**: main
+- **Automatic Deployments**: Enabled
+- **Custom Domain**: Available
+
+#### Deployment Process
+1. Push changes to the main GitHub repository
+2. Vercel automatically detects the changes
+3. Builds and deploys the application within minutes
+4. Provides instant preview and production deployments
+
+**Pro Tip**: Every pull request generates a unique preview deployment, allowing for easy review and testing of new features.
 
 ## 🖼️ Project Snapshot
 
