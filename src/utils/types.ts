@@ -91,7 +91,7 @@ export interface LoginState {
     email: string;
     password: string;
   };
-  email: string;
+  // email: string;
   fName?: string;
   lName?: string;
 }
