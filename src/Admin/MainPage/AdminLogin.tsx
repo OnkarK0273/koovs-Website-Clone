@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   Box,
   Button,
@@ -19,83 +21,76 @@ import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import adminImg from "../../utils/Images/admin.png";
 import { AdminLoginDetails } from "../../utils/types";
 
-
 const AdminLogin = () => {
-  
   const dispatch = useAppDispatch();
-  const {admin} = useAppSelector((store)=> store.adminReducer)
-  const toast = useToast()
-  const navigate = useNavigate()
+  const { admin } = useAppSelector((store) => store.adminReducer);
+  const toast = useToast();
+  const navigate = useNavigate();
 
-  const [loginDetailsAdmin, setLoginDetailsAdmin] = React.useState<AdminLoginDetails>({
-    email: "",
-    password: "",
-    isAdmin: true,
-  });
+  const [loginDetailsAdmin, setLoginDetailsAdmin] =
+    React.useState<AdminLoginDetails>({
+      email: "",
+      password: "",
+      isAdmin: true,
+    });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newDetails: AdminLoginDetails = {
       ...loginDetailsAdmin,
       [e.target.name]: e.target.value,
     };
-    setLoginDetailsAdmin(newDetails)
+    setLoginDetailsAdmin(newDetails);
   };
-    
 
-    React.useEffect(()=>{
-      const adminnnn = getAdminAPI()
-      adminnnn.then((res)=> dispatch(getAdminAdmin()))
-      
-    },[])
+  React.useEffect(() => {
+    const adminnnn = getAdminAPI();
+    adminnnn.then((res) => dispatch(getAdminAdmin()));
+  }, []);
 
-
-    const handleFormSubmit = ():void => {
-      dispatch(loginRequest());
-      if(admin.EmailId === loginDetailsAdmin.email && admin.Password === loginDetailsAdmin.password){
-        dispatch(adminLogin()).then(()=>{
-
-          toast({
-            title: "Login Sucessfull",
-            status: "success",
-            duration: 2000,
-            isClosable: true,
-            position: "top",
-          })
-
-          navigate('/admin')
-        })
-        // admin.isAdmin && admin.isAuth && sessionStorage.setItem("KoolAdmin", JSON.stringify(true));
-        return;
-      }else{
-
+  const handleFormSubmit = (): void => {
+    dispatch(loginRequest());
+    if (
+      admin.EmailId === loginDetailsAdmin.email &&
+      admin.Password === loginDetailsAdmin.password
+    ) {
+      dispatch(adminLogin()).then(() => {
         toast({
-          title: "invalid Email or Password",
-          status: "warning",
-          duration: 3000,
+          title: "Login Sucessfull",
+          status: "success",
+          duration: 2000,
           isClosable: true,
           position: "top",
         });
-        
 
-      }
-      if (loginDetailsAdmin.email === "" || loginDetailsAdmin.password === "") {
-        toast({
-          title: "Warning! Form Incomplete",
-          description: "Please fill all the details",
-          status: "warning",
-          duration: 3000,
-          isClosable: true,
-          position: "top",
-        });
-        return;
-      }
-      
+        navigate("/admin");
+      });
+      // admin.isAdmin && admin.isAuth && sessionStorage.setItem("KoolAdmin", JSON.stringify(true));
+      return;
+    } else {
+      toast({
+        title: "invalid Email or Password",
+        status: "warning",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
     }
-
+    if (loginDetailsAdmin.email === "" || loginDetailsAdmin.password === "") {
+      toast({
+        title: "Warning! Form Incomplete",
+        description: "Please fill all the details",
+        status: "warning",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+      return;
+    }
+  };
 
   return (
     <Flex
-      flexDirection={{base:"column",md:"row"}}
+      flexDirection={{ base: "column", md: "row" }}
       justifyContent={"center"}
       gap={"40px"}
       alignItems={"center"}
@@ -106,11 +101,16 @@ const AdminLogin = () => {
         <Text mb={2} color={"gray.500"}>
           Login to get your super powers...
         </Text>
-        <Image  display={{base:"none",md:"block"}}  src={adminImg} p="0px" bgColor="blue.100" width={"450px"} />
+        <Image
+          display={{ base: "none", md: "block" }}
+          src={adminImg}
+          p="0px"
+          bgColor="blue.100"
+          width={"450px"}
+        />
       </Box>
       <Box>
         <VStack
-          
           gap={3}
           width={{ base: "100%", md: "100%" }}
           alignItems={"left"}

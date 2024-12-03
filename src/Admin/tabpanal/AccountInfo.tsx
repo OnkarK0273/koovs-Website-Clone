@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   Avatar,
   Box,
@@ -77,13 +79,7 @@ const AccountInfo = () => {
     );
   };
 
-<<<<<<< HEAD
   console.log(admin);
-
-=======
-  // console.log(admin);
-  
->>>>>>> b9c71f51756986c4dd73d84e2dd673832e77dc93
   useEffect(() => {
     dispatch(getAdminAdmin());
   }, []);

@@ -4,11 +4,11 @@ import { useAppSelector } from "../Redux/store";
 
 const PrivateRoute = ({ children }: any) => {
   const isAdmin = useAppSelector((store) => store.adminReducer.isAdmin);
-  console.log('isAdmin',isAdmin)
-  if(!isAdmin){
-    return <Navigate to={"/adminlogin"} />
+  console.log("isAdmin", isAdmin);
+  if (!isAdmin) {
+    return <Navigate to={"/adminlogin"} />;
   }
-  
+
   return children;
 };
 

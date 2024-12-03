@@ -18,7 +18,7 @@ const initState = {
   womens: [],
   users: [],
   admin: [],
-  isAdmin: sessionStorage.getItem("KoolAdmin") ? true : false
+  isAdmin: sessionStorage.getItem("KoolAdmin") ? true : false,
 };
 
 export const adminReducer = (
@@ -50,28 +50,10 @@ export const adminReducer = (
       return { ...state, loading: false, admin: payload };
     }
 
-<<<<<<< HEAD
     case types.TOGGLE_MEN: {
       let arr = state.mens.map((el) => {
         if (el.id === payload) {
           el.active = !el.active;
-=======
-    case types.ADMIN_LOGIN: {
-      sessionStorage.setItem("KoolAdmin", "true")
-      const newPayload = {...payload, isAuth: true, isAdmin: true}
-      return { ...state, loading: false, admin: newPayload,isAdmin: true };
-    }
-
-    case types.ADMIN_LOGOUT:{
-      sessionStorage.removeItem("KoolAdmin")
-      return { ...state, loading: false, admin: [],isAdmin: false }
-    }
-
-    case types.TOGGLE_MEN:{
-      let arr:any = state.mens.map((el)=>{
-        if(el.id===payload){
-          el.active = !el.active
->>>>>>> b9c71f51756986c4dd73d84e2dd673832e77dc93
         }
         return el;
       });

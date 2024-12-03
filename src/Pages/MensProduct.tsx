@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import {
   Button,
@@ -18,31 +20,31 @@ import {
   Box,
   Icon,
   Center,
-  Heading
+  Heading,
 } from "@chakra-ui/react";
 import NotFound from "../Components/Error";
 import { useDisclosure } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useAppDispatch, useAppSelector } from "../Redux/store";
-import { useLocation, useSearchParams } from 'react-router-dom'
+import { useLocation, useSearchParams } from "react-router-dom";
 import {
   getProducts,
   updateMensProduct,
 } from "../Redux/Product/product.action";
 import MenProductCard from "./MenProductCard";
 import { Checkbox, CheckboxGroup } from "@chakra-ui/react";
-import { TfiLayoutColumn4Alt,TfiLayoutColumn3Alt } from "react-icons/tfi";
+import { TfiLayoutColumn4Alt, TfiLayoutColumn3Alt } from "react-icons/tfi";
 import { Product } from "../utils/types";
 
 export default function MensProduct() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const size = "sm";
-  const [page,setPage] = useState(1)
-  
-  const location = useLocation()
+  const [page, setPage] = useState(1);
+
+  const location = useLocation();
   const dispatch = useAppDispatch();
   const menProducts = useAppSelector((store) => store.ProductReducer.mensData);
-  
+
   const [searchParams, setSearchParams] = useSearchParams();
   const initialFIlterValues = searchParams.getAll("filter");
   const initialFIlterValues2 = searchParams.getAll("filter1");
@@ -53,7 +55,6 @@ export default function MensProduct() {
     initialFIlterValues2 || []
   );
 
-
   const handleFilterChange = (value: string[]) => {
     setFilterValues(value);
   };
@@ -63,45 +64,35 @@ export default function MensProduct() {
   };
 
   useEffect(() => {
-    if(menProducts.length ===0){
+    if (menProducts.length === 0) {
       dispatch(getProducts());
     }
     // eslint-disable-next-line
   }, []);
 
-  useEffect(()=>{
-
-    if(initialFIlterValues || initialFIlterValues2 ){
-
+  useEffect(() => {
+    if (initialFIlterValues || initialFIlterValues2) {
       const getMensParam = {
         params: {
-          category:initialFIlterValues,
-          brand:initialFIlterValues2,
-          _limit:12,
-          _page:page,
-
-        }
-      }
-
+          category: initialFIlterValues,
+          brand: initialFIlterValues2,
+          _limit: 12,
+          _page: page,
+        },
+      };
 
       dispatch(getProducts(getMensParam));
-
-
     }
-
-  },[location.search,page])
-  
+  }, [location.search, page]);
 
   useEffect(() => {
-    let params: { filter?: string[],filter1?: string[] } = {};
-    if (filterValues.length || filterValues2.length){
+    let params: { filter?: string[]; filter1?: string[] } = {};
+    if (filterValues.length || filterValues2.length) {
       params.filter = filterValues;
       params.filter1 = filterValues2;
-    } 
+    }
     setSearchParams(params);
-  }, [filterValues, setSearchParams,filterValues2]);
-
-  
+  }, [filterValues, setSearchParams, filterValues2]);
 
   const handleSortAZ = () => {
     const sortProducts = [...menProducts].sort((a, b) =>
@@ -127,36 +118,43 @@ export default function MensProduct() {
     dispatch(updateMensProduct(priceData));
   };
 
-
   return (
     <>
-      <Flex  justifyContent={"space-between"} alignItems={"center"} p='20px' >
+      <Flex justifyContent={"space-between"} alignItems={"center"} p="20px">
         <Box>
-          <Button colorScheme="black"  variant='outline'  color={"black"} onClick={onOpen}>
+          <Button
+            colorScheme="black"
+            variant="outline"
+            color={"black"}
+            onClick={onOpen}
+          >
             Filter
           </Button>
-          <Drawer isOpen={isOpen} placement="left" onClose={onClose} size={size}>
+          <Drawer
+            isOpen={isOpen}
+            placement="left"
+            onClose={onClose}
+            size={size}
+          >
             <DrawerOverlay />
             <DrawerContent>
               <DrawerCloseButton />
               <DrawerHeader>Filter</DrawerHeader>
 
               <DrawerBody display={"flex"} justifyContent="space-between">
-              
-            
                 <Menu>
                   <MenuButton
                     as={Button}
                     rightIcon={<ChevronDownIcon />}
-                    colorScheme='teal'
-                    variant='outline'
+                    colorScheme="teal"
+                    variant="outline"
                     width="100%"
                     textAlign={"left"}
                     marginTop="15px"
                   >
                     Category
                   </MenuButton>
-                  <MenuList bg='teal.400' >
+                  <MenuList bg="teal.400">
                     <CheckboxGroup
                       value={filterValues}
                       onChange={handleFilterChange}
@@ -173,24 +171,23 @@ export default function MensProduct() {
                       <MenuItem>
                         <Checkbox value="hoodes">Hoodes (53)</Checkbox>
                       </MenuItem>
-                    
                     </CheckboxGroup>
                   </MenuList>
                 </Menu>
-    
+
                 <Menu>
                   <MenuButton
                     as={Button}
                     rightIcon={<ChevronDownIcon />}
-                    colorScheme='orange'
-                    variant='outline'
+                    colorScheme="orange"
+                    variant="outline"
                     width="100%"
                     textAlign={"left"}
                     marginTop="15px"
                   >
                     Brand
                   </MenuButton>
-                  <MenuList  bg='orange'>
+                  <MenuList bg="orange">
                     <CheckboxGroup
                       value={filterValues2}
                       onChange={handleFilterChange2}
@@ -211,23 +208,24 @@ export default function MensProduct() {
                         <Checkbox value="BALL">BALL (37)</Checkbox>
                       </MenuItem>
                       <MenuItem>
-                        <Checkbox value="Garcon">
-                        Garcon (7)
-                        </Checkbox>
+                        <Checkbox value="Garcon">Garcon (7)</Checkbox>
                       </MenuItem>
                       <MenuItem>
-                        <Checkbox value="The Couture Club">The Couture Club (10)</Checkbox>
+                        <Checkbox value="The Couture Club">
+                          The Couture Club (10)
+                        </Checkbox>
                       </MenuItem>
                       <MenuItem>
                         <Checkbox value="Kangol">Kangol (1)</Checkbox>
                       </MenuItem>
                       <MenuItem>
-                        <Checkbox value="Essentials By Koovs">Essentials By Koovs (12)</Checkbox>
+                        <Checkbox value="Essentials By Koovs">
+                          Essentials By Koovs (12)
+                        </Checkbox>
                       </MenuItem>
                     </CheckboxGroup>
                   </MenuList>
                 </Menu>
-              
               </DrawerBody>
             </DrawerContent>
           </Drawer>
@@ -235,8 +233,9 @@ export default function MensProduct() {
           <Menu>
             <MenuButton
               as={Button}
-              colorScheme="black"  variant='outline' 
-              ml='10px'
+              colorScheme="black"
+              variant="outline"
+              ml="10px"
               rightIcon={<ChevronDownIcon />}
               backgroundColor="white"
             >
@@ -250,24 +249,45 @@ export default function MensProduct() {
             </MenuList>
           </Menu>
         </Box>
-        <Box display={{base:'none',lg:"flex"}} >
-            
-        </Box>
+        <Box display={{ base: "none", lg: "flex" }}></Box>
       </Flex>
-      <Box  >
-        <Grid  templateColumns={{base:"repeat(1, 1fr)",md:"repeat(2, 1fr)",lg:`repeat(3, 1fr)`}}  >
+      <Box>
+        <Grid
+          templateColumns={{
+            base: "repeat(1, 1fr)",
+            md: "repeat(2, 1fr)",
+            lg: `repeat(3, 1fr)`,
+          }}
+        >
           {menProducts?.length > 0 &&
             menProducts?.map((item: Product) =>
               item.active ? <MenProductCard key={item.id} {...item} /> : false
             )}
         </Grid>
       </Box>
-      <Center  >
-            <Button onClick={()=>{setPage(page-1)}}  isDisabled={page===1}   colorScheme="black"  variant='outline'>Prev</Button>
-            <Heading p='10px'>{page}</Heading>
-            <Button onClick={()=>{setPage(page+1)}}  isDisabled={menProducts.length !== 12} colorScheme="black"  variant='outline'>Next</Button>
+      <Center>
+        <Button
+          onClick={() => {
+            setPage(page - 1);
+          }}
+          isDisabled={page === 1}
+          colorScheme="black"
+          variant="outline"
+        >
+          Prev
+        </Button>
+        <Heading p="10px">{page}</Heading>
+        <Button
+          onClick={() => {
+            setPage(page + 1);
+          }}
+          isDisabled={menProducts.length !== 12}
+          colorScheme="black"
+          variant="outline"
+        >
+          Next
+        </Button>
       </Center>
-
     </>
   );
 }

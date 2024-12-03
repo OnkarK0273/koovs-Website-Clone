@@ -56,7 +56,7 @@ export interface SignupDetail {
   lName: string;
   email: string;
   password: string;
-  isAdmin: boolean
+  isAdmin: boolean;
   phone?: string;
   address?: string;
   image?: string;
@@ -80,16 +80,18 @@ export interface AdminLoginDetails {
   phone?: string;
   address?: string;
   image?: string;
-  isAdmin: boolean
+  isAdmin: boolean;
 }
 
 export interface LoginState {
   isLoading: boolean;
   isError: boolean;
   isAuth: boolean;
+  details: {
+    email: string;
+    password: string;
+  };
   email: string;
   fName?: string;
   lName?: string;
-  
-  
 }

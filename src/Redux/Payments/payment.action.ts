@@ -29,13 +29,10 @@ const getUserfail = () => {
 const getUserDetails = async (dispatch: AppDispatch) => {
   dispatch(getUserreq());
   try {
-<<<<<<< HEAD
     let res = await axios.get(
       `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/UserDetails`
     );
-=======
-    let res = await axios.get(`https://kools.onrender.com/UserDetails`);
->>>>>>> b9c71f51756986c4dd73d84e2dd673832e77dc93
+
     let data = res.data;
     dispatch(getUsersuc(data));
   } catch (error) {

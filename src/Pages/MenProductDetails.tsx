@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 // import { MouseEventHandler } from "react";
 import { useParams } from "react-router-dom";
@@ -6,7 +7,15 @@ import {
   singleProduct,
 } from "../Redux/Product/product.action";
 import { Link } from "react-router-dom";
-import { Box, Button, Flex, Image, Text,Heading,VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Image,
+  Text,
+  Heading,
+  VStack,
+} from "@chakra-ui/react";
 import { useAppDispatch } from "../Redux/store";
 import { getCartApi } from "../Redux/Cart/cart.action";
 
@@ -27,7 +36,7 @@ const MenProductDetails = () => {
     size: "",
     quantity: 1,
   };
- 
+
   const [data, setData] = useState(myData);
   const { id } = useParams();
   const dispatch = useAppDispatch();
@@ -49,9 +58,9 @@ const MenProductDetails = () => {
   const handleFetch = async () => {
     // singleData = data;
     // setSingleData(data);
-    postSingleProduct(data).then(()=>{
-      dispatch(getCartApi())
-    })
+    postSingleProduct(data).then(() => {
+      dispatch(getCartApi());
+    });
   };
 
   useEffect(() => {
@@ -61,29 +70,20 @@ const MenProductDetails = () => {
   return (
     <Box>
       <Box
-        display='flex'
+        display="flex"
         justifyContent={"space-evenly"}
         alignItems={"center"}
-        flexDirection={{base:"column",md:"row"}}
+        flexDirection={{ base: "column", md: "row" }}
       >
-        <Box p='20px'>
-           <Image 
-           src={data.img1}
-           objectFit="cover"
-           alt={data.title} 
-           
-            />
+        <Box p="20px">
+          <Image src={data.img1} objectFit="cover" alt={data.title} />
         </Box>
-        <VStack 
-          rowGap='10px'
-          p='20px'
-
-         >
+        <VStack rowGap="10px" p="20px">
           <Heading>{data.title}</Heading>
-          <Heading size='md' >Rs. {data.price}</Heading>
+          <Heading size="md">Rs. {data.price}</Heading>
           <Text>Tax included</Text>
 
-          <Flex justify={"space-evenly"} direction={"row"} >
+          <Flex justify={"space-evenly"} direction={"row"}>
             <Text
               border={"1px solid black"}
               borderRadius={"7px"}
@@ -140,7 +140,7 @@ const MenProductDetails = () => {
             </Text>
           </Flex>
 
-          <Flex justify={"space-evenly"} direction={"row"} >
+          <Flex justify={"space-evenly"} direction={"row"}>
             <Text
               border={"none"}
               borderRadius={"full"}
@@ -189,7 +189,7 @@ const MenProductDetails = () => {
           </Flex>
 
           <Flex gap={4}>
-            <Button colorScheme={"blue"} border={"none"}  onClick={handleFetch} >
+            <Button colorScheme={"blue"} border={"none"} onClick={handleFetch}>
               ADD TO CART
             </Button>
 
@@ -203,7 +203,9 @@ const MenProductDetails = () => {
               BUY IT NOW
             </Button>
           </Flex>
-          <Heading size='md' pt='20px' >{data.description}</Heading>
+          <Heading size="md" pt="20px">
+            {data.description}
+          </Heading>
         </VStack>
       </Box>
     </Box>

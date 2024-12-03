@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Button } from "@chakra-ui/button";
 import { Image } from "@chakra-ui/image";
 import { Input } from "@chakra-ui/input";
@@ -29,9 +30,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     axios
-      .get(
-        `https://kools.onrender.com/allUsers`
-      )
+      .get(`https://kools.onrender.com/allUsers`)
       .then((res) => setAllUsers(res.data))
       .catch((err) => dispatch(loginError()));
   }, []);
@@ -65,7 +64,7 @@ const LoginForm = () => {
           el.email === loginDetails.email &&
           el.password === loginDetails.password
         ) {
-          dispatch(loginSuccess(el))
+          dispatch(loginSuccess(el));
           toast({
             title: "Login Sucessfull",
             status: "success",
@@ -84,73 +83,73 @@ const LoginForm = () => {
 
   return (
     <>
-    <VStack
-      mb={"80px"}
-      gap={3}
-      width={{ base: "100%", md: "30%" }}
-      alignItems={"left"}
-      padding={"10px"}
-    >
-      <Heading size={"md"}>Log In</Heading>
-      <Input
-        type="email"
-        placeholder="Email"
-        name="email"
-        onChange={(e) => handleChange(e)}
-      />
-      <Input
-        type="password"
-        placeholder="Password"
-        name="password"
-        onChange={(e) => handleChange(e)}
-      />
-      <Text pt={"15px"} textDecoration={"underline"}>
-        Forgot Your Password?
-      </Text>
-      <Button
-        onClick={handleFormSubmit}
-        variant={"solid"}
-        bgColor={"black"}
-        color={"white"}
-        w={"100%"}
-        _hover={{ transform: "scale(1.03)" }}
-        _active={{
-          border: "1px solid black",
-          bgColor: "white",
-          color: "black",
-        }}
+      <VStack
+        mb={"80px"}
+        gap={3}
+        width={{ base: "100%", md: "30%" }}
+        alignItems={"left"}
+        padding={"10px"}
       >
-        Login
-      </Button>
-      <Flex
-        alignItems={"center"}
-        p={"1px"}
-        paddingLeft={"15px"}
-        borderRadius={"5px"}
-        bgColor={"facebook.400"}
-        color={"#fff"}
-        fontWeight={"semibold"}
-        justifyContent={"space-between"}
-        _hover={{ opacity: "85%" }}
-      >
-        Sign in with Facebook
-        <Image src={fb} maxH={"40px"} p="0px" />
-      </Flex>
-      <Flex
-        alignItems={"center"}
-        p={"3px"}
-        paddingLeft={"15px"}
-        borderRadius={"5px"}
-        bgColor={"red.500"}
-        color={"#fff"}
-        fontWeight={"semibold"}
-        justifyContent={"space-between"}
-        _hover={{ opacity: "85%" }}
-      >
-        Sign in with Google
-        <Image src={google} maxH={"34px"} p="0px" bgColor="red.400" />
-      </Flex>
-    </VStack>
+        <Heading size={"md"}>Log In</Heading>
+        <Input
+          type="email"
+          placeholder="Email"
+          name="email"
+          onChange={(e) => handleChange(e)}
+        />
+        <Input
+          type="password"
+          placeholder="Password"
+          name="password"
+          onChange={(e) => handleChange(e)}
+        />
+        <Text pt={"15px"} textDecoration={"underline"}>
+          Forgot Your Password?
+        </Text>
+        <Button
+          onClick={handleFormSubmit}
+          variant={"solid"}
+          bgColor={"black"}
+          color={"white"}
+          w={"100%"}
+          _hover={{ transform: "scale(1.03)" }}
+          _active={{
+            border: "1px solid black",
+            bgColor: "white",
+            color: "black",
+          }}
+        >
+          Login
+        </Button>
+        <Flex
+          alignItems={"center"}
+          p={"1px"}
+          paddingLeft={"15px"}
+          borderRadius={"5px"}
+          bgColor={"facebook.400"}
+          color={"#fff"}
+          fontWeight={"semibold"}
+          justifyContent={"space-between"}
+          _hover={{ opacity: "85%" }}
+        >
+          Sign in with Facebook
+          <Image src={fb} maxH={"40px"} p="0px" />
+        </Flex>
+        <Flex
+          alignItems={"center"}
+          p={"3px"}
+          paddingLeft={"15px"}
+          borderRadius={"5px"}
+          bgColor={"red.500"}
+          color={"#fff"}
+          fontWeight={"semibold"}
+          justifyContent={"space-between"}
+          _hover={{ opacity: "85%" }}
+        >
+          Sign in with Google
+          <Image src={google} maxH={"34px"} p="0px" bgColor="red.400" />
+        </Flex>
+      </VStack>
     </>
   );
 };

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useRef } from "react";
 import {
   FormControl,
@@ -30,7 +31,9 @@ const Details: React.FC = () => {
   const colSpan = useBreakpointValue({ base: 2, md: 1 });
   const getPrice = localStorage.getItem("Cart-Price") || 10;
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { isAuth,fName,lName,email } = useAppSelector((store) => store.loginReducer)
+  const { isAuth, fName, lName, email } = useAppSelector(
+    (store) => store.loginReducer
+  );
 
   const handleClick = () => {
     setIsLoading(true);
@@ -48,7 +51,16 @@ const Details: React.FC = () => {
   };
 
   return (
-    <VStack w="full" h="full" p={10} spacing={10} alignItems="flex-start"  boxShadow='base'  rounded='md' bg='whiteAlpha.300'  >
+    <VStack
+      w="full"
+      h="full"
+      p={10}
+      spacing={10}
+      alignItems="flex-start"
+      boxShadow="base"
+      rounded="md"
+      bg="whiteAlpha.300"
+    >
       <VStack spacing={3} alignItems="flex-start">
         <Heading size="2xl">Delivery Address</Heading>
         <Text>Fill your all details & Shiping Details.</Text>
@@ -57,7 +69,7 @@ const Details: React.FC = () => {
         <GridItem colSpan={colSpan}>
           <FormControl>
             <FormLabel>First Name</FormLabel>
-            <Input placeholder={fName}  />
+            <Input placeholder={fName} />
           </FormControl>
         </GridItem>
         <GridItem colSpan={colSpan}>
@@ -93,9 +105,7 @@ const Details: React.FC = () => {
         <GridItem colSpan={2}>
           <Checkbox defaultChecked>Ship to billing address.</Checkbox>
         </GridItem>
-        
       </SimpleGrid>
-     
     </VStack>
   );
 };

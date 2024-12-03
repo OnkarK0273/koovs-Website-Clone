@@ -1,4 +1,6 @@
-import { Box,Center } from "@chakra-ui/react";
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Box, Center } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { getAdminMen, getAdminWomen } from "../../Redux/admin/admin.action";
 import { useAppDispatch, useAppSelector } from "../../Redux/store";
@@ -13,16 +15,8 @@ export default function Dashbord() {
     dispatch(getAdminWomen());
   }, []);
   return (
-<<<<<<< HEAD
     <Box pt={{ base: "80px", md: "20px" }} minH={"100vh"}>
       <Piechart mens={mens} womens={womens} />
-=======
-
-    <Box  pt={{ base: "80px", md: "80px" }} minH={"100vh"} >
-       
-          <Piechart  mens={mens} womens={womens}/>
-        
->>>>>>> b9c71f51756986c4dd73d84e2dd673832e77dc93
     </Box>
   );
 }

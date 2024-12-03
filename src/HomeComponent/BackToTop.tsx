@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { JSXElement } from "@babel/types";
 import { ArrowUpIcon } from "@chakra-ui/icons";
 import { Button, Link } from "@chakra-ui/react";

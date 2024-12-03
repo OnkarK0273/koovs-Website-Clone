@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from "axios";
 import { Product } from "../../utils/types";
 import { AppDispatch } from "../store";
@@ -37,15 +38,13 @@ export interface IUpdateWomenProduct {
 
 // all type interfaces combined
 export type ProductAction =
-   IProductRequest
+  | IProductRequest
   | IProductError
   | IGetProductSuccess
   | IGetWomenProductSuccess
   | IProductSuccess
   | IUpdateMensProduct
   | IUpdateWomenProduct;
-
-
 
 const productRequest = (): IProductRequest => {
   return { type: types.PRODUCT_REQUEST };
@@ -74,17 +73,26 @@ export const updateWomenProduct = (data: Product[]): IUpdateWomenProduct => {
   return { type: types.UPDATE_WOMEN_PRODUCTS, payload: data };
 };
 
-export const getProducts = (getProductsParam?: { params: { category: string[],brand:string[],_limit:number ,_page:number} }) => async (dispatch: AppDispatch) => {
-  dispatch(productRequest());
-  try {
-    let data = await getProductsAPI(getProductsParam);
-    if (data) {
-      dispatch(getProductSuccess(data));
+export const getProducts =
+  (getProductsParam?: {
+    params: {
+      category: string[];
+      brand: string[];
+      _limit: number;
+      _page: number;
+    };
+  }) =>
+  async (dispatch: AppDispatch) => {
+    dispatch(productRequest());
+    try {
+      let data = await getProductsAPI(getProductsParam);
+      if (data) {
+        dispatch(getProductSuccess(data));
+      }
+    } catch (error) {
+      dispatch(productError());
     }
-  } catch (error) {
-    dispatch(productError());
-  }
-};
+  };
 
 export const singleProduct = async (id: string) => {
   try {

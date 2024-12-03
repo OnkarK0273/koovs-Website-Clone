@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { AppDispatch } from "../store";
 import {
   getAdminAPI,
@@ -71,12 +72,10 @@ export const getAdminAdmin = () => async (dispatch: AppDispatch) => {
   }
 };
 
-<<<<<<< HEAD
-=======
 // admin login
 
-export const adminLogin = ():any =>async (dispatch:AppDispatch) => {
-  dispatch({type:types.ADMIN_LOADING});
+export const adminLogin = (): any => async (dispatch: AppDispatch) => {
+  dispatch({ type: types.ADMIN_LOADING });
   try {
     let data = await getAdminAPI();
     dispatch({ type: types.ADMIN_LOGIN, payload: data });
@@ -84,18 +83,13 @@ export const adminLogin = ():any =>async (dispatch:AppDispatch) => {
     console.log(err);
     dispatch({ type: types.ADMIN_ERROR });
   }
-}
+};
 
 // admin logout
-export const adminLogout = ():any =>async (dispatch:AppDispatch) => {
-  
+export const adminLogout = (): any => async (dispatch: AppDispatch) => {
   dispatch({ type: types.ADMIN_LOGOUT });
-  
-}
+};
 
-
-
->>>>>>> b9c71f51756986c4dd73d84e2dd673832e77dc93
 // toogle men
 
 export const getAdminMenToggle =

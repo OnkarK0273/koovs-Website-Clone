@@ -14,7 +14,7 @@ const MensCard = ({ img1, img2, title, price }: Product) => {
         h={350}
         // border="1px solid red"
         bgImage={`url(${img1})`}
-        objectFit={'cover'}
+        objectFit={"cover"}
         bgSize="100% 100%"
         bgRepeat="no-repeat"
         position="relative"
@@ -38,7 +38,7 @@ const MensCard = ({ img1, img2, title, price }: Product) => {
       >
         <Box
           position="absolute"
-          objectFit={'cover'}
+          objectFit={"cover"}
           top={0}
           left={0}
           w="100%"
@@ -53,7 +53,7 @@ const MensCard = ({ img1, img2, title, price }: Product) => {
         >
           <Box
             bgImage={`url('${img2}')`}
-            objectFit={'cover'}
+            objectFit={"cover"}
             bgSize="100% 100%"
             bgRepeat="no-repeat"
             bgPosition="center"

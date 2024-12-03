@@ -1,10 +1,18 @@
 import axios, { AxiosResponse } from "axios";
 import { Product } from "../../utils/types";
 
-export const getProductsAPI = async (getProductsParam?: { params: { category: string[],brand:string[],_limit:number ,_page:number} }) => {
+export const getProductsAPI = async (getProductsParam?: {
+  params: {
+    category: string[];
+    brand: string[];
+    _limit: number;
+    _page: number;
+  };
+}) => {
   try {
     let res: AxiosResponse<Product[]> = await axios.get(
-      `https://kools.onrender.com/mens`,getProductsParam
+      `https://kools.onrender.com/mens`,
+      getProductsParam
     );
     return res.data;
   } catch (error) {

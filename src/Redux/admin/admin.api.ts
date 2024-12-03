@@ -106,13 +106,8 @@ export const getAdminUserPatchAPI = async (
   Image: string
 ) => {
   let res: AxiosResponse<Userdetails> = await axios.patch(
-<<<<<<< HEAD
     `http://localhost:8080/AdminDetails`,
     { Name, EmailId, Phone, Password, Image }
-=======
-    `https://kools.onrender.com/AdminDetails`,
-    { Name,EmailId,Phone,Password,Image}
->>>>>>> b9c71f51756986c4dd73d84e2dd673832e77dc93
   );
   return res.data;
 };

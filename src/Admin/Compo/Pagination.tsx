@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Box, Button, Flex, Heading, Select } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 interface IpaginationProps {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Box, Flex, HStack, Heading } from "@chakra-ui/layout";
 import React from "react";
 import LoginForm from "../Components/LoginForm";

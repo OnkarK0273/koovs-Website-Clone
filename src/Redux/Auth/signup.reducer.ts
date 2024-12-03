@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import { SignupDetail } from "../../utils/types";
 import { SIGNUP_SUCCESS, SIGNUP_ERROR } from "./signup.types";

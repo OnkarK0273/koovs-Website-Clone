@@ -1,4 +1,5 @@
-import React, { useState, useEffect ,useRef} from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useState, useEffect, useRef } from "react";
 
 import {
   Heading,
@@ -32,23 +33,20 @@ import { Link, useNavigate } from "react-router-dom";
 // import { useAppSelector } from "../../Redux/store";
 // import { shallowEqual } from "react-redux";
 
-
-
 const CartPayment = () => {
-
   const secondaryTextColor = useColorModeValue("gray.600", "gray.400");
   const [isLoading, setIsLoading] = useState(false);
   const [total, setTotal] = useState(0);
-  const [cardno,setCard] = useState("")
-  const [date,setMonth] = useState("")
-  const [cvv,setCvv] = useState("")
-  const val = cardno.length>15 && date.length>4 && cvv.length>2
- 
+  const [cardno, setCard] = useState("");
+  const [date, setMonth] = useState("");
+  const [cvv, setCvv] = useState("");
+  const val = cardno.length > 15 && date.length > 4 && cvv.length > 2;
+
   const [phone, setPhone] = useState("");
   const cart = useAppSelector((store) => store.CartReducer.cart);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = useRef<HTMLButtonElement>(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   // console.log(cart);
 
   const dispatch = useAppDispatch();
@@ -61,17 +59,13 @@ const CartPayment = () => {
   // }, shallowEqual);
 
   const getTotal = async () => {
-    let res = await axios.get(
-      `https://kools.onrender.com/total`
-    );
+    let res = await axios.get(`https://kools.onrender.com/total`);
     let data = await res.data;
     setTotal(data.total);
   };
 
   const getPhone = async () => {
-    let res = await axios.get(
-      `https://kools.onrender.com/UserDetails`
-    );
+    let res = await axios.get(`https://kools.onrender.com/UserDetails`);
     let data = await res.data;
     setPhone(data[0].Phone);
   };
@@ -93,17 +87,12 @@ const CartPayment = () => {
     }, 2000);
 
     for (let i = 0; i < cart.length; i++) {
-      await axios.delete(
-        `https://kools.onrender.com/cart/${cart[i].id}`
-      );
+      await axios.delete(`https://kools.onrender.com/cart/${cart[i].id}`);
     }
 
-    await axios.post(
-      `https://kools.onrender.com/total`,
-      {
-        total: 0,
-      }
-    );
+    await axios.post(`https://kools.onrender.com/total`, {
+      total: 0,
+    });
 
     dispatch(getCartApi());
     setTotal(0);
@@ -112,16 +101,16 @@ const CartPayment = () => {
 
   // console.log(total);
   const handleHome = () => {
-    handleCart()
-    onClose()
-    navigate('/')
+    handleCart();
+    onClose();
+    navigate("/");
   };
 
-  const handleShop=()=>{
-    handleCart()
-    onClose()
-    navigate('/men')
-  }
+  const handleShop = () => {
+    handleCart();
+    onClose();
+    navigate("/men");
+  };
 
   let getPrice = total;
 
@@ -132,16 +121,14 @@ const CartPayment = () => {
       p={10}
       spacing={6}
       align="flex-start"
-      boxShadow='base' 
-      rounded='md'
-       bg='whiteAlpha.300'
-     
+      boxShadow="base"
+      rounded="md"
+      bg="whiteAlpha.300"
     >
       <VStack alignItems="flex-start" spacing={3}>
         <Heading size="2xl">Card Details</Heading>
-        <Text as="div" textAlign="left"  >
-        Fill All the Card Details *
-          
+        <Text as="div" textAlign="left">
+          Fill All the Card Details *
         </Text>
       </VStack>
       {/* <HStack spacing={6} alignItems="center" w="full">
@@ -166,11 +153,32 @@ const CartPayment = () => {
       </HStack> */}
       <VStack spacing={4} alignItems="stretch" w="full">
         <HStack justifyContent="space-between">
-          <Input type='text' placeholder="Card Number" maxLength={16} onChange={(e)=>{setCard(e.target.value)}} />
+          <Input
+            type="text"
+            placeholder="Card Number"
+            maxLength={16}
+            onChange={(e) => {
+              setCard(e.target.value);
+            }}
+          />
         </HStack>
         <HStack justifyContent="space-between">
-          <Input placeholder="Month/Year" type='text' maxLength={5} onChange={(e)=>{setMonth(e.target.value)}}  />
-          <Input placeholder="CVV" type='text' maxLength={3}  onChange={(e)=>{setCvv(e.target.value)}} />
+          <Input
+            placeholder="Month/Year"
+            type="text"
+            maxLength={5}
+            onChange={(e) => {
+              setMonth(e.target.value);
+            }}
+          />
+          <Input
+            placeholder="CVV"
+            type="text"
+            maxLength={3}
+            onChange={(e) => {
+              setCvv(e.target.value);
+            }}
+          />
         </HStack>
         {/* <Divider /> */}
         <HStack justifyContent="space-between">
@@ -197,10 +205,7 @@ const CartPayment = () => {
         loadingText={"Clearing Cart..."}
         isDisabled={!val}
       >
-        {
-          val?"Place Order" :"Please Fill Card Details"
-        }
-        
+        {val ? "Place Order" : "Please Fill Card Details"}
       </Button>
       <>
         <AlertDialog
@@ -220,16 +225,11 @@ const CartPayment = () => {
               shopping or go to home page?
             </AlertDialogBody>
             <AlertDialogFooter>
-              
-                <Button  onClick={handleShop}>
-                  Continue Shopping
-                </Button>
-              
-              
-                <Button colorScheme="blue" ml={3} onClick={handleHome}>
-                  Home
-                </Button>
-              
+              <Button onClick={handleShop}>Continue Shopping</Button>
+
+              <Button colorScheme="blue" ml={3} onClick={handleHome}>
+                Home
+              </Button>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>

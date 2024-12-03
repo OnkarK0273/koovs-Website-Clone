@@ -29,9 +29,7 @@ const getCartApiFail = () => {
 export const getCartApi = () => async (dispatch: AppDispatch) => {
   dispatch(getCartApiReq());
   try {
-    const response = await axios.get(
-      `https://kools.onrender.com/cart`
-    );
+    const response = await axios.get(`https://kools.onrender.com/cart`);
     dispatch(getCartApiSuc(response.data));
   } catch (error) {
     dispatch(getCartApiFail());
@@ -50,9 +48,7 @@ export const getCartApi = () => async (dispatch: AppDispatch) => {
 
 export const delCartApi = (id: number) => async (dispatch: AppDispatch) => {
   try {
-    await axios.delete(
-      `https://kools.onrender.com/cart/${id}`
-    );
+    await axios.delete(`https://kools.onrender.com/cart/${id}`);
     dispatch(getCartApi());
   } catch (error) {
     console.log(error);
